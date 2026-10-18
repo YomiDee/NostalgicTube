@@ -1,6 +1,6 @@
-# NostalgicTube 4.1
+# NostalgicTube 4.2
 
-A native YouTube home feed mixing your saved interests with discoveries from an earlier era. English is the default interface language. Choose **Language → Español** in the extension popup for Spanish. The selection is saved automatically and updates open YouTube tabs without changing the current video mix.
+A native YouTube home feed mixing your saved interests with discoveries from an earlier era. English is the default interface language. Click the **English / Español slider switch** in the popup to toggle languages; Space and Enter also work when focused. The selection is saved automatically and updates open YouTube tabs without changing the current video mix.
 
 ## Install in Brave
 
@@ -16,7 +16,9 @@ To update an existing installation while preserving its interests, replace the f
 - Saves up to 40 distinct YouTube searches from installation in local extension storage; no access to previous browser or account history.
 - Samples up to four interests per mix, with equal weight rather than favoring the most recent one.
 - Defaults to approximately 75% interest-based videos and 25% discoveries. Choose 0%, 25%, or 50% discoveries in the popup. Availability may change the final proportion.
-- **Another mix** rotates topics and results. Up to 24 videos per mix, without duplicates within the mix.
+- **Another mix** rotates topics and results. Each batch adds up to 24 videos, excluding duplicates across the entire feed.
+- Approaching the bottom automatically loads another batch. A spinning circle appears above **More videos** while loading. Previous cards remain in place.
+- Later batches vary interests, years and searches. If no new videos are found or requests fail, automatic loading pauses; the button lets you retry. Availability is finite and depends on YouTube results.
 - **My interests** lets you add, delete, or clear topics and pause automatic learning.
 - Defaults to videos before January 1, 2022. Discovery searches cover the preceding five calendar years and favor videos with at least 100,000 current views. This approximates well-known videos from that era; current views cannot establish their exact historical popularity.
 
@@ -26,4 +28,4 @@ Uses only `storage` permission and content scripts on `https://www.youtube.com/*
 
 Depends on YouTube's internal markup and components, which may change. Dates shown as relative ages are approximate. Unknown or ambiguous dates are excluded. Consent screens, throttling, or failed searches may limit results. Does not guarantee that older videos contain no AI content. UI language does not translate video titles or change YouTube's own language settings.
 
-Tested installed in a separate Brave profile against real YouTube, including switching the popup and feed between English and Spanish, retaining the language after reopening, and keeping the same mix without new searches during language changes. Independent MIT-licensed project, not affiliated with YouTube or Brave.
+Version 4.2 was tested installed in a separate Brave profile against real YouTube: scrolling grew the feed from 24 to 48 cards, without duplicates or replacing the first DOM card. The loading indicator, a maximum of two concurrent requests, the language slider with click/keyboard, persistence, and disabling the panel were verified. Independent MIT-licensed project, not affiliated with YouTube or Brave.

@@ -19,7 +19,9 @@
      if(run!==revision || !host.isConnected)return;
      let grid=host.querySelector('ytd-rich-grid-renderer[data-yar-native]');
      if(!grid){grid=document.createElement('ytd-rich-grid-renderer');grid.setAttribute('data-yar-native','');host.querySelector('.yar-results').append(grid);}
-     grid.data={contents};
+     const append=host.dataset.renderMode==='append';
+     if(append && grid.data?.contents && typeof grid.push==='function')grid.push('data.contents',...contents);
+     else grid.data={contents:append?[...(grid.data?.contents||[]),...contents]:contents};
      host.dataset.nativeState='ready';
      host.dispatchEvent(new Event('yar-native-ready'));
    }catch{
