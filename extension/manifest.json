@@ -1,9 +1,10 @@
 {
  "manifest_version":3,
- "name":"YouTube Antes · Inicio nativo",
- "version":"3.0.0",
- "description":"Busca y crea un panel de vídeos antiguos relacionados con lo que estás viendo.",
+ "name":"NostalgicTube",
+ "version":"4.1.0",
+ "description":"Your saved interests and discoveries from another era, in YouTube's native home feed.",
  "permissions":["storage"],
- "action":{"default_popup":"popup.html","default_title":"Vídeos antiguos relacionados"},
- "content_scripts":[{"matches":["https://www.youtube.com/*"],"js":["native.js"],"world":"MAIN","run_at":"document_start"},{"matches":["https://www.youtube.com/*"],"js":["dates.js","search.js","content.js"],"css":["content.css"]}]
+ "background":{"service_worker":"background.js"},
+ "action":{"default_popup":"popup.html","default_title":"NostalgicTube"},
+ "content_scripts":[{"matches":["https://www.youtube.com/*"],"js":["native.js"],"world":"MAIN","run_at":"document_start"},{"matches":["https://www.youtube.com/*"],"js":["dates.js","search.js","i18n.js","content.js"],"css":["content.css"]}]
 }
