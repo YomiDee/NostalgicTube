@@ -1,11 +1,62 @@
 {
- "manifest_version":3,
- "name":"NostalgicTube",
- "version":"4.8.3",
- "description":"Your saved interests and discoveries from another era, in YouTube's native home feed.",
- "permissions":["storage"],
- "background":{"service_worker":"background.js"},
- "icons":{"16":"icons/icon16.png","32":"icons/icon32.png","48":"icons/icon48.png","128":"icons/icon128.png"},
- "action":{"default_popup":"popup.html","default_title":"NostalgicTube","default_icon":{"16":"icons/icon16.png","32":"icons/icon32.png"}},
- "content_scripts":[{"matches":["https://www.youtube.com/*"],"js":["native.js"],"world":"MAIN","run_at":"document_start"},{"matches":["https://www.youtube.com/*"],"js":["search-guard.js"],"run_at":"document_start"},{"matches":["https://www.youtube.com/*"],"js":["dates.js","search.js","random.js","i18n.js","content.js"],"css":["content.css"]}]
+  "manifest_version": 3,
+  "name": "NostalgicTube",
+  "version": "0.8.3",
+  "description": "Your saved interests and discoveries from another era, in YouTube's native home feed.",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "NostalgicTube",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "native.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "search-guard.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "dates.js",
+        "search.js",
+        "random.js",
+        "i18n.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
+    }
+  ]
 }
