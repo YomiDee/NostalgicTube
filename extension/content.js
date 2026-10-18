@@ -33,7 +33,7 @@
  setInterval(learnFromPlayback,1000);
  let statusKey='',statusValues={};
  const t=(name,values)=>NostalgicI18n.t(settings.language,name,values);
- function status(name,values={}){statusKey=name;statusValues=values;setText('#status',t(name,values));}
+ function status(name,values={}){statusKey=['added','results'].includes(name)?'':name;statusValues=values;const element=host.querySelector('#status');element.hidden=!statusKey;setText('#status',statusKey?t(statusKey,values):'');}
  function translate(){
    host.lang=settings.language==='es'?'es':'en';
    setText('#shuffle',t('mix'));setText('.search',t('explore'));
@@ -47,6 +47,7 @@
  function recordSearch(){if(!ready || !settings.enabled || !settings.remember || location.pathname!=='/results' || lastRecorded===location.href)return;lastRecorded=location.href;const topic=clean(new URLSearchParams(location.search).get('search_query')).slice(0,80);if(topic)chrome.runtime.sendMessage({type:'nt-add',topic,automatic:true,epoch:settings.algorithmEpoch}).catch(()=>{});}
  function mount(){
    const home=location.pathname==='/',watch=location.pathname==='/watch';
+   if(!watch||!settings.enabled)document.documentElement.dataset.yarWatch='false';
    const anchor=home?document.querySelector('ytd-browse[page-subtype="home"]'):watch?document.querySelector('#secondary-inner'):null;
    document.documentElement.dataset.yarHome=String(Boolean(home && settings.enabled && settings.replaceHome && anchor));
    if(!settings.enabled || !anchor){host?.remove();return false;}
@@ -59,10 +60,14 @@
      host.querySelector('#shuffle').onclick=()=>{generation++;key='';load();};
      host.addEventListener('yar-native-ready',()=>{if(host.dataset.nativeState==='error')status('nativeError');});
    }
-   if(host.parentNode!==anchor)anchor.prepend(host);host.dataset.place=home?'home':'watch';
+   if(host.parentNode!==anchor)anchor.prepend(host);
+   const context=host.querySelector('#context'),toolbar=host.querySelector('.yar-toolbar');
+   if(home){if(context.parentNode!==host)host.insertBefore(context,host.querySelector('#status'));}
+   else if(context.parentNode!==toolbar)toolbar.append(context);
+   const place=home?'home':'watch';if(host.dataset.place&&host.dataset.place!==place)host.querySelector('.yar-results').replaceChildren();host.dataset.place=place;
    translate();return true;
  }
- function render(batch=[],append=false){host.dataset.renderMode=append?'append':'replace';host.querySelector('#yar-payload').textContent=JSON.stringify(batch.map(v=>v.renderer));document.dispatchEvent(new Event('yar-render-native'));}
+ function render(batch=[],append=false){if(host.dataset.place==='watch'){NostalgicWatchCards.render(host.querySelector('.yar-results'),batch,append);document.documentElement.dataset.yarWatch=String(Boolean(settings.enabled&&host.querySelector('.yar-results').children.length));return;}host.dataset.renderMode=append?'append':'replace';host.querySelector('#yar-payload').textContent=JSON.stringify(batch.map(v=>v.renderer));document.dispatchEvent(new Event('yar-render-native'));}
  function maybeMore(){if(!busy && canLoadMore && !autoPaused && host?.isConnected && settings.enabled){const r=host.querySelector('.yar-more').getBoundingClientRect();if(r.top<innerHeight+600 && r.bottom>0)load(true);}}
  function loading(value){busy=value;const more=host.querySelector('.yar-more');more.dataset.loading=String(value);more.setAttribute('aria-busy',String(value));more.querySelector('button').disabled=value;translate();}
  function plan(batchPage=0){

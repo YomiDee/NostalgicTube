@@ -32,3 +32,7 @@ Only versions with actual source are tagged. Milestones without surviving files 
 Original ZIPs were copied unchanged when available. Versions 1.0.0 and 4.8.3 were packaged from preserved source folders; they are not labelled original ZIPs. Checksums and corresponding commit IDs are in [catalog.json](../releases/catalog.json).
 
 No browser profiles, private browsing data, chat transcript, credentials, operating-system temporary files or machine-specific test scripts are included.
+
+## Continued development
+
+Versions 4.8.4–4.8.13 added the version footer, release checks and bounded search waits. Version 4.8.21 consolidates local iterations 4.8.14–4.8.20: thumbnail experiments, replacement horizontal cards, native-watch-list hiding and home mix-label placement. Those local prototypes were not published separately. Subsequent development uses actual commits and timestamps.

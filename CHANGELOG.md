@@ -2,6 +2,12 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.21
+
+- Add horizontal watch-page recommendation cards, larger thumbnails and native-list hiding when replacement cards are ready.
+- Remove loaded-count status and position the home mix label below the toolbar.
+- Consolidate local-only iterations 4.8.14–4.8.20; supersede the initial broken thumbnail experiment.
+
 ## 4.8.13
 
 - Bound each YouTube source request to 8 seconds and each batch to 18 seconds instead of 45. Finish early once enough unique eligible videos are available to meet the requested mix. Keep two workers and longer backoff for network/rate-limit failures; retry empty searches sooner and distinguish their status messages. Tests use simulated responses; real network speed and YouTube availability are not guaranteed.

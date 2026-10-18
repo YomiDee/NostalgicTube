@@ -2,7 +2,7 @@
 
 **Disfruta de lo que solía ser.**
 
-Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.13 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
+Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.21 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
@@ -30,7 +30,7 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 
 ## Instalar en Brave, Chrome o Edge
 
-1. Descarga el [ZIP 4.8.13](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.13/NostalgicTube-4.8.13-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 4.8.21](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.21/NostalgicTube-4.8.21-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
 
    | Navegador | Dirección que debes escribir en la barra |
@@ -69,3 +69,7 @@ Pulsa **Buscar actualizaciones** junto a la versión. Tras permitir el acceso op
 ## Tiempos de carga
 
 Las búsquedas se ejecutan de dos en dos, con un límite de 8 segundos por petición y 18 por tanda. La tanda termina antes si hay suficientes vídeos para la variedad elegida. Las búsquedas vacías reintentan tras 1,5–20 segundos; los fallos de conexión mantienen pausas de hasta 60 segundos. Las pruebas usan respuestas simuladas y no garantizan la velocidad real.
+
+## Recomendaciones al ver un vídeo
+
+Tarjetas horizontales con miniaturas 16:9 y texto a la derecha. Cuando hay tarjetas de NostalgicTube, se oculta el listado original de YouTube y sus filtros; al desactivar la extensión reaparece. En inicio, la mezcla y su porcentaje aparecen debajo de los botones, sin contador de vídeos. Esto no filtra el autoplay.

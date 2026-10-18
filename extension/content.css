@@ -8,7 +8,7 @@ html[data-yar-home="true"] ytd-browse[page-subtype="home"] ytd-rich-grid-rendere
 #yar-panel form{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
 #yar-panel input{font:400 14px Roboto,Arial,sans-serif;background:var(--yt-spec-base-background,#fff);color:inherit;border:1px solid var(--yt-spec-10-percent-layer,#888);border-radius:20px;padding:8px 14px;min-width:160px;width:250px;max-width:100%;box-sizing:border-box}
 #yar-panel button:hover,#yar-panel summary:hover,#yar-panel .search:hover{background:var(--yt-spec-button-chip-background-hover,rgba(127,127,127,.25))}
-#yar-panel #status{font-size:13px;line-height:20px;color:var(--yt-spec-text-secondary,#606060);padding:0 24px;margin:0 0 12px}
+#yar-panel #status{text-align:center;font-size:13px;line-height:20px;color:var(--yt-spec-text-secondary,#606060);padding:0 24px;margin:0 0 12px}
 #yar-panel #context{max-width:460px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;color:var(--yt-spec-text-secondary,#606060)}
 #yar-panel .yar-results{min-width:0}
 #yar-panel ytd-rich-grid-renderer[data-yar-native]{width:100%}
@@ -23,3 +23,23 @@ html[dark] #yar-panel #status,html[dark] #yar-panel #context{color:#aaa}
 html[dark] #yar-panel input{background:#121212;border-color:#303030;color:#f1f1f1}
 html[dark] #yar-panel button:hover,html[dark] #yar-panel summary:hover,html[dark] #yar-panel .search:hover{background:#ffffff33}
  #yar-panel .yar-more{display:flex;flex-direction:column;align-items:center;gap:8px;padding:28px 16px 40px;min-height:110px;text-align:center;font-size:14px;color:var(--yt-spec-text-secondary,#606060)}#yar-panel .yar-spinner{width:24px;height:24px;border:3px solid #8884;border-top-color:currentColor;border-radius:50%;animation:yar-spin .8s linear infinite}#yar-panel .yar-more:not([data-loading=true]) .yar-spinner{display:none}#yar-panel .yar-more-label{margin:0}#yar-panel .yar-more-message{max-width:420px;font-size:13px;margin:0}html[dark] #yar-panel .yar-more{color:#aaa}@keyframes yar-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){#yar-panel .yar-spinner{animation-duration:2s}}
+
+/* Watch-page recommendations have their own horizontal cards. */
+#yar-panel[data-place="watch"] .yar-results{width:100%;margin:0}
+#yar-panel .nt-watch-card{display:grid;grid-template-columns:minmax(0,66fr) minmax(0,34fr);gap:12px;align-items:start;margin:0 0 10px}
+#yar-panel .nt-watch-thumbnail{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:10px;background:#202020}
+#yar-panel .nt-watch-thumbnail img{display:block;width:100%;height:100%;object-fit:cover}
+#yar-panel .nt-watch-duration{position:absolute;bottom:5px;right:5px;padding:2px 4px;border-radius:4px;background:#000c;color:#fff;font:600 12px/14px Roboto,Arial,sans-serif}
+#yar-panel .nt-watch-details{min-width:0;padding-top:1px}
+#yar-panel .nt-watch-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:inherit;text-decoration:none;font:600 14px/20px Roboto,Arial,sans-serif;margin:0 0 4px}
+#yar-panel .nt-watch-channel,#yar-panel .nt-watch-meta{margin:0;color:var(--yt-spec-text-secondary,#606060);font:400 12px/18px Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+#yar-panel .nt-watch-thumbnail:focus-visible,#yar-panel .nt-watch-title:focus-visible{outline:2px solid #3ea6ff;outline-offset:2px}
+html[dark] #yar-panel .nt-watch-channel,html[dark] #yar-panel .nt-watch-meta{color:#aaa}
+
+/* Hide only YouTube's original watch recommendations once our cards are available. */
+html[data-yar-watch="true"] ytd-watch-flexy #secondary #related,
+html[data-yar-watch="true"] ytd-watch-flexy #secondary-inner > ytd-watch-next-secondary-results-renderer{display:none!important}
+
+#yar-panel #context{text-align:left;margin-right:auto}
+
+#yar-panel[data-place="home"] > #context{display:block;max-width:none;white-space:normal;text-align:left;padding:0 24px;margin:0 0 12px;line-height:20px}

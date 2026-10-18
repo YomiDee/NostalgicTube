@@ -10,7 +10,8 @@
 | `search.js` | Defaults, query construction, initial-data parsing, renderer extraction and mixing |
 | `dates.js` | Absolute/relative date parsing and conservative cutoff classification |
 | `random.js` | Independent random queries and topic-preserving randomized date windows |
-| `native.js` | MAIN-world bridge to YouTube's native rich-grid renderer |
+| `native.js` | MAIN-world bridge to YouTube's native home rich-grid renderer |
+| `watch-cards.js` | Safe DOM rendering of horizontal watch recommendations, thumbnails, durations and metadata |
 | `i18n.js` | English and Spanish interface text |
 | `popup.*` | Compact settings UI, autosave, reset and donation link |
 
@@ -21,3 +22,5 @@ Interest writes are queued to avoid races between tabs. Reset increments `algori
 Requests are capped at two concurrent workers. Empty result batches trigger delayed new attempts with broader date windows, up to a one-minute pause and reduced source count after repeated failures. Hidden/offline tabs wait. Navigation, disabling or a new mix cancels pending work.
 
 Date filtering is based on returned visible metadata, not a guaranteed exact upload timestamp. Autoplay and YouTube's native Up next queue are outside this extension's control.
+
+Watch pages bypass the native rich grid and use dedicated horizontal cards. All text is assigned with textContent; watch URLs and thumbnail URLs are derived from validated 11-character video IDs. A root attribute hides only the original watch recommendation list once replacement cards exist. Navigation or disabling resets this state.
