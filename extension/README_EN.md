@@ -1,4 +1,22 @@
-# NostalgicTube 4.4
+# NostalgicTube 4.6
+
+## View-neutral related recommendations
+
+The **0%, 25% and 50%** modes now ignore view counts too: no minimum views, popularity sorting or view-based candidate trimming. Related queries retain your topics, randomize date windows from the first batch and shuffle candidates. Discoveries also use varied queries rather than terms such as “hits” or “viral”.
+
+All internal feed requests omit YouTube account cookies. Related modes use locally learned topics; Random ignores them. YouTube can still favor popular videos in its search results, so this is not a uniform sample of every related video, but the extension applies no additional view preference.
+
+Tested with the extension installed in Brave and simulated results: zero-view, one-view and 100-million-view candidates are eligible in all four modes, with 0/6/12/24 discoveries in a full 24-video batch.
+
+## 100% — Random
+
+The discovery selector now includes **100% — Random**. This mode ignores saved interests and does not regenerate when they change. It generates independent queries using varied multilingual terms, camera filename patterns and random date windows before your cutoff. Random requests omit session cookies, rather than using your YouTube account session.
+
+No minimum views, popularity sorting or view-based candidate trimming is applied: videos with zero views and millions of views are equally eligible for the random selection stage. Cutoff checks, duplicate prevention, scrolling and **Another mix** still apply. Learning can continue for the other modes without influencing Random.
+
+This is **not a uniform sample of YouTube's entire catalogue**. Only search results are available, and YouTube can favor popular videos, region or language. Zero-view videos are eligible but cannot be guaranteed in every batch; not every existing video has an equal chance of appearing.
+
+Verified with the extension installed in Brave and simulated results: independent queries, no change when interests change, date windows, zero/one-view eligibility and translations. The wordmark is smaller, closer to the icon and bottom-aligned.
 
 Native YouTube cards, automatic interest learning, discoveries from an earlier era, and progressive loading while scrolling.
 
@@ -22,11 +40,11 @@ The destination must be `https://www.youtube.com/results`. It does not alter Goo
 
 ## Feed and settings
 
-Each batch samples up to four equally weighted interests and aims for 25% discoveries by default; choose 0%, 25%, or 50%. Availability can change the final ratio. Discoveries favor videos from the era with at least 100,000 current views, not a certified historical ranking.
+Standard modes sample up to four equally weighted interests and aim for 25% discoveries by default; choose 0%, 25%, or 50%, or choose **100% — Random** to ignore interests. Availability can change the final ratio. No mode uses a view-count threshold or popularity preference.
 
 **Another mix** starts a fresh feed. Near the bottom, a spinning circle and **More videos** appear while up to 24 new cards are appended, without duplicates across the feed. Empty or failed searches pause automatic loading and leave a retry button. Results are not unlimited.
 
-English is the default. The **English / Español** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** footer links to https://ko-fi.com/yomidee.
+English is the default. The **English / Español** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** link is at the top right and opens https://ko-fi.com/yomidee. The white-N logo supplies the first letter of the visible title “ostalgic Tube”. The tagline is “Enjoy what it used to be” in English and “Disfruta de lo que solía ser” in Spanish.
 
 ## Privacy and checks
 
