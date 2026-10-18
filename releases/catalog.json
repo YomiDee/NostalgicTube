@@ -253,5 +253,14 @@
     "asset": "releases/NostalgicTube-4.8.9-Brave.zip",
     "sha256": "77faf163c8b3afee55a52ac841afdab8f91ae09513fd0a74098b1cf3d4f471a7",
     "commit": "fcc720ef9551f27ef9057b2d992b94f159f41489"
+  },
+  {
+    "version": "4.8.22",
+    "summary": "Single loading heading and 14 rotating bilingual phrases.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.22-Brave.zip",
+    "sha256": "5e1db9d6fb5189a200bbb0100541f289672a4652b4ff6cd1df8a3320687d6c85",
+    "commit": "86ad8b28deb5c1b6ef04526c27d1939472c72d89"
   }
 ]
