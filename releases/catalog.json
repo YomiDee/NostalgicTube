@@ -327,5 +327,14 @@
     "asset": "releases/NostalgicTube-0.8.37-Brave.zip",
     "sha256": "f7c9238927232f6064b6ec536be017796720c3c76852fe3ccd43c895e2315d3e",
     "commit": "369a39ce9ae5835c8affdde7fe58daf2efe6d094"
+  },
+  {
+    "version": "0.8.50",
+    "summary": "Remove redundant More videos controls and center the no-topic notice.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-0.8.50-Brave.zip",
+    "sha256": "be28708da45568fdaa6e702a40cd4301ead95d6ec1f2ae4cbf31819f1a1becf4",
+    "commit": "06beb52b476b7993de61b69ca9f445d59d7c0452"
   }
 ]
