@@ -35,4 +35,6 @@ Object.assign(en,{downloadUpdate:'Update it!',updateHelp:'View the release on Gi
 en.checkGithubUpdate='Check GitHub to update!';es.checkGithubUpdate='¡Busca actualizaciones en GitHub!';
 Object.assign(en,{checkUpdate:'Check for updates',downloadUpdate:'Check GitHub to update!',updateCheckUnavailable:'Could not check right now. Please try again.'});
  Object.assign(es,{checkUpdate:'Buscar actualizaciones',downloadUpdate:'¡Ve a GitHub para actualizar!',updateCheckUnavailable:'No se pudo comprobar ahora. Inténtalo de nuevo.'});
+Object.assign(en,{sourceRetryWait:'YouTube did not respond. Retrying after a short pause…',autoRetryWait:'Looking for other older videos…'});
+ Object.assign(es,{sourceRetryWait:'YouTube no respondió. Reintentando tras una pausa…',autoRetryWait:'Buscando otros vídeos antiguos…'});
 })();

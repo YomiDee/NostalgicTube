@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.13
+
+- Bound each YouTube source request to 8 seconds and each batch to 18 seconds instead of 45. Finish early once enough unique eligible videos are available to meet the requested mix. Keep two workers and longer backoff for network/rate-limit failures; retry empty searches sooner and distinguish their status messages. Tests use simulated responses; real network speed and YouTube availability are not guaranteed.
+
 ## 4.8.12
 
 - Show Check for updates beside the installed version. On click, compare against the newest published release version, including betas: Up to date! if current, Check GitHub to update! if older. The latter opens the release page. Failed checks remain retryable and do not claim that the version is current.

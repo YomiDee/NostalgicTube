@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.12 · Beta · Manifest V3**
+**Current version: 4.8.13 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -33,7 +33,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.12 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.12/NostalgicTube-4.8.12-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.13 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.13/NostalgicTube-4.8.13-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -96,3 +96,7 @@ Code is distributed under the [MIT license](LICENSE); existing notices are prese
 ## Update checks
 
 Press **Check for updates** beside the version. After optional GitHub access is granted, the popup compares the installed version with published releases, including betas. It shows **Up to date!** when current or **Check GitHub to update!** when older. The latter opens the GitHub release page. Checks run only on click; downloads and installation are manual. A failed check can be retried and does not report that you are current.
+
+## Loading behavior
+
+Searches run two at a time, with an 8-second source deadline and an 18-second batch deadline. A batch can finish early once it has enough eligible videos for the selected variety mix. Empty searches retry after 1.5–20 seconds; request failures back off up to 60 seconds. Timing behavior is tested with simulated responses, not a guarantee of real-world loading speed.

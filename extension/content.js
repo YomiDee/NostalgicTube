@@ -5,10 +5,10 @@
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
  let retryTimer=0,retryAttempts=0;
  function cancelRetry(){clearTimeout(retryTimer);retryTimer=0;}
- function queueRetry(run){
-   cancelRetry();const delay=[2000,5000,15000,30000,60000][Math.min(retryAttempts-1,4)];
+ function queueRetry(run,networkFailure=false){
+   cancelRetry();const delay=networkFailure?Math.min(60000,5000*2**Math.min(retryAttempts-1,4)):[1500,3000,6000,12000,20000][Math.min(retryAttempts-1,4)];
    const retry=()=>{if(run!==sequence || !settings.enabled || !host?.isConnected){cancelRetry();return;}if(document.hidden || !navigator.onLine){retryTimer=setTimeout(retry,5000);return;}retryTimer=0;load(true);};
-   retryTimer=setTimeout(retry,delay);moreMessage='autoRetryWait';autoPaused=true;if(!items.length)status('autoRetry');
+   retryTimer=setTimeout(retry,delay);moreMessage=networkFailure?'sourceRetryWait':'autoRetryWait';autoPaused=true;if(!items.length)status('autoRetry');
  }
  const seen=new Set();
  const learnedVideos=new Set();
@@ -73,8 +73,16 @@
  }
  async function fetchPool(job,signal){
    const q=query(job.topic,job.cutoff||settings.cutoff,true)+(job.after?' after:'+job.after:''),cacheKey=job.kind+'|'+q;const cached=cache.get(cacheKey);if(cached && Date.now()-cached.time<600000)return cached.items;
-   const response=await fetch('/results?search_query='+encodeURIComponent(q),{signal,credentials:'omit'});if(!response.ok){const error=Error('YouTube respondió con '+response.status);error.status=response.status;throw error;}
-   const list=videos(extract(await response.text())).filter(v=>YouTubeAntes.classify(v.published,settings.cutoff)==='old');
+   const request=new AbortController(),abort=()=>request.abort();
+   signal.addEventListener('abort',abort,{once:true});if(signal.aborted)abort();
+   const deadline=setTimeout(abort,8000);
+   let list;
+   try{
+     const response=await fetch('/results?search_query='+encodeURIComponent(q),{signal:request.signal,credentials:'omit'});
+     if(!response.ok){const error=Error('YouTube respondió con '+response.status);error.status=response.status;throw error;}
+     list=videos(extract(await response.text())).filter(v=>YouTubeAntes.classify(v.published,settings.cutoff)==='old');
+   }finally{clearTimeout(deadline);signal.removeEventListener('abort',abort);}
+
    const sampled=shuffle(list);
    if(sampled.length)cache.set(cacheKey,{time:Date.now(),items:sampled});if(cache.size>40)cache.delete(cache.keys().next().value);return sampled;
  }
@@ -84,14 +92,31 @@
    cancelRetry();
    controller?.abort();controller=new AbortController();const signal=controller.signal,run=++sequence;
    if(!append){page=0;items=[];seen.clear();canLoadMore=false;autoPaused=false;retryAttempts=0;render();}else page++;
-   let jobs=plan(page);if(retryAttempts){cache.clear();jobs=jobs.map(job=>({...job,after:undefined,cutoff:settings.cutoff}));if(retryAttempts>=3)jobs=jobs.slice(0,2);}
+   let jobs=plan(page);if(retryAttempts){jobs=jobs.map(job=>({...job,after:undefined,cutoff:settings.cutoff}));if(retryAttempts>=3)jobs=jobs.slice(0,2);}
    const pools=[],explore=[];let failed=0,completed=0;
    host.querySelector('.search').href='https://www.youtube.com/results?search_query='+encodeURIComponent(query('videos populares '+(Number(settings.cutoff.slice(0,4))-1),settings.cutoff));
    moreMessage='';loading(true);if(!append)status('loading');
-   const timeout=setTimeout(()=>{if(run===sequence)controller.abort();},45000);
+   const timeout=setTimeout(()=>{if(run===sequence)controller.abort();},18000);
    try{
      let cursor=0;
-     async function worker(){while(cursor<jobs.length && !signal.aborted){const job=jobs[cursor++];try{const list=await fetchPool(job,signal);if(run!==sequence)return;const fresh=list.filter(v=>!seen.has(v.id) && v.id!==new URLSearchParams(location.search).get('v'));if(job.kind==='interest')pools.push(fresh);else explore.push(...fresh);}catch(e){failed++;if(e.status===429 || e.status===403){cursor=jobs.length;retryAttempts=Math.max(retryAttempts,4);}if(e.name!=='AbortError')console.warn('NostalgicTube: source unavailable:',e.message);}completed++;if(run===sequence && !append)status('progress',{done:completed,total:jobs.length});}}
+     const needsRelated=jobs.some(job=>job.kind==='interest'),needsExplore=jobs.some(job=>job.kind!=='interest');
+     function enough(){const related=pools.flat().length,proportion=settings.interests.length?settings.discovery:100,prior=items.filter(v=>v.origin==='discovery').length,wanted=Math.max(0,Math.min(24,Math.round((items.length+24)*proportion/100)-prior));return related+explore.length>=24&&(!needsRelated||related>=24-wanted)&&(!needsExplore||explore.length>=wanted);}
+     async function worker(){
+       while(cursor<jobs.length && !signal.aborted){
+         const job=jobs[cursor++];
+         try{
+           const list=await fetchPool(job,signal);if(run!==sequence)return;
+           const collected=new Set([...pools.flat(),...explore].map(v=>v.id));
+           const fresh=list.filter(v=>!seen.has(v.id)&&!collected.has(v.id)&&v.id!==new URLSearchParams(location.search).get('v'));
+           if(job.kind==='interest')pools.push(fresh);else explore.push(...fresh);
+           if(enough()){cursor=jobs.length;controller.abort();}
+         }catch(e){
+           if(!signal.aborted){failed++;if(e.status===429||e.status===403){cursor=jobs.length;retryAttempts=Math.max(retryAttempts,4);}}
+         }
+         completed++;if(run===sequence&&!append)status('progress',{done:completed,total:jobs.length});
+       }
+     }
+
      await Promise.all([worker(),worker()]);if(run!==sequence)return;
      const proportion=settings.interests.length?settings.discovery:100,priorDiscoveries=items.filter(v=>v.origin==='discovery').length;
      const target=Math.max(0,Math.min(24,Math.round((items.length+24)*proportion/100)-priorDiscoveries));
@@ -99,7 +124,7 @@
      autoPaused=batch.length===0;moreMessage='';
      const discoveries=items.filter(v=>v.origin==='discovery').length;
      if(batch.length){retryAttempts=0;status('added',{n:items.length,d:discoveries});}
-     else if(jobs.length){retryAttempts++;queueRetry(run);}
+     else if(jobs.length){retryAttempts++;queueRetry(run,failed>0&&pools.flat().length+explore.length===0);}
      else if(!items.length)status('learnFirst');
    }finally{clearTimeout(timeout);if(run===sequence){loading(false);host.querySelector('.yar-more').dataset.loading=String(Boolean(retryTimer));if(!retryTimer)setTimeout(maybeMore,400);}}
  }
