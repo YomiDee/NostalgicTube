@@ -57,11 +57,12 @@ test('all manifest script and asset references exist',()=>{
 });
 
 const updates=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(root,'extension','updates.js'),'utf8'),updates);
-test('update check compares numeric versions and validates release assets',()=>{
+test('update check compares numeric versions and derives trusted release pages',()=>{
  const u=updates.NostalgicUpdates;assert.equal(u.compare('4.10.0','4.9.9'),1);assert.equal(u.compare('v4.8.5','4.8.5.0'),0);
  const release=(version,url)=>({tag_name:'v'+version,prerelease:true,assets:[{name:'NostalgicTube-'+version+'-Brave.zip',browser_download_url:url||'https://github.com/yomidee/NostalgicTube/releases/download/v'+version+'/NostalgicTube-'+version+'-Brave.zip'}]});
  assert.equal(u.select([release('4.8.3'),release('4.8.5')]).version,'4.8.5');
- assert.equal(u.select([release('4.8.5','https://example.com/malicious.zip')]),null);
+ assert.equal(u.select([release('4.8.5','https://example.com/malicious.zip')]).url,'https://github.com/yomidee/NostalgicTube/releases/tag/v4.8.5');
+ assert.equal(u.select([{tag_name:'v4.8.10',draft:false}]).version,'4.8.10');
  assert.equal(u.select([{...release('9.0.0'),draft:true}]),null);
  assert.equal(u.select([{tag_name:'not-a-version',assets:[]}]),null);
  assert.throws(()=>u.select({}));
