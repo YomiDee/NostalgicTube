@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.6
+
+- Show Already updated / Ya está actualizada when the installed version is current. Automatically check on popup opening after optional permission has been granted. Explain connection failures and GitHub rate limits without implying that the installation is outdated.
+
 ## 4.8.5
 
 - Add on-demand GitHub release checks, bilingual status and validated ZIP download links.

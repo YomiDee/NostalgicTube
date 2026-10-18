@@ -18,19 +18,22 @@ document.getElementById('clear').onclick=async()=>{try{const result=await chrome
 let updateState='checkUpdate',availableUpdate=null;
 const updateButton=document.getElementById('update');
 function renderUpdate(){updateButton.textContent=t(updateState,{version:availableUpdate?.version||''});updateButton.title=t('updateHelp');updateButton.disabled=updateState==='checkingUpdate';}
-updateButton.onclick=async()=>{
+async function checkUpdates(requestPermission){
  if(availableUpdate){chrome.tabs.create({url:availableUpdate.url});status.textContent=t('updateHelp');return;}
  updateState='checkingUpdate';renderUpdate();
  const controller=new AbortController();let timer;
  try{
-  const allowed=await chrome.permissions.request({origins:['https://api.github.com/*']});
+  const permission={origins:['https://api.github.com/*']};
+  const allowed=requestPermission?await chrome.permissions.request(permission):await chrome.permissions.contains(permission);
   if(!allowed){updateState='checkUpdate';status.textContent=t('updatePermission');return;}
   timer=setTimeout(()=>controller.abort(),12000);
   const response=await fetch('https://api.github.com/repos/yomidee/NostalgicTube/releases?per_page=100',{signal:controller.signal,credentials:'omit',headers:{Accept:'application/vnd.github+json'}});
-  if(!response.ok)throw new Error('GitHub unavailable');
+  if(!response.ok)throw new Error(response.status===403||response.status===429?'rateLimit':'unavailable');
   const release=NostalgicUpdates.select(await response.json());if(!release)throw new Error('No downloadable release');
   if(NostalgicUpdates.compare(release.version,chrome.runtime.getManifest().version)>0){availableUpdate=release;updateState='downloadUpdate';}
   else updateState='upToDate';
- }catch{updateState='retryUpdate';}finally{clearTimeout(timer);renderUpdate();}
-};
+ }catch(error){updateState='retryUpdate';notify(error.message==='rateLimit'?'updateRateLimit':'updateUnavailable');}finally{clearTimeout(timer);renderUpdate();}
+}
+updateButton.onclick=()=>checkUpdates(true);
 renderUpdate();
+chrome.permissions.contains({origins:['https://api.github.com/*']}).then(allowed=>{if(allowed&&updateState==='checkUpdate')checkUpdates(false);}).catch(()=>{});
