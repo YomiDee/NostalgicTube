@@ -1,4 +1,4 @@
-# Autoplay local test — 0.8.37
+# Autoplay — 0.8.37
 
 This optional feature is disabled by default. Enable “Nostalgic autoplay” in the extension popup, open a regular YouTube video and wait for NostalgicTube's recommendations to load. At the end, a card inside the upper-right corner of the player shows the first eligible old recommendation with its thumbnail, title, a ten-second countdown, Play now and Cancel.
 
@@ -8,6 +8,6 @@ No action is taken for playlists, live videos, ads, looping playback, hidden tab
 
 43 automated tests pass. A browser fixture verifies the player overlay, Cancel and native toggle restoration. The fixture uses a simulated player, not YouTube. Actual Brave/YouTube behavior still needs user testing. Refresh the extension in brave://extensions and reload YouTube before testing.
 
-Publication is pending. Version-history renumbering is also pending and has not changed GitHub's published releases.
+Included in release 0.8.37. Published historical releases use the 0.x numbering.
 
 

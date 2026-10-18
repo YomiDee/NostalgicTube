@@ -2,7 +2,7 @@
 
 This archive was assembled on 2026-10-18 from preserved project files and the development conversation. Commit timestamps describe the import, **not original development timestamps**. The import identity is a synthetic archive label, not an assertion about the GitHub owner.
 
-Only versions with actual source are tagged. Milestones without surviving files are documented but have no invented tag or downloadable binary. The earlier “v0.8.3” tag points at the imported extension snapshot; project documentation is added in a subsequent main-branch commit.
+Only versions with actual source are tagged. Milestones without surviving files are documented but have no invented tag or downloadable binary. Renumbered historical tags contain a source snapshot with updated version labels; each snapshot retains its original imported source commit as a parent. Project documentation was added separately from the initial source import.
 
 | Version | Source status | Change |
 | --- | --- | --- |
