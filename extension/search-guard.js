@@ -1,7 +1,7 @@
 /* Keep before: in the actual search URL, but display a clean YouTube search field.
    Feed fetches retain their own narrower date windows. */
 (() => {
- let settings={enabled:true,cutoff:'2022-01-01'},ready=false,submitted='',scheduled=false;
+ let settings={enabled:true,cutoff:'2022-01-01',remember:true,algorithmEpoch:0},ready=false,submitted='',scheduled=false;
  const displayed=new WeakMap();
  const strip=query=>String(query||'').replace(/\bbefore\s*:\s*(?:"[^"]*"|\S+)/gi,' ').replace(/\s+/g,' ').trim();
  const apply=query=>(strip(query)?strip(query)+' ':'')+'before:'+settings.cutoff;
@@ -31,6 +31,8 @@
  function prepare(input){
   if(!ready||!settings.enabled||!(input instanceof HTMLInputElement))return;
   if(input.name!=='search_query'&&!input.closest('ytd-searchbox,yt-searchbox'))return;
+  const topic=strip(input.value).slice(0,500);
+  if(topic&&settings.remember)chrome.runtime?.sendMessage({type:'nt-add',topic,automatic:true,submitted:true,epoch:settings.algorithmEpoch}).catch(()=>{});
   const next=apply(input.value);submitted=next;
   if(input.value!==next){input.value=next;input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));}
   schedule();
@@ -41,5 +43,5 @@
  new MutationObserver(schedule).observe(document,{childList:true,subtree:true});
  setInterval(()=>{if(!document.hidden)conceal();},500);
  chrome.storage.local.get(settings).then(s=>{settings=s;ready=true;enforce();}).catch(()=>{});
- chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;for(const name of ['enabled','cutoff'])if(changes[name])settings[name]=changes[name].newValue??(name==='enabled'?true:'2022-01-01');enforce();});
+ chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;for(const name of ['enabled','cutoff','remember','algorithmEpoch'])if(changes[name])settings[name]=changes[name].newValue??(name==='cutoff'?'2022-01-01':name==='algorithmEpoch'?0:true);enforce();});
 })();

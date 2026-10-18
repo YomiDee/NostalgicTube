@@ -2,6 +2,14 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 0.8.52
+
+- Hide native watch recommendations before route detection during navigation.
+
+## 0.8.51
+
+- Refresh recommendations automatically after learning submitted searches or watched videos, including existing topics.
+
 ## 0.8.50
 
 - Remove the More videos button and duplicate idle heading; retain automatic scroll loading.

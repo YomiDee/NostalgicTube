@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NostalgicTube",
-  "version": "0.8.50",
+  "version": "0.8.52",
   "description": "Your saved interests and discoveries from another era, in YouTube's native home feed.",
   "permissions": [
     "storage"
@@ -78,5 +78,3 @@
     "https://api.github.com/*"
   ]
 }
-
-

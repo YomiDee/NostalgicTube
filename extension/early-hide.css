@@ -9,3 +9,15 @@ html[data-nt-early="watch"] #secondary-inner #related,
 html[data-nt-early="watch"] #secondary-inner ytd-watch-next-secondary-results-renderer,
 html[data-nt-early="watch"] #secondary-inner yt-related-chip-cloud-renderer,
 html[data-nt-early="watch"] #secondary-inner ytd-related-chip-cloud-renderer{display:none!important}
+
+/* YouTube can insert the destination sidebar before its SPA navigation event.
+   Keep native watch recommendations hidden on every route while enabled;
+   these selectors do not match NostalgicTube cards or the player end screen. */
+html:not([data-nt-early="off"]) ytd-watch-flexy #related,
+html:not([data-nt-early="off"]) ytd-watch-flexy ytd-watch-next-secondary-results-renderer,
+html:not([data-nt-early="off"]) ytd-watch-flexy yt-related-chip-cloud-renderer,
+html:not([data-nt-early="off"]) ytd-watch-flexy ytd-related-chip-cloud-renderer,
+html:not([data-nt-early="off"]) #secondary-inner #related,
+html:not([data-nt-early="off"]) #secondary-inner ytd-watch-next-secondary-results-renderer,
+html:not([data-nt-early="off"]) #secondary-inner yt-related-chip-cloud-renderer,
+html:not([data-nt-early="off"]) #secondary-inner ytd-related-chip-cloud-renderer{display:none!important}

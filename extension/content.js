@@ -1,6 +1,6 @@
 (() => {
  const {defaults,clean,extract,videos,query,shuffle,mix}=RelatedBefore;
- let settings={...defaults},host,key='',sequence=0,controller,scheduled=false,ready=false,lastRecorded='',items=[],generation=0;
+ let settings={...defaults},host,key='',sequence=0,controller,scheduled=false,ready=false,lastRecorded='',recordingSearch='',items=[],generation=0;
  const cache=new Map();
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
  let retryTimer=0,retryAttempts=0,jokeKey='',lastJokeAt=0;
@@ -58,7 +58,12 @@
  }
  function node(tag,text,attrs={}){const e=document.createElement(tag);if(text)e.textContent=text;for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
  function setText(selector,value){const e=host.querySelector(selector);if(e.textContent!==value)e.textContent=value;}
- function recordSearch(){if(!ready || !settings.enabled || !settings.remember || location.pathname!=='/results' || lastRecorded===location.href)return;lastRecorded=location.href;const topic=clean(new URLSearchParams(location.search).get('search_query')).slice(0,80);if(topic)chrome.runtime.sendMessage({type:'nt-add',topic,automatic:true,epoch:settings.algorithmEpoch}).catch(()=>{});}
+ function recordSearch(){
+   const url=location.href;if(!ready||!settings.enabled||!settings.remember||location.pathname!=='/results'||lastRecorded===url||recordingSearch===url)return;
+   const topic=clean(new URLSearchParams(location.search).get('search_query')).slice(0,80);if(!topic)return;
+   recordingSearch=url;
+   chrome.runtime.sendMessage({type:'nt-add',topic,automatic:true,epoch:settings.algorithmEpoch}).then(result=>{if(result?.ok)lastRecorded=url;}).catch(()=>{}).finally(()=>{if(recordingSearch===url)recordingSearch='';});
+ }
  function mount(){
    const home=location.pathname==='/',watch=location.pathname==='/watch';
    document.documentElement.dataset.yarWatch=String(Boolean(watch&&settings.enabled));
@@ -149,8 +154,9 @@
  function sync(){if(!ready)return;recordSearch();if(!mount()){cancelRetry();controller?.abort();sequence++;key='';canLoadMore=false;busy=false;return;}load();}
  function schedule(){if(scheduled)return;scheduled=true;setTimeout(()=>{scheduled=false;sync();},700);}
  chrome.storage.local.get(defaults).then(s=>{settings=s;if(!Array.isArray(settings.interests))settings.interests=[];ready=true;sync();});
- chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;let changed=false;for(const name of Object.keys(defaults))if(changes[name]){settings[name]=changes[name].newValue??defaults[name];if(name!=='language' && name!=='autoplayEnabled' && !(name==='interests' && settings.discovery===100))changed=true;}if(changes.interests && settings.discovery!==100)cache.clear();if(changes.algorithmEpoch){learnedVideos.clear();watchedSeconds=0;lastRecorded=location.href;}if(changes.language && host){if(statusKey==='results')statusValues.partial=statusValues.partial?t('partial'):'';translate();}if(changes.autoplayEnabled||changes.enabled)autoplay?.refresh();if(changed){key='';schedule();}});
+ chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;let changed=false;for(const name of Object.keys(defaults))if(changes[name]){settings[name]=changes[name].newValue??defaults[name];if(name!=='language' && name!=='autoplayEnabled' && !(name==='interests' && settings.discovery===100))changed=true;}if(changes.interestRevision || (changes.interests && settings.discovery!==100))cache.clear();if(changes.algorithmEpoch){learnedVideos.clear();watchedSeconds=0;lastRecorded=location.href;}if(changes.language && host){if(statusKey==='results')statusValues.partial=statusValues.partial?t('partial'):'';translate();}if(changes.autoplayEnabled||changes.enabled)autoplay?.refresh();if(changed){key='';schedule();}});
  new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
  window.addEventListener('scroll',()=>{if(!busy)maybeMore();},{passive:true});
- document.addEventListener('yt-navigate-finish',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});window.addEventListener('popstate',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});
+ document.addEventListener('yt-page-data-updated',recordSearch);
+ document.addEventListener('yt-navigate-finish',()=>{recordSearch();cancelRetry();controller?.abort();sequence++;key='';schedule();});window.addEventListener('popstate',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});
 })();

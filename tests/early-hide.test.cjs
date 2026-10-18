@@ -1,3 +1,12 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
 test('first paint hiding and disable restoration',async()=>{let mode,change,resolve;const events={};vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'../extension/early-hide.js'),'utf8'),{URL,location:{href:'https://www.youtube.com/'},document:{documentElement:{setAttribute:(k,v)=>mode=v},addEventListener:(k,v)=>events[k]=v},window:{addEventListener(){}},chrome:{storage:{local:{get:()=>new Promise(r=>resolve=r)},onChanged:{addListener:f=>change=f}}}});assert.equal(mode,'home');resolve({enabled:true});await Promise.resolve();events['yt-navigate-start']({detail:{url:'/watch?v=abcdefghijk'}});assert.equal(mode,'watch');change({enabled:{newValue:false}},'local');assert.equal(mode,'off');});
 
+
+test('watch sidebar hiding is active before route detection and excludes disabled mode',()=>{
+ const css=fs.readFileSync(require('node:path').join(__dirname,'../extension/early-hide.css'),'utf8');
+ for(const target of ['#related','ytd-watch-next-secondary-results-renderer','yt-related-chip-cloud-renderer','ytd-related-chip-cloud-renderer']){
+  assert.ok(css.includes('html:not([data-nt-early="off"]) ytd-watch-flexy '+target));
+  assert.ok(css.includes('html:not([data-nt-early="off"]) #secondary-inner '+target));
+ }
+ assert.ok(!css.includes('ytd-watch-flexy{display:none'));
+});
