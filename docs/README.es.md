@@ -2,6 +2,17 @@
 
 **Disfruta de lo que solía ser.**
 
+<p align="center">
+  <a href="https://github.com/yomidee/NostalgicTube/actions/workflows/check.yml"><img src="https://img.shields.io/github/actions/workflow/status/yomidee/NostalgicTube/check.yml?branch=main&amp;label=CI&amp;logo=github" alt="CI" title="Automated checks on main"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.50-blue" alt="Release" title="Newest published release, including betas"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/downloads-GitHub_Releases-2ea44f" alt="Downloads" title="Download published ZIP files from GitHub Releases"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yomidee/NostalgicTube?label=license" alt="MIT license" title="MIT license"></a>
+  <br>
+  <a href="https://github.com/yomidee/NostalgicTube#install-in-brave-chrome-or-edge"><img src="https://img.shields.io/badge/platform-desktop_Chromium-0078D4" alt="Platform" title="Desktop Chromium browsers"></a>
+  <a href="https://github.com/yomidee/NostalgicTube#install-in-brave-chrome-or-edge"><img src="https://img.shields.io/badge/browsers-Brave%20%7C%20Chrome%20%7C%20Edge-FB542B" alt="Browsers" title="Brave, Chrome and Edge"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/blob/main/extension/manifest.json"><img src="https://img.shields.io/badge/Manifest-V3-4285F4" alt="Manifest V3" title="Chromium Manifest V3 extension"></a>
+</p>
+
 Extensión para Brave y navegadores Chromium de escritorio. Versión **0.8.50 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
