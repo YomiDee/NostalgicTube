@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Antes",
+  "version": "1.0.0",
+  "description": "Filtra los vídeos de YouTube por fecha de publicación, con controles en español.",
+  "permissions": ["storage"],
+  "action": {"default_popup": "popup.html", "default_title": "YouTube Antes"},
+  "content_scripts": [{"matches": ["https://www.youtube.com/*"], "js": ["dates.js", "content.js"], "css": ["content.css"], "run_at": "document_idle"}]
+}
