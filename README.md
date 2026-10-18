@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.7 · Beta · Manifest V3**
+**Current version: 4.8.8 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -33,7 +33,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.7 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.7/NostalgicTube-4.8.7-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.8 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.8/NostalgicTube-4.8.8-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -97,4 +97,4 @@ Code is distributed under the [MIT license](LICENSE); existing notices are prese
 
 Press **Check updates** in the popup footer and allow optional access to GitHub. The button reports whether a newer downloadable release is available, including betas, or whether your version is up to date. GitHub receives no interests or settings. Downloads still need extracting into the existing installation folder and reloading at the extensions page; unpacked extensions cannot install their own updates.
 
-After optional GitHub access is granted, opening the popup also checks automatically. Matching or newer installed versions display Already updated. A failed check reports that GitHub could not be reached, rather than implying an update is required.
+After optional GitHub access is granted, opening the popup also checks automatically. Matching or newer installed versions display You have the latest version!. A failed check reports that GitHub could not be reached, rather than implying an update is required.

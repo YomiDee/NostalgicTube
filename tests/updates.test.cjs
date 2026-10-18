@@ -9,7 +9,7 @@ async function popup({allowed=true,response=true,releases=[]}={}){
 }
 const release=version=>({tag_name:'v'+version,prerelease:true,assets:[{name:'NostalgicTube-'+version+'-Brave.zip',browser_download_url:'https://github.com/yomidee/NostalgicTube/releases/download/v'+version+'/NostalgicTube-'+version+'-Brave.zip'}]});
 test('popup checks only on click, reports current and downloads a newer validated release',async()=>{
- const p=await popup({releases:[release('4.8.5')]});assert.equal(p.requests.length,0);await p.get('update').onclick();assert.match(p.get('update').textContent,/Already updated/);assert.equal(p.requests[0].options.credentials,'omit');
+ const p=await popup({releases:[release('4.8.5')]});assert.equal(p.requests.length,0);await p.get('update').onclick();assert.match(p.get('update').textContent,/You have the latest version!/);assert.equal(p.requests[0].options.credentials,'omit');
  const q=await popup({releases:[release('4.9.0')]});await q.get('update').onclick();assert.equal(q.get('update').textContent,'Download v4.9.0');await q.get('update').onclick();assert.match(q.requests[1].download,/4.9.0/);
 });
 test('denied permission makes no request; network failure is retryable',async()=>{
