@@ -1,5 +1,5 @@
 (() => {
- const defaults={enabled:true,cutoff:'2022-01-01',replaceHome:true,remember:true,learnVideos:true,discovery:25,discoveryLanguages:["en","es","pt","fr","de","it","ja","ru"],interests:[],language:'en',algorithmEpoch:0};
+ const defaults={enabled:true,autoplayEnabled:false,cutoff:'2022-01-01',replaceHome:true,remember:true,learnVideos:true,discovery:25,discoveryLanguages:["en","es","pt","fr","de","it","ja","ru"],interests:[],language:'en',algorithmEpoch:0};
  const clean=s=>(s||'').replace(/(?:before|after):\S+/gi,'').replace(/["<>]/g,' ').replace(/\s+/g,' ').trim().slice(0,160);
  const text=x=>typeof x==='string'?x:x?.simpleText || x?.content || x?.runs?.map(r=>r.text).join('') || '';
  function extract(html) {

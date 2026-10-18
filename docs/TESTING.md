@@ -26,4 +26,4 @@ Current popup screenshots were captured using the installed extension in a separ
 8. Verify that turning the extension off restores the native home feed.
 9. Keep autoplay out-of-scope limitations explicit in release notes.
 
-4.8.21 adds a DOM-level watch-card test covering safe text, validated IDs, duration/metadata display and append behavior. The horizontal layout was visually reviewed on a local fixture; subsequent layout adjustments were confirmed by the user in their own session. Check original recommendations disappear only after replacement cards load and reappear after disabling.
+0.8.21 adds a DOM-level watch-card test covering safe text, validated IDs, duration/metadata display and append behavior. The horizontal layout was visually reviewed on a local fixture; subsequent layout adjustments were confirmed by the user in their own session. Check original recommendations disappear only after replacement cards load and reappear after disabling.

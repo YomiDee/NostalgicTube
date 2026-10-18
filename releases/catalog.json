@@ -1,293 +1,322 @@
 [
   {
-    "version": "1.0.0",
+    "version": "0.0.1",
     "summary": "Initial local date filter: hide, dim, fade and unknown-date handling.",
     "status": "recovered-snapshot",
-    "provenance": "preserved source folder",
-    "asset": "releases/NostalgicTube-1.0.0-Brave.zip",
-    "sha256": "1c689361fc95f41162b7e717849986c2ed57b6971f9e81e05071564051f02160",
-    "commit": "0d27ee5fcbbce0d1336c31f8278e2ba4db74b296"
+    "provenance": "preserved source folder; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.0.1-Brave.zip",
+    "sha256": "6e582a7844c19272964d63edc36473cbefcd72d5742379b48b29964b4d810f7c",
+    "commit": "bbded96c36fc1658074b6713a06559136bd098f6",
+    "original_commit": "0d27ee5fcbbce0d1336c31f8278e2ba4db74b296"
   },
   {
-    "version": "2.0.0",
+    "version": "0.0.2",
     "summary": "Generate related old-video recommendations instead of only filtering cards.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-2.0.0-Brave.zip",
-    "sha256": "89fe8e288f23208fd34ad13d17874c4da043c0bda91cddb938138a391ffdcb79",
-    "commit": "7529390d7af9d42de0073fe8b46d26ad50e0c630"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.0.2-Brave.zip",
+    "sha256": "fdde3e72e039a7ea68d97e81f48c583d7f7f1b9c3813b76c1102d1a20cbaf1a8",
+    "commit": "133642ff49ffffe54fba28ce7788898bb1d3d032",
+    "original_commit": "7529390d7af9d42de0073fe8b46d26ad50e0c630"
   },
   {
-    "version": "3.0.0",
+    "version": "0.0.3",
     "summary": "Render results with native YouTube grid and video cards.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-3.0.0-Brave.zip",
-    "sha256": "0eb50caf46a88b7321abfc61e6ad4a0e47baf47a1912329715835d5bcfb50681",
-    "commit": "92897ec599703b6083dafe9bf19fd58a36802a18"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.0.3-Brave.zip",
+    "sha256": "02a1a38d8d81009bfa783d5a3e3655e84997567a7664ad524a85eac2c52cb77d",
+    "commit": "b5dce33e9acd0d7ac56fc6074aecf66b7523fd9c",
+    "original_commit": "92897ec599703b6083dafe9bf19fd58a36802a18"
   },
   {
-    "version": "4.0.0",
+    "version": "0.0.4",
     "summary": "Rename to NostalgicTube; accumulate interests and mix in discoveries.",
     "status": "documented-only"
   },
   {
-    "version": "4.1.0",
+    "version": "0.1.0",
     "summary": "English default and Spanish interface selection.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.1.0-Brave.zip",
-    "sha256": "b46ef9f7482e8fdc77951be575dd91c60bab29ccf8588d99f35efbffbcd8d2cf",
-    "commit": "2b09a00321306a22df0c49cd33649e331b591806"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.1.0-Brave.zip",
+    "sha256": "d6e04f793c1205c13cedc7afc43600d653e2ccb9656a2c2547749c7020253414",
+    "commit": "c22ffcdbe9d0507d3122266c8b3410156c22f306",
+    "original_commit": "2b09a00321306a22df0c49cd33649e331b591806"
   },
   {
-    "version": "4.2.0",
+    "version": "0.2.0",
     "summary": "Progressive scrolling, loading spinner and one-click language switch.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.2.0-Brave.zip",
-    "sha256": "b218250723d2b0b7c2fa044ce2364eb7490bc58404fdffb21818ef5ced002803",
-    "commit": "4d553eabb02b5012b582fec1425e1cd0172c8ed7"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.2.0-Brave.zip",
+    "sha256": "27b8b7747315f7362644b9038116ce98d7e28c57a6fd3d1ad3a208687ab5ab8b",
+    "commit": "6a8cbc3bb7b8b7284d5e1a48a0d6ac9532402e15",
+    "original_commit": "4d553eabb02b5012b582fec1425e1cd0172c8ed7"
   },
   {
-    "version": "4.2.1",
+    "version": "0.2.1",
     "summary": "Ko-fi donation link in the popup.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.2.1-Brave.zip",
-    "sha256": "4da9f36fdf3347a9f3b4dcc8a1e2b7f7947ae5a2a5bf9603acf24b6b8a3d90f7",
-    "commit": "b578ff06f37134f1055b5edfdd83b789f5e78a71"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.2.1-Brave.zip",
+    "sha256": "3dc63a2058c335c6006b114c35c6fb885cb6df2b337df40fca0f0ff026b60e92",
+    "commit": "144f18997d94ffd2caee652feb50b28be6685d95",
+    "original_commit": "b578ff06f37134f1055b5edfdd83b789f5e78a71"
   },
   {
-    "version": "4.3.0",
+    "version": "0.3.0",
     "summary": "Learn a topic from a video title after visible playback.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.3.0-Brave.zip",
-    "sha256": "c9cd268f9656b64b0f7e5a53cc7bdb3c8523ca201f463238b2e9a17265172c0f",
-    "commit": "918951586718bdcbcf285100a16e807e14c4444c"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.3.0-Brave.zip",
+    "sha256": "6273fe87e7b28a04b45502217d65c1015769fa157a729c1e97b885c428e1ee6d",
+    "commit": "20ca7a8ade3e990af93d675586e9c499ffa948a1",
+    "original_commit": "918951586718bdcbcf285100a16e807e14c4444c"
   },
   {
-    "version": "4.3.1",
+    "version": "0.3.1",
     "summary": "First red white-N extension icon.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.3.1-Brave.zip",
-    "sha256": "0976292a496abb2f274608fe6fb8734b1ba622904a3d6d628ef90601779c2c18",
-    "commit": "3007208029bc22a1ffab1603684214e6c6ae23ec"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.3.1-Brave.zip",
+    "sha256": "dcf3243fff4c5d6f8f37606ba4332536d0cbd004efabd14f597f7f95110c9ffa",
+    "commit": "9c9484c5c66c8d28338ea4b8e2e87b211b6b6860",
+    "original_commit": "3007208029bc22a1ffab1603684214e6c6ae23ec"
   },
   {
-    "version": "4.3.2",
+    "version": "0.3.2",
     "summary": "Square badge with chamfered corners.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.3.2-Brave.zip",
-    "sha256": "812e93f296ac3e2f1aea9f1584bcf8278543b7179b298d686378625ed2e8058e",
-    "commit": "480a70f595be00a16f0f228c41a1d12bed8d06ca"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.3.2-Brave.zip",
+    "sha256": "4888170a38e73dbb2d39cdc9dec7dfa9a828c0f6fca284d3b4553c92e1609223",
+    "commit": "25d26f440706678627cb66fc0240a587f74475c2",
+    "original_commit": "480a70f595be00a16f0f228c41a1d12bed8d06ca"
   },
   {
-    "version": "4.3.3",
+    "version": "0.3.3",
     "summary": "Smooth rounded-square icon.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.3.3-Brave.zip",
-    "sha256": "aeb74420a1362b456cb87b09018f20a9d2918186c6702cdebdd2dfd998070f1a",
-    "commit": "c062d525f6cb9e4d3aa12f8d4056d36909d93971"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.3.3-Brave.zip",
+    "sha256": "b260fb811fb24c152de10797aa8b7ed1f12b49b140f790e6fae1ddc6e87645a0",
+    "commit": "f5755ba7d3eb1926332d31060c379d752543b8e7",
+    "original_commit": "c062d525f6cb9e4d3aa12f8d4056d36909d93971"
   },
   {
-    "version": "4.4.0",
+    "version": "0.4.0",
     "summary": "Automatic-only interests, reset, 10,000-topic capacity and before: search enforcement.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.4.0-Brave.zip",
-    "sha256": "789691adf316b9a14c0dc30da4998238e4e7c4840e54aeb47ef26eb419cba125",
-    "commit": "d2932ce16df29a9eee923ae74e2a823250279b73"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.4.0-Brave.zip",
+    "sha256": "4885d3dc864625d8366dc2041cf0c932949c15c7b202c45d07c0a78e7338702f",
+    "commit": "9d8a8ae529307ea94b12306c2c59abf982e31115",
+    "original_commit": "d2932ce16df29a9eee923ae74e2a823250279b73"
   },
   {
-    "version": "4.4.1",
+    "version": "0.4.1",
     "summary": "Wordmark/header layout, bilingual tagline and donation placement refinements.",
     "status": "documented-only"
   },
   {
-    "version": "4.5.0",
+    "version": "0.5.0",
     "summary": "100% Random, independent of learned interests and without view-count filtering.",
     "status": "documented-only"
   },
   {
-    "version": "4.6.0",
+    "version": "0.6.0",
     "summary": "Remove view-count preferences from every recommendation mode.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.6.0-Brave.zip",
-    "sha256": "f1e856b67dbf78373641626f791ba109ab1f57ef8a47abefad6d0ca562da5e80",
-    "commit": "9a8121f1243f79162986f6ed1b0adb69210524ed"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.6.0-Brave.zip",
+    "sha256": "375a3367478b2e566241d5c1ffdfeb8252d2d12f43f4985a816013fffdf1578a",
+    "commit": "3d54a35318846c19f962a9c2fa058ed33049dfd6",
+    "original_commit": "9a8121f1243f79162986f6ed1b0adb69210524ed"
   },
   {
-    "version": "4.7.0",
+    "version": "0.7.0",
     "summary": "Automatic empty-batch recovery and continuous 0\u00e2\u20ac\u201c100% Variety slider.",
     "status": "documented-only"
   },
   {
-    "version": "4.8.0",
+    "version": "0.8.0",
     "summary": "Official transparent logo and compact dark popup without internal scrolling.",
     "status": "recovered-snapshot",
-    "provenance": "preserved original ZIP",
-    "asset": "releases/NostalgicTube-4.8.0-Brave.zip",
-    "sha256": "d3e7058ddb10f0616d08a1525618e52457a7bbd0ab5ffd4bcdb4c90c37168f7b",
-    "commit": "462a943796f9a1a191afaf949be6c9f6cc5ee0c4"
+    "provenance": "preserved original ZIP; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.0-Brave.zip",
+    "sha256": "8970c503ca8a52019e5f54f993871edb50b486d56ee02982e3a623ee94cbd750",
+    "commit": "5de19e182ea7a0601b6c208b1719c7691aa978f9",
+    "original_commit": "462a943796f9a1a191afaf949be6c9f6cc5ee0c4"
   },
   {
-    "version": "4.8.1",
+    "version": "0.8.1",
     "summary": "Official rounded triangular red N toolbar icon.",
     "status": "documented-only"
   },
   {
-    "version": "4.8.2",
+    "version": "0.8.2",
     "summary": "Ko-fi footer with exclamation mark and punctuated bilingual taglines.",
     "status": "documented-only"
   },
   {
-    "version": "4.8.3",
+    "version": "0.8.3",
     "summary": "Autosave settings; remove Save button and reject invalid cutoff values.",
     "status": "recovered-snapshot",
-    "provenance": "preserved source folder",
-    "asset": "releases/NostalgicTube-4.8.3-Brave.zip",
-    "sha256": "56f1a33f6eaf9e16e12235262f7b2940e50334006f94ad423c43f01092dc0e8b",
-    "commit": "6a162a6125bb0fbfd5601e608d5172485c1e5031"
+    "provenance": "preserved source folder; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.3-Brave.zip",
+    "sha256": "c59d04fe1774a951dec359a51840c35bc783bbd0e8d471ad025a23a128b08b64",
+    "commit": "9058d25e4354359a494ffeac592f093f19e1d1f5",
+    "original_commit": "6a162a6125bb0fbfd5601e608d5172485c1e5031"
   },
   {
-    "version": "4.8.4",
+    "version": "0.8.4",
     "summary": "Popup version label.",
     "status": "recovered-snapshot",
-    "provenance": "new development source commit",
-    "asset": "releases/NostalgicTube-4.8.4-Brave.zip",
-    "sha256": "669402ed10d27c546e0fa0c6b63f00d5bad2a5baea5133729a5d34efa842f7aa",
-    "commit": "a8994c07b60bd46cac1cfa9ea26511539bcc7740"
+    "provenance": "new development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.4-Brave.zip",
+    "sha256": "b43dfb35ff8b4cbba7e4350a7e0197198d84e144a30a19acbe023377d7de2d54",
+    "commit": "3955dbc500c07b42aed561f3c1f6036b22b059bb",
+    "original_commit": "a8994c07b60bd46cac1cfa9ea26511539bcc7740"
   },
   {
-    "version": "4.8.5",
+    "version": "0.8.5",
     "summary": "Optional on-demand GitHub update check and release ZIP download.",
     "status": "recovered-snapshot",
-    "provenance": "new development source commit",
-    "asset": "releases/NostalgicTube-4.8.5-Brave.zip",
-    "sha256": "79b23b31ceae42fafbb30559eb24d9f08243c3d38b07306664c681712c0c3109",
-    "commit": "a5b0b66c30476a33dfda427dca88e3fb1c91bc48"
+    "provenance": "new development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.5-Brave.zip",
+    "sha256": "c64af09f38f71a0b29aa4ac601b4c4359d53b51e40b730b6ad61256aeaf5bce1",
+    "commit": "f43378c7ef2b5e6570fdcc69bfae486e368e52d3",
+    "original_commit": "a5b0b66c30476a33dfda427dca88e3fb1c91bc48"
   },
   {
-    "version": "4.8.10",
+    "version": "0.8.10",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.10-Brave.zip",
-    "sha256": "021f583e30595bb789d4747bd9bb6418fae86dca8f6c9e9ce2cffca7b5a2156f",
-    "commit": "383bd1624b486ce8e485c333ffabb9b14dcc16a4"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.10-Brave.zip",
+    "sha256": "6e34f8b63583feff46c604f39cd215eba3b4561e174ee714fd24d1324331cfc6",
+    "commit": "00fd04595db793f7ec7ac61a6541cb603390dfc2",
+    "original_commit": "383bd1624b486ce8e485c333ffabb9b14dcc16a4"
   },
   {
-    "version": "4.8.11",
+    "version": "0.8.11",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.11-Brave.zip",
-    "sha256": "f06f53c2cc4f4764f33ad315ac7df619a371e031d5c6b7e02ac81326e07d8654",
-    "commit": "77bd9c96cf3935aa4fbc68ecfff2e0d031430a53"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.11-Brave.zip",
+    "sha256": "a4a65b009d87e1294bdfef828b3ebb2e9777c3ff15017385829c962e1026b021",
+    "commit": "409be58d60f43057dff4a6bc2b78a60a7d80b19a",
+    "original_commit": "77bd9c96cf3935aa4fbc68ecfff2e0d031430a53"
   },
   {
-    "version": "4.8.12",
+    "version": "0.8.12",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.12-Brave.zip",
-    "sha256": "bb2aab08150f37f8b544c4548b9510377d1c1dbe6fc446c5362c78e3119de961",
-    "commit": "ccb80bca9dacc4c416ad99e44e2d5dacde36e7bd"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.12-Brave.zip",
+    "sha256": "c130e6170ac8803fa56c7322cccb92dfa8b0a5406fd45bed2ca02dc028bebd84",
+    "commit": "4667a12315dde5adc54a7ae9f209181e2d61d56e",
+    "original_commit": "ccb80bca9dacc4c416ad99e44e2d5dacde36e7bd"
   },
   {
-    "version": "4.8.13",
+    "version": "0.8.13",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.13-Brave.zip",
-    "sha256": "365cd9df4aa61cc157eda10987d8b36187fc2de4e830156b34429252676252f1",
-    "commit": "f916ebd72c909044984cccd44cb816993f076b0e"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.13-Brave.zip",
+    "sha256": "4b2602b532dbb4966ba5b84f854d453ab67c17bcf7d03498b1842e2592f31581",
+    "commit": "5836c422acafed4e0c6abfe224b76c319f2bf38b",
+    "original_commit": "f916ebd72c909044984cccd44cb816993f076b0e"
   },
   {
-    "version": "4.8.21",
+    "version": "0.8.21",
     "summary": "Horizontal watch recommendations and home mix label refinements.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.21-Brave.zip",
-    "sha256": "1d4acb0bc1259db229607814c22fa1078fb9f4ab9095a132032f8f06401e40ea",
-    "commit": "2bf82bbf9f62347b835f70edd5468e134c765e0f"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.21-Brave.zip",
+    "sha256": "ae1141f166ab269a9f42b3173702e75a30667696a67265d6c9af7b51081494c9",
+    "commit": "0e3172c6d3a6b8cd5895d4f1e0240a7df960da3c",
+    "original_commit": "2bf82bbf9f62347b835f70edd5468e134c765e0f"
   },
   {
-    "version": "4.8.6",
+    "version": "0.8.6",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.6-Brave.zip",
-    "sha256": "89801aaea14c741f1f0324f5120a44b085f01e572d256ebaf981419146efb5e8",
-    "commit": "939627763cdeab70caaf9db01ad270161f56af36"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.6-Brave.zip",
+    "sha256": "87f59564c247b3282543c1c604af73ce163d50bf35546c75bcfb90805b517d32",
+    "commit": "63e904c5852efe1b9868ef36f2b7deb22f50d041",
+    "original_commit": "939627763cdeab70caaf9db01ad270161f56af36"
   },
   {
-    "version": "4.8.7",
+    "version": "0.8.7",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.7-Brave.zip",
-    "sha256": "12e28b8af1bc8919e3c76b5069c991c6534d847bf780b327ec35e84a138704f5",
-    "commit": "88d6f34090e0960ec5be42af4798b911cca57c61"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.7-Brave.zip",
+    "sha256": "f1a58c177f195a6e5b0282f50e01fca3342d20fbbf742609004350cfe4ad343d",
+    "commit": "79156a509bd5c51e17e07e23402889445d43cd3e",
+    "original_commit": "88d6f34090e0960ec5be42af4798b911cca57c61"
   },
   {
-    "version": "4.8.8",
+    "version": "0.8.8",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.8-Brave.zip",
-    "sha256": "3445dd512912269eaa7bb8e6d126a2f401758c1f396f806d824c3e4d021bb13f",
-    "commit": "d1f9f5fa2e642ead725f13ef9382f24e0412b97a"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.8-Brave.zip",
+    "sha256": "a55f6bda22a8fc9dcbf19a73f4970bca6ce0c443f56c8a72860ae93a96e6218a",
+    "commit": "d6d6ffb182cc762b32bf72465357af5e4e801d04",
+    "original_commit": "d1f9f5fa2e642ead725f13ef9382f24e0412b97a"
   },
   {
-    "version": "4.8.9",
+    "version": "0.8.9",
     "summary": "Continued development; see matching release notes.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.9-Brave.zip",
-    "sha256": "77faf163c8b3afee55a52ac841afdab8f91ae09513fd0a74098b1cf3d4f471a7",
-    "commit": "fcc720ef9551f27ef9057b2d992b94f159f41489"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.9-Brave.zip",
+    "sha256": "4b85c9dc515bef14993688bd1ce9c17d59dd5b6024216781fee019011e5cf501",
+    "commit": "76cb2c4e3f539d94541a905f1345cef361654948",
+    "original_commit": "fcc720ef9551f27ef9057b2d992b94f159f41489"
   },
   {
-    "version": "4.8.22",
+    "version": "0.8.22",
     "summary": "Single loading heading and 14 rotating bilingual phrases.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.22-Brave.zip",
-    "sha256": "5e1db9d6fb5189a200bbb0100541f289672a4652b4ff6cd1df8a3320687d6c85",
-    "commit": "86ad8b28deb5c1b6ef04526c27d1939472c72d89"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.22-Brave.zip",
+    "sha256": "1255ae9f6d0b12aaaf7262052fb9c869922d45670a45c14f9c7a36be0d401a91",
+    "commit": "a3fc98153de2e5fc1b27844e36a7e39f5c765abc",
+    "original_commit": "86ad8b28deb5c1b6ef04526c27d1939472c72d89"
   },
   {
-    "version": "4.8.23",
+    "version": "0.8.23",
     "summary": "28 randomly selected bilingual loading phrases.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.23-Brave.zip",
-    "sha256": "3f1f2eabf7a3f5d336be7c811e1a7bc59bbfd642f9c529a75e2d3c1a8af7ecaa",
-    "commit": "56dc12e2541047d1a446644073c9cb2014c70e4e"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.23-Brave.zip",
+    "sha256": "3e1c34e1803f0d969c6e56012aec79bdd9c514643673289a151dadadd0a6f9da",
+    "commit": "c16a62565e51cb9acd2dd81a752d8ea1c4dba27b",
+    "original_commit": "56dc12e2541047d1a446644073c9cb2014c70e4e"
   },
   {
-    "version": "4.8.32",
+    "version": "0.8.32",
     "summary": "Calendar, multilingual interleaved discovery and early native feed hiding.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.32-Brave.zip",
-    "sha256": "0ed35a3604ac22e9f3a5de10260200d795e651fdea22887f8762373e6ad0863b",
-    "commit": "8f3da59e9834f88c3712415208db7c58effaa9dc"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.32-Brave.zip",
+    "sha256": "f3468105ad6743bf81566bd21256a1d43f893365535d19078e0a82bffd5a1782",
+    "commit": "8db188f376f61125a7a9eec4548a838036fc317f",
+    "original_commit": "8f3da59e9834f88c3712415208db7c58effaa9dc"
   },
   {
-    "version": "4.8.33",
+    "version": "0.8.33",
     "summary": "Autosaved eight-language discovery search selector.",
     "status": "recovered-snapshot",
-    "provenance": "development source commit",
-    "asset": "releases/NostalgicTube-4.8.33-Brave.zip",
-    "sha256": "a5b42a0932f292e2fc5959083c93eee15303bbcce7e336b51f28b99a914f2056",
-    "commit": "9f4449d86079701eeb32ef47aaad844e65e3c30b"
+    "provenance": "development source commit; version labels renumbered",
+    "asset": "releases/NostalgicTube-0.8.33-Brave.zip",
+    "sha256": "c5ed9fd84f0ed92caa9dece9f622260f3f96ca800ca60e32ad4da8484288e53b",
+    "commit": "a369a93a0f1a4f15d9d9cbe56f82b4412c56554d",
+    "original_commit": "9f4449d86079701eeb32ef47aaad844e65e3c30b"
   }
 ]

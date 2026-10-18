@@ -24,6 +24,6 @@ Only `storage` is requested. Content scripts are restricted to `https://www.yout
 
 This describes the current source, not third-party platform policies or all historical prototypes.
 
-## On-demand update checks (4.8.12)
+## On-demand update checks (0.8.12)
 
 Pressing Check for updates requests optional access to api.github.com and reads public release versions for yomidee/NostalgicTube, including betas. Checks run only on that click, without account cookies or sending interests/settings. GitHub receives ordinary connection metadata such as IP address. A newer release displays a link to its GitHub page; no ZIP is downloaded or installed automatically. If checking fails, the popup does not claim that your installed version is current.

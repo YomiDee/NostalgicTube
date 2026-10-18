@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NostalgicTube",
-  "version": "4.8.33",
+  "version": "0.8.37",
   "description": "Your saved interests and discoveries from another era, in YouTube's native home feed.",
   "permissions": [
     "storage"
@@ -66,6 +66,7 @@
         "random.js",
         "i18n.js",
         "watch-cards.js",
+        "autoplay.js",
         "content.js"
       ],
       "css": [
@@ -77,3 +78,5 @@
     "https://api.github.com/*"
   ]
 }
+
+

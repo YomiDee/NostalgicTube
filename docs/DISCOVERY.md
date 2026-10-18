@@ -1,4 +1,4 @@
-# Discovery engine (local 4.8.30)
+# Discovery engine (local 0.8.30)
 
 Discovery now uses 480 base terms in English, Spanish, Portuguese, French, German, Italian, Japanese and Russian. Each language has six compatible groups. Four group-specific modifiers produce 1,920 phrase combinations. Camera-style filenames use six prefixes, three separators and four-digit numbers. These are search queries, not video identifiers.
 
@@ -12,6 +12,6 @@ A separate bounded live probe compared one multilingual query, one camera query 
 
 This still samples YouTube search results, not its full catalogue uniformly. Search ranking, indexing, regions, languages and content availability can affect the candidate set. The improvements expand query diversity, not a guarantee of unbiased video discovery.
 
-## Local 4.8.31: avoid topic blocks
+## Local 0.8.31: avoid topic blocks
 
 A random batch selects distinct query categories and prefers different languages. In pure discovery (100% Variety, or no learned interests), each query contributes at most two candidates, yielding up to 12 cards from six sources. Partial results are allowed; the existing scroll loader requests subsequent batches. Mixed-interest modes retain an adaptive discovery cap so the requested discovery share remains achievable. Discovery candidates are interleaved by query source rather than flattened into topic blocks. The query source is internal metadata only; no view-based eligibility or weighting was added.

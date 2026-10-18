@@ -2,7 +2,7 @@
 
 The public repository is https://github.com/yomidee/NostalgicTube.
 
-Main and all 14 recovered version tags are published. Each recovered snapshot has a public prerelease with its matching ZIP and release notes. Version 4.8.3 is the current beta; six additional milestones are documented without invented source snapshots or tags. Import commits use their real import timestamps rather than fabricated development dates.
+Main and all 14 recovered version tags are published. Each recovered snapshot has a public prerelease with its matching ZIP and release notes. Version 0.8.3 is the current beta; six additional milestones are documented without invented source snapshots or tags. Import commits use their real import timestamps rather than fabricated development dates.
 
 For future releases:
 

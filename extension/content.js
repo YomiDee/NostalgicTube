@@ -20,6 +20,12 @@
  }
  const seen=new Set();
  const learnedVideos=new Set();
+ const autoplay=globalThis.NostalgicAutoplay?.create({getState:()=>settings,getItems:()=>items,classify:(published,cutoff)=>YouTubeAntes.classify(published,cutoff),translate:(name,values)=>t(name,values)});
+ if(autoplay){setInterval(()=>autoplay.refresh(),500);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)autoplay?.cancel();});
+ document.addEventListener('yt-navigate-start',()=>autoplay.navigationStart());
+ document.addEventListener('yt-navigate-finish',()=>autoplay.navigationFinish());
+ window.addEventListener('pagehide',()=>autoplay.destroy());}
  let watchId='',watchTitle='',watchedSeconds=0,lastVideoTime=0,lastWatchTick=0,learningPending=false;
  function learnFromPlayback(){
    const now=performance.now(),id=location.pathname==='/watch'?new URLSearchParams(location.search).get('v'):null;
@@ -144,7 +150,7 @@
  function sync(){if(!ready)return;recordSearch();if(!mount()){cancelRetry();controller?.abort();sequence++;key='';canLoadMore=false;busy=false;return;}load();}
  function schedule(){if(scheduled)return;scheduled=true;setTimeout(()=>{scheduled=false;sync();},700);}
  chrome.storage.local.get(defaults).then(s=>{settings=s;if(!Array.isArray(settings.interests))settings.interests=[];ready=true;sync();});
- chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;let changed=false;for(const name of Object.keys(defaults))if(changes[name]){settings[name]=changes[name].newValue??defaults[name];if(name!=='language' && !(name==='interests' && settings.discovery===100))changed=true;}if(changes.interests && settings.discovery!==100)cache.clear();if(changes.algorithmEpoch){learnedVideos.clear();watchedSeconds=0;lastRecorded=location.href;}if(changes.language && host){if(statusKey==='results')statusValues.partial=statusValues.partial?t('partial'):'';translate();}if(changed){key='';schedule();}});
+ chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;let changed=false;for(const name of Object.keys(defaults))if(changes[name]){settings[name]=changes[name].newValue??defaults[name];if(name!=='language' && name!=='autoplayEnabled' && !(name==='interests' && settings.discovery===100))changed=true;}if(changes.interests && settings.discovery!==100)cache.clear();if(changes.algorithmEpoch){learnedVideos.clear();watchedSeconds=0;lastRecorded=location.href;}if(changes.language && host){if(statusKey==='results')statusValues.partial=statusValues.partial?t('partial'):'';translate();}if(changes.autoplayEnabled||changes.enabled)autoplay?.refresh();if(changed){key='';schedule();}});
  new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
  window.addEventListener('scroll',()=>{if(!busy)maybeMore();},{passive:true});
  document.addEventListener('yt-navigate-finish',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});window.addEventListener('popstate',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});

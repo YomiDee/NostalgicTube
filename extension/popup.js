@@ -1,5 +1,5 @@
 document.getElementById('version').textContent='v'+chrome.runtime.getManifest().version;
-const fields=['enabled','cutoff','replaceHome','remember','learnVideos','discovery'],status=document.getElementById('status');
+const fields=['autoplayEnabled','enabled','cutoff','replaceHome','remember','learnVideos','discovery'],status=document.getElementById('status');
 let language='en',statusKey='';
 const t=(key,values)=>NostalgicI18n.t(language,key,values);
 function notify(key){statusKey=key;status.textContent=t(key);}

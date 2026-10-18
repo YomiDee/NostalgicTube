@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.33 · Beta · Manifest V3**
+**Current version: 0.8.37 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards on home and compact horizontal cards on watch pages. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -22,6 +22,9 @@ Happy watching!
 
 ## Features
 
+- Optional Nostalgic autoplay, off by default: an upper-right player card with the next old recommendation, a 10-second countdown, Play now and Cancel.
+- Clean YouTube search field: the cutoff stays applied in the URL while the visible field shows only your search terms.
+
 - Continuous **0–100% Variety**: your topics at 0%, independent Random at 100%.
 - No minimum view count or popularity sorting in any mode: zero-view videos are eligible too.
 - Automatic learning from YouTube searches and, after 12 seconds of visible playback, video-title keywords.
@@ -33,7 +36,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.33 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.33/NostalgicTube-4.8.33-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 0.8.37 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v0.8.37/NostalgicTube-0.8.37-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -110,3 +113,5 @@ Recommendations use horizontal cards with 16:9 thumbnails. Once replacement card
 A single Loading more videos heading is accompanied by one of 28 playful phrases, rotated every five seconds during loading and retry waits. The phrases are translated into English and Spanish and disappear when loading finishes. Jokes about AI are decorative, not a claim that the extension detects AI-generated videos.
 
 Discovery search languages: expand the selector below Variety to enable or disable any of eight languages. All are enabled by default and changes save automatically. This controls search terms, not the spoken language of videos.
+
+Version numbers were renumbered to 0.x. Users of the previous numbering need a one-time manual file replacement and reload; keep the installation folder to retain settings. See [version mapping](docs/VERSIONING.md).

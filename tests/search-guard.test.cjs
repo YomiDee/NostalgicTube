@@ -1,0 +1,14 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+async function harness({url='https://www.youtube.com/results?search_query=dogs+before%3A2022-01-01',enabled=true,value='dogs before:2022-01-01'}={}){
+ const events={},timers=[],redirects=[];let change,poll;
+ class Input{constructor(){this.value=value;this.name='search_query';this.selectionStart=this.selectionEnd=value.length;}dispatchEvent(){}closest(){return true;}setSelectionRange(a,b){this.selectionStart=a;this.selectionEnd=b;}}
+ const input=new Input(),location={href:url,pathname:new URL(url).pathname,replace:u=>redirects.push(u)};
+ const doc={querySelectorAll:()=>[input],addEventListener:(k,f)=>events[k]=f,hidden:false,activeElement:input};
+ const c=vm.createContext({document:doc,location,URL,WeakMap,HTMLInputElement:Input,Event:class{},window:{addEventListener(){}},MutationObserver:class{observe(){}},setTimeout:f=>timers.push(f),setInterval:f=>poll=f,chrome:{storage:{local:{get:async defaults=>({...defaults,enabled})},onChanged:{addListener:f=>change=f}}}});
+ vm.runInContext(fs.readFileSync(path.join(__dirname,'../extension/search-guard.js'),'utf8'),c);await Promise.resolve();
+ return {input,location,events,redirects,flush(){while(timers.length)timers.shift()();},poll:()=>poll(),change};
+}
+test('search field hides cutoff while actual URL retains the filter',async()=>{const h=await harness();h.flush();assert.equal(h.input.value,'dogs');assert.match(h.location.href,/before/);assert.equal(h.redirects.length,0);h.input.value='dogs before:2022-01-01';h.poll();assert.equal(h.input.value,'dogs');});
+test('Enter passes filtered query to YouTube then cleans only its display',async()=>{const h=await harness({url:'https://www.youtube.com/',value:'cats'});h.events.keydown({key:'Enter',target:h.input});assert.equal(h.input.value,'cats before:2022-01-01');h.flush();assert.equal(h.input.value,'cats');});
+test('bookmark searches still redirect with cutoff and disabled mode remains untouched',async()=>{const h=await harness({url:'https://www.youtube.com/results?search_query=dogs',value:'dogs'});assert.equal(new URL(h.redirects[0]).searchParams.get('search_query'),'dogs before:2022-01-01');const q=await harness({enabled:false});q.flush();assert.equal(q.input.value,'dogs before:2022-01-01');assert.equal(q.redirects.length,0);});
+test('typing is preserved and disabling restores hidden query only if not edited',async()=>{const h=await harness();h.flush();h.input.value='something else';h.poll();assert.equal(h.input.value,'something else');h.change({enabled:{newValue:false}},'local');h.flush();assert.equal(h.input.value,'something else');const q=await harness();q.flush();q.change({enabled:{newValue:false}},'local');q.flush();assert.equal(q.input.value,'dogs before:2022-01-01');});
