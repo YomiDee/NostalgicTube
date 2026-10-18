@@ -318,5 +318,14 @@
     "sha256": "c5ed9fd84f0ed92caa9dece9f622260f3f96ca800ca60e32ad4da8484288e53b",
     "commit": "a369a93a0f1a4f15d9d9cbe56f82b4412c56554d",
     "original_commit": "9f4449d86079701eeb32ef47aaad844e65e3c30b"
+  },
+  {
+    "version": "0.8.37",
+    "summary": "Optional ten-second player autoplay and clean search display.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-0.8.37-Brave.zip",
+    "sha256": "f7c9238927232f6064b6ec536be017796720c3c76852fe3ccd43c895e2315d3e",
+    "commit": "369a39ce9ae5835c8affdde7fe58daf2efe6d094"
   }
 ]
