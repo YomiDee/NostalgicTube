@@ -1,9 +1,28 @@
 {
- "manifest_version":3,
- "name":"YouTube Antes · Relacionados",
- "version":"2.0.0",
- "description":"Busca y crea un panel de vídeos antiguos relacionados con lo que estás viendo.",
- "permissions":["storage"],
- "action":{"default_popup":"popup.html","default_title":"Vídeos antiguos relacionados"},
- "content_scripts":[{"matches":["https://www.youtube.com/*"],"js":["dates.js","search.js","content.js"],"css":["content.css"]}]
+  "manifest_version": 3,
+  "name": "YouTube Antes · Relacionados",
+  "version": "0.0.2",
+  "description": "Busca y crea un panel de vídeos antiguos relacionados con lo que estás viendo.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Vídeos antiguos relacionados"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "dates.js",
+        "search.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
+    }
+  ]
 }
