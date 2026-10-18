@@ -124,7 +124,7 @@
   },
   {
     "version": "4.7.0",
-    "summary": "Automatic empty-batch recovery and continuous 0–100% Variety slider.",
+    "summary": "Automatic empty-batch recovery and continuous 0\u00e2\u20ac\u201c100% Variety slider.",
     "status": "documented-only"
   },
   {
@@ -154,5 +154,23 @@
     "asset": "releases/NostalgicTube-4.8.3-Brave.zip",
     "sha256": "56f1a33f6eaf9e16e12235262f7b2940e50334006f94ad423c43f01092dc0e8b",
     "commit": "6a162a6125bb0fbfd5601e608d5172485c1e5031"
+  },
+  {
+    "version": "4.8.4",
+    "summary": "Popup version label.",
+    "status": "recovered-snapshot",
+    "provenance": "new development source commit",
+    "asset": "releases/NostalgicTube-4.8.4-Brave.zip",
+    "sha256": "669402ed10d27c546e0fa0c6b63f00d5bad2a5baea5133729a5d34efa842f7aa",
+    "commit": "a8994c07b60bd46cac1cfa9ea26511539bcc7740"
+  },
+  {
+    "version": "4.8.5",
+    "summary": "Optional on-demand GitHub update check and release ZIP download.",
+    "status": "recovered-snapshot",
+    "provenance": "new development source commit",
+    "asset": "releases/NostalgicTube-4.8.5-Brave.zip",
+    "sha256": "79b23b31ceae42fafbb30559eb24d9f08243c3d38b07306664c681712c0c3109",
+    "commit": "a5b0b66c30476a33dfda427dca88e3fb1c91bc48"
   }
 ]
