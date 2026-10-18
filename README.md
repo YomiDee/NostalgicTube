@@ -31,12 +31,23 @@ Happy watching!
 - Automatic `before:YYYY-MM-DD` enforcement on YouTube search URLs, including searches opened from browser shortcuts or bookmarks.
 - English by default, Spanish available, compact dark popup, automatic settings saving.
 
-## Install in Brave
+## Install in Brave, Chrome or Edge
 
 1. Download [NostalgicTube 4.8.3 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.3/NostalgicTube-4.8.3-Brave.zip) and extract it into a permanent folder.
-2. Open `brave://extensions` and enable **Developer mode**.
+2. Open the extensions page for your desktop browser and enable **Developer mode**:
+
+   | Browser | Address to enter in the address bar |
+   | --- | --- |
+   | Brave | `brave://extensions` |
+   | Google Chrome | `chrome://extensions` |
+   | Microsoft Edge | `edge://extensions` |
+
 3. Choose **Load unpacked** and select the extracted **NostalgicTube** folder containing `manifest.json`.
 4. Reload YouTube tabs. Disable older copies of this extension to avoid interference.
+
+The same ZIP is intended for all three desktop browsers, even though its filename includes “Brave”. No conversion or separate package is needed. Keep Developer mode enabled and keep the extracted folder in place. In Edge, **Allow extensions from other stores** is not needed for this local-folder installation. Chrome and Edge installation steps follow their official documentation; end-to-end behavior has not been independently tested in both browsers.
+
+Official installation guides: [Chrome](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked), [Edge](https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading).
 
 If cloning this repository, load its **extension/** folder instead. No build step, account setup or API key is required.
 

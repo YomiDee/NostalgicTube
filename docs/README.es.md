@@ -28,12 +28,23 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 - Añade `before:AAAA-MM-DD` al buscar en YouTube, incluidas URLs abiertas desde marcadores o búsquedas personalizadas del navegador.
 - Inglés predeterminado, español disponible, ventana compacta y ajustes que se guardan automáticamente.
 
-## Instalar
+## Instalar en Brave, Chrome o Edge
 
 1. Descarga el [ZIP 4.8.3](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.3/NostalgicTube-4.8.3-Brave.zip) y extrae todo en una carpeta permanente.
-2. Abre `brave://extensions` y activa **Modo desarrollador**.
+2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
+
+   | Navegador | Dirección que debes escribir en la barra |
+   | --- | --- |
+   | Brave | `brave://extensions` |
+   | Google Chrome | `chrome://extensions` |
+   | Microsoft Edge | `edge://extensions` |
+
 3. Pulsa **Cargar descomprimida** y elige la carpeta **NostalgicTube** que contiene `manifest.json`.
 4. Recarga YouTube y desactiva copias anteriores para evitar interferencias.
+
+El mismo ZIP está pensado para los tres navegadores de escritorio, aunque su nombre incluya «Brave». No necesitas convertirlo ni descargar otro paquete. Mantén activado el modo desarrollador y conserva la carpeta extraída. En Edge no hace falta activar **Permitir extensiones de otras tiendas** para esta instalación desde una carpeta local. Los pasos de Chrome y Edge siguen su documentación oficial; no se ha probado de forma independiente todo el funcionamiento en ambos navegadores.
+
+Guías oficiales de instalación: [Chrome](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked), [Edge](https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading).
 
 Si descargas el repositorio completo, carga la carpeta **extension/**. No necesita compilación, clave de API ni una cuenta adicional.
 
