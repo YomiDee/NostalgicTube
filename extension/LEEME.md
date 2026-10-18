@@ -1,4 +1,22 @@
-# NostalgicTube 4.6
+# NostalgicTube 4.8
+
+## Ventana compacta y logo oficial
+
+La cabecera utiliza únicamente el logo oficial en PNG transparente, sustituyendo la antigua combinación de icono y texto. El símbolo triangular del logo también identifica la extensión en Brave. La ventana usa un fondo oscuro para que el texto blanco del logo se lea correctamente.
+
+Se han eliminado los párrafos largos de los ajustes y se ha compactado la distribución: logo y Ko-fi, idioma y activación, fecha, variedad, tres opciones, Guardar y reinicio del aprendizaje. No hay scroll interno. Se revisó visualmente en inglés (503 píxeles de alto) y español con Random y un mensaje de estado (549 píxeles), dentro del máximo habitual de 600 píxeles del popup de Chromium. Las funciones de recomendaciones y aprendizaje se conservan.
+
+## Reintentos automáticos y variedad continua
+
+El ajuste **Variedad** es ahora un deslizador de **0 a 100 %**, con pasos de 1 %. El porcentaje aparece junto al control y se guarda al pulsar Guardar. El 0 % utiliza tus temas; el 100 % activa Random. Los valores intermedios fijan una proporción aproximada de descubrimientos independientes. Se acumula el objetivo entre tandas para representar también porcentajes pequeños cuando sigues bajando. La disponibilidad de vídeos puede variar la proporción real.
+
+Las tandas vacías ya no muestran «No verifiably old results found» ni obligan a pulsar Try again. La extensión prueba otras búsquedas automáticamente y amplía sus ventanas de fechas, respetando siempre el límite original y las comprobaciones de antigüedad. Conserva las tarjetas ya cargadas y muestra el círculo de carga con un mensaje de búsqueda automática.
+
+Los reintentos esperan 2, 5, 15, 30 y después 60 segundos entre tandas fallidas. Tras varios intentos se reduce el número de fuentes por tanda; los errores HTTP 403/429 pasan directamente a la pausa larga. Solo consulta con la pestaña visible y conexión disponible. Se cancelan al desactivar la extensión, abandonar la página o cambiar de mezcla/ajustes.
+
+No puede garantizar encontrar resultados si YouTube está bloqueado, no hay vídeos compatibles o su formato ha cambiado: en ese caso continúa esperando y reintentando mientras la página esté activa. Si seleccionas 0 % sin temas aprendidos, explica que primero necesita aprender de búsquedas o vídeos; no hace consultas inútiles.
+
+Verificado con extensión instalada en Brave y respuestas simuladas: primera tanda vacía seguida de recuperación automática, indicador de carga durante la espera, ampliación de consultas, deslizador con 37/38 % y teclado, persistencia y cancelación al desactivar.
 
 ## Vídeos relacionados sin prioridad por visitas
 
@@ -52,7 +70,7 @@ Los modos habituales seleccionan hasta cuatro intereses con el mismo peso y mezc
 
 Ningún modo aplica umbrales de visitas ni ordena por popularidad. Los descubrimientos son vídeos antiguos obtenidos de búsquedas variadas, no un ranking de popularidad histórico certificado. No garantiza ausencia de contenido de IA.
 
-**Otra mezcla** reinicia el listado con otros temas y resultados. Al acercarte al final, añade hasta 24 vídeos más, sin duplicados de todo el listado y conservando las tarjetas anteriores. Aparece un círculo animado con **Más vídeos / More videos** debajo. Si no hay resultados nuevos o falla la búsqueda, la carga automática se pausa y deja un botón para volver a intentarlo. No garantiza resultados ilimitados.
+**Otra mezcla** reinicia el listado con otros temas y resultados. Al acercarte al final, añade hasta 24 vídeos más, sin duplicados de todo el listado y conservando las tarjetas anteriores. Aparece un círculo animado con **Más vídeos / More videos** debajo. Si no hay resultados nuevos o falla la búsqueda, reintenta automáticamente con pausas. No garantiza resultados ilimitados.
 
 Usa los componentes visuales de YouTube para las tarjetas, miniaturas, duración y menús. Su disposición depende de la variante de YouTube y del ancho de ventana. Un cambio de YouTube puede requerir actualizar la extensión. También puede mostrar una mezcla en el lateral de un vídeo.
 
@@ -60,7 +78,7 @@ Usa los componentes visuales de YouTube para las tarjetas, miniaturas, duración
 
 El idioma predeterminado es **inglés**. El interruptor **English / Español** cambia el idioma con un clic o con el teclado, guarda la elección y actualiza las pestañas abiertas sin regenerar sus vídeos. No traduce los títulos ni cambia el idioma de YouTube.
 
-El icono **Donar con Ko-fi / Donate with Ko-fi** aparece arriba a la derecha en los ajustes y abre https://ko-fi.com/yomidee en otra pestaña. El logotipo con la N blanca forma la inicial del título «ostalgic Tube». El lema es «Enjoy what it used to be» en inglés y «Disfruta de lo que solía ser» en español.
+El icono **Donar con Ko-fi / Donate with Ko-fi** aparece arriba a la derecha en los ajustes y abre https://ko-fi.com/yomidee en otra pestaña. La cabecera muestra el logo oficial completo. El lema es «Enjoy what it used to be» en inglés y «Disfruta de lo que solía ser» en español.
 
 Solo requiere el permiso `storage` y scripts en `https://www.youtube.com/*`. No lee el historial previo del navegador ni de tu cuenta. Los temas se guardan localmente. Para conseguir vídeos envía consultas a YouTube con esa sesión y carga sus miniaturas y componentes; no hay servidor propio ni telemetría. Los temas están ocultos en la interfaz, pero no cifrados contra las herramientas de desarrollo del propio navegador.
 

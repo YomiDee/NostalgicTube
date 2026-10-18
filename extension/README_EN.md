@@ -1,4 +1,20 @@
-# NostalgicTube 4.6
+# NostalgicTube 4.8
+
+## Compact popup and official logo
+
+The header now uses the official transparent PNG logo, replacing the previous separate icon and text. Its triangular symbol also identifies the extension in Brave. The dark popup background keeps the white wordmark readable.
+
+Long explanatory paragraphs were removed from the popup, keeping language, enable, date, variety, three options, Save and reset. No internal scrolling. Visually reviewed in English (503px high) and Spanish with Random and a status message (549px), below Chromium's usual 600px popup height. Feed and learning features are unchanged.
+
+## Automatic recovery and continuous Variety
+
+**Variety** is now a **0–100% slider**, adjustable in 1% steps with mouse or keyboard; press Save to keep the value. Zero uses your topics and 100 activates Random. Intermediate values target an approximate discovery ratio, carried across batches so small percentages can appear as you keep scrolling. Availability may alter the actual ratio.
+
+Empty batches no longer require Try again or show “No verifiably old results found”. The extension automatically tries other queries and widens date windows, preserving the configured cutoff, date checks and existing cards. A spinner and automatic-search message remain visible while waiting.
+
+Failed rounds use 2/5/15/30/60-second delays, reduce source count after repeated failures, and use the long delay for HTTP 403/429. Requests wait while hidden or offline and are cancelled on disable, navigation or a new mix/settings change. This cannot guarantee results if YouTube blocks requests or has no compatible videos. At 0% with no learned topics, a learning prompt replaces futile retries.
+
+Tested installed in Brave with simulated responses: empty batch followed by automatic recovery, loading indicator, broader retry queries, slider at 37/38%, keyboard, persistence and cancellation on disable.
 
 ## View-neutral related recommendations
 
@@ -42,9 +58,9 @@ The destination must be `https://www.youtube.com/results`. It does not alter Goo
 
 Standard modes sample up to four equally weighted interests and aim for 25% discoveries by default; choose 0%, 25%, or 50%, or choose **100% — Random** to ignore interests. Availability can change the final ratio. No mode uses a view-count threshold or popularity preference.
 
-**Another mix** starts a fresh feed. Near the bottom, a spinning circle and **More videos** appear while up to 24 new cards are appended, without duplicates across the feed. Empty or failed searches pause automatic loading and leave a retry button. Results are not unlimited.
+**Another mix** starts a fresh feed. Near the bottom, a spinning circle and **More videos** appear while up to 24 new cards are appended, without duplicates across the feed. Empty or failed searches retry automatically with pauses. Results are not unlimited.
 
-English is the default. The **English / Español** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** link is at the top right and opens https://ko-fi.com/yomidee. The white-N logo supplies the first letter of the visible title “ostalgic Tube”. The tagline is “Enjoy what it used to be” in English and “Disfruta de lo que solía ser” in Spanish.
+English is the default. The **EN / ES** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** link is at the top right and opens https://ko-fi.com/yomidee. The header shows the complete official logo. The tagline is “Enjoy what it used to be” in English and “Disfruta de lo que solía ser” in Spanish.
 
 ## Privacy and checks
 

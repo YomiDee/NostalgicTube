@@ -3,6 +3,13 @@
  let settings={...defaults},host,key='',sequence=0,controller,scheduled=false,ready=false,lastRecorded='',items=[],generation=0;
  const cache=new Map();
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
+ let retryTimer=0,retryAttempts=0;
+ function cancelRetry(){clearTimeout(retryTimer);retryTimer=0;}
+ function queueRetry(run){
+   cancelRetry();const delay=[2000,5000,15000,30000,60000][Math.min(retryAttempts-1,4)];
+   const retry=()=>{if(run!==sequence || !settings.enabled || !host?.isConnected){cancelRetry();return;}if(document.hidden || !navigator.onLine){retryTimer=setTimeout(retry,5000);return;}retryTimer=0;load(true);};
+   retryTimer=setTimeout(retry,delay);moreMessage='autoRetryWait';autoPaused=true;if(!items.length)status('autoRetry');
+ }
  const seen=new Set();
  const learnedVideos=new Set();
  let watchId='',watchTitle='',watchedSeconds=0,lastVideoTime=0,lastWatchTick=0,learningPending=false;
@@ -33,7 +40,7 @@
    setText('#cutoff-label',t('before',{date:settings.cutoff}));
    setText('#context',settings.discovery===100?t('randomMix'):t('automaticMix')+' · '+t('discoveryContext',{n:settings.discovery}));
    if(statusKey)setText('#status',t(statusKey,statusValues));
-   if(host.querySelector('.yar-more')){setText('.yar-more-label',t('more'));setText('.yar-more button',t(busy?'loadingMore':autoPaused?'retryMore':'more'));setText('.yar-more-message',moreMessage?t(moreMessage):'');}
+   if(host.querySelector('.yar-more')){setText('.yar-more-label',t('more'));setText('.yar-more button',t(busy?'loadingMore':'more'));setText('.yar-more-message',moreMessage?t(moreMessage):'');host.querySelector('.yar-more button').hidden=Boolean(retryTimer);}
  }
  function node(tag,text,attrs={}){const e=document.createElement(tag);if(text)e.textContent=text;for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
  function setText(selector,value){const e=host.querySelector(selector);if(e.textContent!==value)e.textContent=value;}
@@ -66,35 +73,41 @@
  }
  async function fetchPool(job,signal){
    const q=query(job.topic,job.cutoff||settings.cutoff,true)+(job.after?' after:'+job.after:''),cacheKey=job.kind+'|'+q;const cached=cache.get(cacheKey);if(cached && Date.now()-cached.time<600000)return cached.items;
-   const response=await fetch('/results?search_query='+encodeURIComponent(q),{signal,credentials:'omit'});if(!response.ok)throw Error('YouTube respondió con '+response.status);
+   const response=await fetch('/results?search_query='+encodeURIComponent(q),{signal,credentials:'omit'});if(!response.ok){const error=Error('YouTube respondió con '+response.status);error.status=response.status;throw error;}
    const list=videos(extract(await response.text())).filter(v=>YouTubeAntes.classify(v.published,settings.cutoff)==='old');
    const sampled=shuffle(list);
-   cache.set(cacheKey,{time:Date.now(),items:sampled});if(cache.size>40)cache.delete(cache.keys().next().value);return sampled;
+   if(sampled.length)cache.set(cacheKey,{time:Date.now(),items:sampled});if(cache.size>40)cache.delete(cache.keys().next().value);return sampled;
  }
  async function load(append=false){
    if(!ready || !host || (append && busy))return;
    const next=JSON.stringify([settings.cutoff,settings.discovery===100?null:settings.interests,settings.discovery,generation]);if(!append && next===key)return;key=next;
+   cancelRetry();
    controller?.abort();controller=new AbortController();const signal=controller.signal,run=++sequence;
-   if(!append){page=0;items=[];seen.clear();canLoadMore=false;autoPaused=false;render();}else page++;
-   const jobs=plan(page),pools=[],explore=[];let failed=0,completed=0;
+   if(!append){page=0;items=[];seen.clear();canLoadMore=false;autoPaused=false;retryAttempts=0;render();}else page++;
+   let jobs=plan(page);if(retryAttempts){cache.clear();jobs=jobs.map(job=>({...job,after:undefined,cutoff:settings.cutoff}));if(retryAttempts>=3)jobs=jobs.slice(0,2);}
+   const pools=[],explore=[];let failed=0,completed=0;
    host.querySelector('.search').href='https://www.youtube.com/results?search_query='+encodeURIComponent(query('videos populares '+(Number(settings.cutoff.slice(0,4))-1),settings.cutoff));
    moreMessage='';loading(true);if(!append)status('loading');
    const timeout=setTimeout(()=>{if(run===sequence)controller.abort();},45000);
    try{
      let cursor=0;
-     async function worker(){while(cursor<jobs.length && !signal.aborted){const job=jobs[cursor++];try{const list=await fetchPool(job,signal);if(run!==sequence)return;const fresh=list.filter(v=>!seen.has(v.id) && v.id!==new URLSearchParams(location.search).get('v'));if(job.kind==='interest')pools.push(fresh);else explore.push(...fresh);}catch(e){failed++;if(e.name!=='AbortError')console.warn('NostalgicTube: source unavailable:',e.message);}completed++;if(run===sequence && !append)status('progress',{done:completed,total:jobs.length});}}
+     async function worker(){while(cursor<jobs.length && !signal.aborted){const job=jobs[cursor++];try{const list=await fetchPool(job,signal);if(run!==sequence)return;const fresh=list.filter(v=>!seen.has(v.id) && v.id!==new URLSearchParams(location.search).get('v'));if(job.kind==='interest')pools.push(fresh);else explore.push(...fresh);}catch(e){failed++;if(e.status===429 || e.status===403){cursor=jobs.length;retryAttempts=Math.max(retryAttempts,4);}if(e.name!=='AbortError')console.warn('NostalgicTube: source unavailable:',e.message);}completed++;if(run===sequence && !append)status('progress',{done:completed,total:jobs.length});}}
      await Promise.all([worker(),worker()]);if(run!==sequence)return;
-     const batch=mix(pools,explore,settings.interests.length?settings.discovery:100);batch.forEach(v=>seen.add(v.id));items.push(...batch);render(batch,append);canLoadMore=true;
-     autoPaused=batch.length===0 || failed===jobs.length;moreMessage=autoPaused?(failed?'moreFailed':'emptyMore'):'';
+     const proportion=settings.interests.length?settings.discovery:100,priorDiscoveries=items.filter(v=>v.origin==='discovery').length;
+     const target=Math.max(0,Math.min(24,Math.round((items.length+24)*proportion/100)-priorDiscoveries));
+     const batch=mix(pools,explore,target/24*100);batch.forEach(v=>seen.add(v.id));items.push(...batch);render(batch,append);canLoadMore=true;
+     autoPaused=batch.length===0;moreMessage='';
      const discoveries=items.filter(v=>v.origin==='discovery').length;
-     if(items.length)status('added',{n:items.length,d:discoveries});else status('noResults');
-   }finally{clearTimeout(timeout);if(run===sequence){loading(false);setTimeout(maybeMore,400);}}
+     if(batch.length){retryAttempts=0;status('added',{n:items.length,d:discoveries});}
+     else if(jobs.length){retryAttempts++;queueRetry(run);}
+     else if(!items.length)status('learnFirst');
+   }finally{clearTimeout(timeout);if(run===sequence){loading(false);host.querySelector('.yar-more').dataset.loading=String(Boolean(retryTimer));if(!retryTimer)setTimeout(maybeMore,400);}}
  }
- function sync(){if(!ready)return;recordSearch();if(!mount()){controller?.abort();sequence++;key='';canLoadMore=false;busy=false;return;}load();}
+ function sync(){if(!ready)return;recordSearch();if(!mount()){cancelRetry();controller?.abort();sequence++;key='';canLoadMore=false;busy=false;return;}load();}
  function schedule(){if(scheduled)return;scheduled=true;setTimeout(()=>{scheduled=false;sync();},700);}
  chrome.storage.local.get(defaults).then(s=>{settings=s;if(!Array.isArray(settings.interests))settings.interests=[];ready=true;sync();});
  chrome.storage.onChanged.addListener((changes,area)=>{if(area!=='local')return;let changed=false;for(const name of Object.keys(defaults))if(changes[name]){settings[name]=changes[name].newValue??defaults[name];if(name!=='language' && !(name==='interests' && settings.discovery===100))changed=true;}if(changes.interests && settings.discovery!==100)cache.clear();if(changes.algorithmEpoch){learnedVideos.clear();watchedSeconds=0;lastRecorded=location.href;}if(changes.language && host){if(statusKey==='results')statusValues.partial=statusValues.partial?t('partial'):'';translate();}if(changed){key='';schedule();}});
  new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
  window.addEventListener('scroll',()=>{if(!busy)maybeMore();},{passive:true});
- document.addEventListener('yt-navigate-finish',()=>{controller?.abort();sequence++;key='';schedule();});window.addEventListener('popstate',()=>{controller?.abort();sequence++;key='';schedule();});
+ document.addEventListener('yt-navigate-finish',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});window.addEventListener('popstate',()=>{cancelRetry();controller?.abort();sequence++;key='';schedule();});
 })();
