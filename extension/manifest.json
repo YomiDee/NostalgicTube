@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NostalgicTube",
-  "version": "4.8.23",
+  "version": "0.8.23",
   "description": "Your saved interests and discoveries from another era, in YouTube's native home feed.",
   "permissions": [
     "storage"
