@@ -4,7 +4,7 @@ let language='en',statusKey='';
 const t=(key,values)=>NostalgicI18n.t(language,key,values);
 function notify(key){statusKey=key;status.textContent=t(key);}
 function showRandomHint(){const value=document.getElementById('discovery').value;document.getElementById('random-hint').hidden=value!=='100';document.getElementById('discovery-value').textContent=value+'%';document.getElementById('discovery').setAttribute('aria-valuetext',value+'%');}
-function translate(){document.documentElement.lang=language;document.getElementById('language').setAttribute('aria-checked',String(language==='es'));document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));if(statusKey)notify(statusKey);}
+function translate(){document.documentElement.lang=language;document.getElementById('language').setAttribute('aria-checked',String(language==='es'));document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));if(statusKey)notify(statusKey);renderUpdate();}
 const popupDefaults=Object.fromEntries([...fields,'language'].map(key=>[key,RelatedBefore.defaults[key]]));
 chrome.storage.local.get(popupDefaults).then(s=>{language=s.language==='es'?'es':'en';for(const name of fields){const e=document.getElementById(name);if(e.type==='checkbox')e.checked=s[name];else e.value=s[name];}translate();showRandomHint();});
 document.getElementById('discovery').oninput=showRandomHint;
@@ -14,3 +14,23 @@ async function saveField(name){const e=document.getElementById(name);if(!e.check
 for(const name of fields)document.getElementById(name).addEventListener('change',()=>saveField(name));
 document.getElementById('settings').onsubmit=event=>event.preventDefault();
 document.getElementById('clear').onclick=async()=>{try{const result=await chrome.runtime.sendMessage({type:'nt-clear'});notify(result?.ok?'reset':'saveError');}catch{notify('saveError');}};
+
+let updateState='checkUpdate',availableUpdate=null;
+const updateButton=document.getElementById('update');
+function renderUpdate(){updateButton.textContent=t(updateState,{version:availableUpdate?.version||''});updateButton.title=t('updateHelp');updateButton.disabled=updateState==='checkingUpdate';}
+updateButton.onclick=async()=>{
+ if(availableUpdate){chrome.tabs.create({url:availableUpdate.url});status.textContent=t('updateHelp');return;}
+ updateState='checkingUpdate';renderUpdate();
+ const controller=new AbortController();let timer;
+ try{
+  const allowed=await chrome.permissions.request({origins:['https://api.github.com/*']});
+  if(!allowed){updateState='checkUpdate';status.textContent=t('updatePermission');return;}
+  timer=setTimeout(()=>controller.abort(),12000);
+  const response=await fetch('https://api.github.com/repos/yomidee/NostalgicTube/releases?per_page=100',{signal:controller.signal,credentials:'omit',headers:{Accept:'application/vnd.github+json'}});
+  if(!response.ok)throw new Error('GitHub unavailable');
+  const release=NostalgicUpdates.select(await response.json());if(!release)throw new Error('No downloadable release');
+  if(NostalgicUpdates.compare(release.version,chrome.runtime.getManifest().version)>0){availableUpdate=release;updateState='downloadUpdate';}
+  else updateState='upToDate';
+ }catch{updateState='retryUpdate';}finally{clearTimeout(timer);renderUpdate();}
+};
+renderUpdate();

@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.3 · Beta · Manifest V3**
+**Current version: 4.8.5 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -33,7 +33,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.3 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.3/NostalgicTube-4.8.3-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.5 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.5/NostalgicTube-4.8.5-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -92,3 +92,7 @@ The original project evolved from **YouTube Antes** (a local filter) through rel
 Code is distributed under the [MIT license](LICENSE); existing notices are preserved. See [asset provenance](docs/ASSETS.md) for the user-supplied branding and its processing history. Independent project, not affiliated with YouTube, Google or Brave.
 
 [Donate with Ko-fi!](https://ko-fi.com/yomidee)
+
+## Update checks
+
+Press **Check updates** in the popup footer and allow optional access to GitHub. The button reports whether a newer downloadable release is available, including betas, or whether your version is up to date. GitHub receives no interests or settings. Downloads still need extracting into the existing installation folder and reloading at the extensions page; unpacked extensions cannot install their own updates.

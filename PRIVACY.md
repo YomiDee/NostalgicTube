@@ -23,3 +23,7 @@ Normal navigation/searches use the browser's ordinary YouTube session. Native Yo
 Only `storage` is requested. Content scripts are restricted to `https://www.youtube.com/*`. There is no browser-history permission or access to unrelated sites. No model/API key is required.
 
 This describes the current source, not third-party platform policies or all historical prototypes.
+
+## Optional update checks (4.8.5 and later)
+
+The popup checks GitHub releases only when you press Check updates and grant optional access to api.github.com. The request goes to the public yomidee/NostalgicTube releases endpoint without account cookies; no interests, searches or settings are sent. GitHub receives ordinary network metadata such as your IP address. Clicking Download opens the matching GitHub release ZIP. No remote extension code is executed and installed files are not replaced automatically.

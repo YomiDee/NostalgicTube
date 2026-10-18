@@ -2,6 +2,12 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.5
+
+- Add on-demand GitHub release checks, bilingual status and validated ZIP download links.
+- Request optional GitHub access only when checking; do not send interests or settings.
+- Explain the manual replacement/reload required for unpacked installations.
+
 ## 4.8.4
 
 - Display the installed version at the bottom left of the popup, read directly from the manifest.

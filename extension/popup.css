@@ -2,3 +2,5 @@
  .donation-footer{display:flex;justify-content:space-between;align-items:center;padding-top:6px;margin-top:2px}.donation-footer .donation-link{min-height:22px}
 
 .extension-version{color:#909090;font-size:10px;white-space:nowrap}
+
+.update-controls{display:flex;align-items:flex-start;flex-direction:column;gap:3px}.update-button{font-size:10px;color:#aaa;border:0;background:transparent;padding:0;cursor:pointer;max-width:180px;text-align:left}.update-button:hover{color:#fff;text-decoration:underline}.update-button:disabled{cursor:wait}
