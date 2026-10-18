@@ -7,7 +7,7 @@
  };
  Object.assign(en,{more:'More videos',loadingMore:'Loading…',retryMore:'Try more videos',emptyMore:'No new videos in these searches. Try again to explore other years.',moreFailed:'Could not load more videos. Try again.',added:'{n} videos loaded · {d} discoveries. Scroll down for more.'});
  Object.assign(es,{more:'Más vídeos',loadingMore:'Cargando…',retryMore:'Buscar más vídeos',emptyMore:'No hay vídeos nuevos en estas búsquedas. Vuelve a intentarlo para explorar otros años.',moreFailed:'No se pudieron cargar más vídeos. Inténtalo de nuevo.',added:'{n} vídeos cargados · {d} descubrimientos. Baja para ver más.'});
- en.donate='Donate with Ko-fi';es.donate='Donar con Ko-fi';
+ en.donate='Donate with Ko-fi!';es.donate='Donar con Ko-fi!';
  en.learnVideos='Learn topics from videos I watch';es.learnVideos='Aprender temas de los vídeos que veo';
  en.learnHint='After 12 seconds of visible playback, one keyword from the title is added locally.';es.learnHint='Tras 12 segundos de reproducción visible, se añade localmente una palabra del título.';
  en.privacy='Stores up to 40 interests from searches, watched-video titles and topics you add, only in this browser. It does not import previous history or keep a viewing-history list. Topics have equal weight. Classics use current views, not a verified historical ranking.';
@@ -18,7 +18,7 @@
  Object.assign(es,{enabledCompact:'Activado',learnSearchCompact:'Aprender de las búsquedas',learnVideoCompact:'Aprender de los vídeos vistos',replaceCompact:'Sustituir el inicio de YouTube',localCompact:'Aprendizaje guardado en este dispositivo',randomCompact:'Random, independiente de tus intereses.'});
  Object.assign(en,{variety:'Variety',relatedEnd:'0% · My topics',autoRetry:'Looking for videos automatically…',autoRetryWait:'Trying different searches automatically. No action needed.',learnFirst:'Watch or search for videos to teach your topics, or increase Variety to explore.'});
  Object.assign(es,{variety:'Variedad',relatedEnd:'0 % · Mis temas',autoRetry:'Buscando vídeos automáticamente…',autoRetryWait:'Probando otras búsquedas automáticamente. No tienes que hacer nada.',learnFirst:'Ve o busca vídeos para aprender tus temas, o sube Variedad para explorar.'});
- en.tagline='Enjoy what it used to be';es.tagline='Disfruta de lo que solía ser';
+ en.tagline='Enjoy what it used to be.';es.tagline='Disfruta de lo que solía ser.';
  en.viewNeutral='All modes ignore view counts: related videos stay on topic, with randomized dates and order.';es.viewNeutral='Todos los modos ignoran las visitas: los relacionados mantienen el tema y varían las fechas y el orden.';
  Object.assign(en,{random:'100% — Random',randomMix:'Random · independent of your interests',randomHint:'Independent of your interests, with no view-count filter. Randomly samples YouTube search results, not its entire catalogue.'});
  Object.assign(es,{random:'100 % — Random',randomMix:'Random · independiente de tus intereses',randomHint:'Independiente de tus intereses y sin filtro de visitas. Selecciona al azar entre resultados de YouTube, no entre todo su catálogo.'});

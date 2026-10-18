@@ -1,4 +1,10 @@
-# NostalgicTube 4.8
+# NostalgicTube 4.8.3
+
+Todos los ajustes se guardan automáticamente al cambiarlos. El deslizador guarda al soltarlo o ajustarlo con el teclado. Se ha eliminado el botón Guardar/Save. Las fechas vacías o inválidas no sustituyen la fecha guardada.
+
+Ko-fi aparece abajo a la derecha con «Donar con Ko-fi!» / «Donate with Ko-fi!». Ambos lemas llevan punto final. La ventana sigue sin scroll interno.
+
+El icono de la barra de Brave utiliza el triángulo rojo redondeado con N blanca de la referencia oficial, en PNG con fondo transparente y tamaños 16, 32, 48 y 128 píxeles. La cabecera conserva el logo oficial completo.
 
 ## Ventana compacta y logo oficial
 
@@ -8,7 +14,7 @@ Se han eliminado los párrafos largos de los ajustes y se ha compactado la distr
 
 ## Reintentos automáticos y variedad continua
 
-El ajuste **Variedad** es ahora un deslizador de **0 a 100 %**, con pasos de 1 %. El porcentaje aparece junto al control y se guarda al pulsar Guardar. El 0 % utiliza tus temas; el 100 % activa Random. Los valores intermedios fijan una proporción aproximada de descubrimientos independientes. Se acumula el objetivo entre tandas para representar también porcentajes pequeños cuando sigues bajando. La disponibilidad de vídeos puede variar la proporción real.
+El ajuste **Variedad** es ahora un deslizador de **0 a 100 %**, con pasos de 1 %. El porcentaje aparece junto al control y se guarda automáticamente al soltar el deslizador. El 0 % utiliza tus temas; el 100 % activa Random. Los valores intermedios fijan una proporción aproximada de descubrimientos independientes. Se acumula el objetivo entre tandas para representar también porcentajes pequeños cuando sigues bajando. La disponibilidad de vídeos puede variar la proporción real.
 
 Las tandas vacías ya no muestran «No verifiably old results found» ni obligan a pulsar Try again. La extensión prueba otras búsquedas automáticamente y amplía sus ventanas de fechas, respetando siempre el límite original y las comprobaciones de antigüedad. Conserva las tarjetas ya cargadas y muestra el círculo de carga con un mensaje de búsqueda automática.
 
@@ -78,7 +84,7 @@ Usa los componentes visuales de YouTube para las tarjetas, miniaturas, duración
 
 El idioma predeterminado es **inglés**. El interruptor **English / Español** cambia el idioma con un clic o con el teclado, guarda la elección y actualiza las pestañas abiertas sin regenerar sus vídeos. No traduce los títulos ni cambia el idioma de YouTube.
 
-El icono **Donar con Ko-fi / Donate with Ko-fi** aparece arriba a la derecha en los ajustes y abre https://ko-fi.com/yomidee en otra pestaña. La cabecera muestra el logo oficial completo. El lema es «Enjoy what it used to be» en inglés y «Disfruta de lo que solía ser» en español.
+El icono **Donar con Ko-fi / Donate with Ko-fi** aparece abajo a la derecha en los ajustes y abre https://ko-fi.com/yomidee en otra pestaña. La cabecera muestra el logo oficial completo. El lema es «Enjoy what it used to be» en inglés y «Disfruta de lo que solía ser» en español.
 
 Solo requiere el permiso `storage` y scripts en `https://www.youtube.com/*`. No lee el historial previo del navegador ni de tu cuenta. Los temas se guardan localmente. Para conseguir vídeos envía consultas a YouTube con esa sesión y carga sus miniaturas y componentes; no hay servidor propio ni telemetría. Los temas están ocultos en la interfaz, pero no cifrados contra las herramientas de desarrollo del propio navegador.
 

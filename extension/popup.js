@@ -9,5 +9,7 @@ chrome.storage.local.get(popupDefaults).then(s=>{language=s.language==='es'?'es'
 document.getElementById('discovery').oninput=showRandomHint;
 chrome.storage.onChanged.addListener((changes,area)=>{if(area==='local' && changes.language){language=changes.language.newValue==='es'?'es':'en';translate();}});
 document.getElementById('language').onclick=async()=>{const previous=language;language=language==='en'?'es':'en';translate();try{await chrome.storage.local.set({language});notify('saved');}catch{language=previous;translate();notify('saveError');}};
-document.getElementById('settings').onsubmit=async event=>{event.preventDefault();const value={};for(const name of fields){const e=document.getElementById(name);value[name]=e.type==='checkbox'?e.checked:name==='discovery'?Number(e.value):e.value;}try{await chrome.storage.local.set(value);notify('saved');}catch{notify('saveError');}};
+async function saveField(name){const e=document.getElementById(name);if(!e.checkValidity())return;const value=e.type==='checkbox'?e.checked:name==='discovery'?Number(e.value):e.value;try{await chrome.storage.local.set({[name]:value});notify('saved');}catch{notify('saveError');}}
+for(const name of fields)document.getElementById(name).addEventListener('change',()=>saveField(name));
+document.getElementById('settings').onsubmit=event=>event.preventDefault();
 document.getElementById('clear').onclick=async()=>{try{const result=await chrome.runtime.sendMessage({type:'nt-clear'});notify(result?.ok?'reset':'saveError');}catch{notify('saveError');}};

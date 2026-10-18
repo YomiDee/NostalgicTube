@@ -1,4 +1,10 @@
-# NostalgicTube 4.8
+# NostalgicTube 4.8.3
+
+All settings save automatically when changed. The variety slider saves when released or adjusted with the keyboard. The Save button has been removed. Empty or invalid dates do not overwrite the stored cutoff.
+
+Ko-fi appears at the bottom right as “Donate with Ko-fi!” / “Donar con Ko-fi!”. Both taglines end with a full stop. The popup still fits without internal scrolling.
+
+The Brave toolbar icon uses the official rounded red triangle with a white N, with a transparent PNG background in 16, 32, 48 and 128 pixel sizes. The popup retains the complete official logo.
 
 ## Compact popup and official logo
 
@@ -8,7 +14,7 @@ Long explanatory paragraphs were removed from the popup, keeping language, enabl
 
 ## Automatic recovery and continuous Variety
 
-**Variety** is now a **0–100% slider**, adjustable in 1% steps with mouse or keyboard; press Save to keep the value. Zero uses your topics and 100 activates Random. Intermediate values target an approximate discovery ratio, carried across batches so small percentages can appear as you keep scrolling. Availability may alter the actual ratio.
+**Variety** is now a **0–100% slider**, adjustable in 1% steps with mouse or keyboard; release the slider to save automatically. Zero uses your topics and 100 activates Random. Intermediate values target an approximate discovery ratio, carried across batches so small percentages can appear as you keep scrolling. Availability may alter the actual ratio.
 
 Empty batches no longer require Try again or show “No verifiably old results found”. The extension automatically tries other queries and widens date windows, preserving the configured cutoff, date checks and existing cards. A spinner and automatic-search message remain visible while waiting.
 
@@ -60,7 +66,7 @@ Standard modes sample up to four equally weighted interests and aim for 25% disc
 
 **Another mix** starts a fresh feed. Near the bottom, a spinning circle and **More videos** appear while up to 24 new cards are appended, without duplicates across the feed. Empty or failed searches retry automatically with pauses. Results are not unlimited.
 
-English is the default. The **EN / ES** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** link is at the top right and opens https://ko-fi.com/yomidee. The header shows the complete official logo. The tagline is “Enjoy what it used to be” in English and “Disfruta de lo que solía ser” in Spanish.
+English is the default. The **EN / ES** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** link is at the bottom right and opens https://ko-fi.com/yomidee. The header shows the complete official logo. The tagline is “Enjoy what it used to be” in English and “Disfruta de lo que solía ser” in Spanish.
 
 ## Privacy and checks
 
