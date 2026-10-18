@@ -1,4 +1,6 @@
-# NostalgicTube 4.2
+# NostalgicTube 4.2.1
+
+Al final de los ajustes, a la derecha, el icono **Donar con Ko-fi** abre https://ko-fi.com/yomidee en otra pestaña. En inglés aparece como **Donate with Ko-fi**.
 
 La interfaz se inicia en **inglés**. En el icono de la extensión hay un **interruptor deslizante English / Español**: un clic cambia entre ambos idiomas. También funciona con la barra espaciadora o Intro cuando tiene el foco. La elección se guarda automáticamente y se aplica a las pestañas abiertas, sin regenerar los vídeos. Traduce los controles, mensajes y etiquetas de accesibilidad de NostalgicTube; los títulos de vídeos y la interfaz original de YouTube siguen su idioma propio.
 

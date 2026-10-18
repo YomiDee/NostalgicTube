@@ -7,6 +7,7 @@
  };
  Object.assign(en,{more:'More videos',loadingMore:'Loading…',retryMore:'Try more videos',emptyMore:'No new videos in these searches. Try again to explore other years.',moreFailed:'Could not load more videos. Try again.',added:'{n} videos loaded · {d} discoveries. Scroll down for more.'});
  Object.assign(es,{more:'Más vídeos',loadingMore:'Cargando…',retryMore:'Buscar más vídeos',emptyMore:'No hay vídeos nuevos en estas búsquedas. Vuelve a intentarlo para explorar otros años.',moreFailed:'No se pudieron cargar más vídeos. Inténtalo de nuevo.',added:'{n} vídeos cargados · {d} descubrimientos. Baja para ver más.'});
+ en.donate='Donate with Ko-fi';es.donate='Donar con Ko-fi';
  function t(language,key,values={}){return ((language==='es'?es:en)[key]||en[key]||key).replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??''));}
  globalThis.NostalgicI18n={t};
 })();

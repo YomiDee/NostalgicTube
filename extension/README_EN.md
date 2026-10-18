@@ -1,4 +1,6 @@
-# NostalgicTube 4.2
+# NostalgicTube 4.2.1
+
+The **Donate with Ko-fi** icon at the bottom-right of the popup opens https://ko-fi.com/yomidee in a new tab. Its label follows the selected interface language.
 
 A native YouTube home feed mixing your saved interests with discoveries from an earlier era. English is the default interface language. Click the **English / Español slider switch** in the popup to toggle languages; Space and Enter also work when focused. The selection is saved automatically and updates open YouTube tabs without changing the current video mix.
 
