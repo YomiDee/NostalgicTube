@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.11
+
+- Replace update detection with a direct Check GitHub to update! link to the repository releases. No API checks, automatic downloads or GitHub host permission.
+
 ## 4.8.10
 
 - Simplify update checks to compare release tag versions. Show Up to date! when current, or Update it! linking to the GitHub release page when older. Do not initiate ZIP downloads. If verification fails, keep a neutral Check updates link to GitHub without claiming the installation is current.

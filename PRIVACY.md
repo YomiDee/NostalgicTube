@@ -24,6 +24,6 @@ Only `storage` is requested. Content scripts are restricted to `https://www.yout
 
 This describes the current source, not third-party platform policies or all historical prototypes.
 
-## Optional update checks (4.8.5 and later)
+## Update link (4.8.11 and later)
 
-The popup checks GitHub releases when you press Check updates, or when you open the popup after previously granting optional access to api.github.com. The request goes to the public yomidee/NostalgicTube releases endpoint without account cookies; no interests, searches or settings are sent. GitHub receives ordinary network metadata such as your IP address. Clicking Download opens the matching GitHub release ZIP. No remote extension code is executed and installed files are not replaced automatically.
+The popup contains a direct link to this project's GitHub releases. It performs no background version checks or GitHub API requests and requires no GitHub host permission. Clicking the link opens GitHub in a browser tab; no interests or settings are included in the URL. Earlier versions 4.8.5–4.8.10 offered optional API-based release checks.

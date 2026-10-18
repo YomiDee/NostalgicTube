@@ -2,7 +2,7 @@
 
 **Disfruta de lo que solía ser.**
 
-Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.10 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
+Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.11 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
@@ -30,7 +30,7 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 
 ## Instalar en Brave, Chrome o Edge
 
-1. Descarga el [ZIP 4.8.10](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.10/NostalgicTube-4.8.10-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 4.8.11](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.11/NostalgicTube-4.8.11-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
 
    | Navegador | Dirección que debes escribir en la barra |
@@ -62,6 +62,6 @@ Ejecuta `node --test tests/*.test.cjs` y `python scripts/package.py`. Las prueba
 
 El [historial](HISTORY.md) distingue las versiones con código recuperado de las que solo están documentadas en la conversación de desarrollo. No se inventaron versiones ni fechas de commits antiguas. El código mantiene su licencia MIT original. La procedencia del logo se explica en [ASSETS.md](ASSETS.md).
 
-## Comprobar actualizaciones
+## Enlace de actualización
 
-El pie compara la versión instalada con la versión publicada más reciente, incluidas las betas. Muestra **¡Al día!** si está actualizada o **¡Actualízala!** para abrir el release en GitHub si hay una nueva. No descarga ZIP automáticamente. Requiere acceso opcional a GitHub y comprueba al abrir el panel tras concederlo. Si no puede comprobar, **Buscar actualización** abre los releases sin afirmar que estás al día. La instalación descomprimida sigue actualizándose manualmente.
+Pulsa **¡Busca actualizaciones en GitHub!** al pie del panel para abrir los releases. No hay comprobaciones ni descargas automáticas. Para actualizar una instalación descomprimida, sustituye los archivos de la misma carpeta y recarga la extensión.
