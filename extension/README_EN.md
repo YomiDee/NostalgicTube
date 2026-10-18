@@ -1,4 +1,4 @@
-# NostalgicTube 4.3.2
+# NostalgicTube 0.3.2
 
 Includes a red square icon with beveled corners and a **white N**, in 16, 32, 48 and 128 pixel sizes for Brave's toolbar and extension manager.
 
