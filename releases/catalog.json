@@ -336,5 +336,14 @@
     "asset": "releases/NostalgicTube-0.8.50-Brave.zip",
     "sha256": "be28708da45568fdaa6e702a40cd4301ead95d6ec1f2ae4cbf31819f1a1becf4",
     "commit": "06beb52b476b7993de61b69ca9f445d59d7c0452"
+  },
+  {
+    "version": "0.8.52",
+    "summary": "Refresh recommendations after learning searches or playback and hide native sidebar during navigation.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-0.8.52-Brave.zip",
+    "sha256": "b68d9ebe8419fa1cd327cf2b62feb8271a42417c0e917d556bc1c91467cbdcbd",
+    "commit": "7e9f01e73d88078fe5b4d5aa18b84f91d3e15f5f"
   }
 ]
