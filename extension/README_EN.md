@@ -1,4 +1,6 @@
-# NostalgicTube 4.3
+# NostalgicTube 4.3.1
+
+Includes the red **white-N icon** in 16, 32, 48 and 128 pixel sizes for Brave's toolbar and extension manager.
 
 ## Learning from watched videos
 
