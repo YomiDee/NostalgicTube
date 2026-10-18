@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.9
+
+- Shorten the current-version status to Up to date! / ¡Al día!.
+
 ## 4.8.8
 
 - Display version and update status on one line. Use You have the latest version! / ¡Tienes la última versión! for the current-version status.

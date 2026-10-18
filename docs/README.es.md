@@ -2,7 +2,7 @@
 
 **Disfruta de lo que solía ser.**
 
-Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.8 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
+Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.9 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
@@ -30,7 +30,7 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 
 ## Instalar en Brave, Chrome o Edge
 
-1. Descarga el [ZIP 4.8.8](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.8/NostalgicTube-4.8.8-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 4.8.9](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.9/NostalgicTube-4.8.9-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
 
    | Navegador | Dirección que debes escribir en la barra |
@@ -66,4 +66,4 @@ El [historial](HISTORY.md) distingue las versiones con código recuperado de las
 
 Pulsa **Buscar actualización** al pie del panel y permite el acceso opcional a GitHub. El botón indica si hay un release descargable más reciente, incluidas las betas, o si estás al día. No envía intereses ni ajustes. Tras descargar, sustituye los archivos de la carpeta instalada y recarga la extensión: una extensión descomprimida no puede instalar sus propias actualizaciones.
 
-Tras conceder acceso a GitHub, abrir el panel también comprueba automáticamente la versión. Si está al día indica «¡Tienes la última versión!». Un fallo de consulta no significa que haya que actualizar.
+Tras conceder acceso a GitHub, abrir el panel también comprueba automáticamente la versión. Si está al día indica «¡Al día!». Un fallo de consulta no significa que haya que actualizar.
