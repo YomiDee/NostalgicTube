@@ -3,7 +3,15 @@
  let settings={...defaults},host,key='',sequence=0,controller,scheduled=false,ready=false,lastRecorded='',items=[],generation=0;
  const cache=new Map();
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
- let retryTimer=0,retryAttempts=0;
+ let retryTimer=0,retryAttempts=0,jokeKey='',lastJokeAt=0;
+ const loadingJokes=['loadingJokeSlop','loadingJokeSkynet','loadingJokeModem','loadingJokeCats','loadingJokeTimeMachine','loadingJokeRick','loadingJokeHumanity','loadingJokeVhs','loadingJokeBuffer','loadingJokeRobot','loadingJokePixels','loadingJokeTrends','loadingJokeInternet','loadingJokeNostalgia'];
+ function rotateLoadingJoke(){
+   if(!host?.isConnected||!settings.enabled||document.hidden||(!busy&&!retryTimer))return;
+   if(jokeKey&&Date.now()-lastJokeAt<5000)return;
+   const choices=loadingJokes.filter(key=>key!==jokeKey);jokeKey=choices[Math.floor(Math.random()*choices.length)];lastJokeAt=Date.now();
+   setText('.yar-more-message',t(jokeKey));
+ }
+
  function cancelRetry(){clearTimeout(retryTimer);retryTimer=0;}
  function queueRetry(run,networkFailure=false){
    cancelRetry();const delay=networkFailure?Math.min(60000,5000*2**Math.min(retryAttempts-1,4)):[1500,3000,6000,12000,20000][Math.min(retryAttempts-1,4)];
@@ -30,17 +38,17 @@
    const epoch=settings.algorithmEpoch;
    chrome.runtime.sendMessage({type:'nt-learn',title:title.slice(0,500),epoch}).then(result=>{if(result?.ok && settings.algorithmEpoch===epoch){learnedVideos.add(id);if(learnedVideos.size>200)learnedVideos.delete(learnedVideos.values().next().value);}}).catch(()=>{}).finally(()=>{learningPending=false;});
  }
- setInterval(learnFromPlayback,1000);
+ setInterval(()=>{learnFromPlayback();rotateLoadingJoke();},1000);
  let statusKey='',statusValues={};
  const t=(name,values)=>NostalgicI18n.t(settings.language,name,values);
- function status(name,values={}){statusKey=['added','results'].includes(name)?'':name;statusValues=values;const element=host.querySelector('#status');element.hidden=!statusKey;setText('#status',statusKey?t(statusKey,values):'');}
+ function status(name,values={}){statusKey=['added','results','loading','progress','autoRetry'].includes(name)?'':name;statusValues=values;const element=host.querySelector('#status');element.hidden=!statusKey;setText('#status',statusKey?t(statusKey,values):'');}
  function translate(){
    host.lang=settings.language==='es'?'es':'en';
    setText('#shuffle',t('mix'));setText('.search',t('explore'));
    setText('#cutoff-label',t('before',{date:settings.cutoff}));
    setText('#context',settings.discovery===100?t('randomMix'):t('automaticMix')+' · '+t('discoveryContext',{n:settings.discovery}));
    if(statusKey)setText('#status',t(statusKey,statusValues));
-   if(host.querySelector('.yar-more')){setText('.yar-more-label',t('more'));setText('.yar-more button',t(busy?'loadingMore':'more'));setText('.yar-more-message',moreMessage?t(moreMessage):'');host.querySelector('.yar-more button').hidden=Boolean(retryTimer);}
+   if(host.querySelector('.yar-more')){const active=busy||Boolean(retryTimer);setText('.yar-more-label',t(active?'loadingVideos':'more'));setText('.yar-more button',t('more'));setText('.yar-more-message',active&&jokeKey?t(jokeKey):'');host.querySelector('.yar-more button').hidden=active;if(active)rotateLoadingJoke();}
  }
  function node(tag,text,attrs={}){const e=document.createElement(tag);if(text)e.textContent=text;for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
  function setText(selector,value){const e=host.querySelector(selector);if(e.textContent!==value)e.textContent=value;}

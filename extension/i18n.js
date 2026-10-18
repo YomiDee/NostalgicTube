@@ -37,4 +37,14 @@ Object.assign(en,{checkUpdate:'Check for updates',downloadUpdate:'Check GitHub t
  Object.assign(es,{checkUpdate:'Buscar actualizaciones',downloadUpdate:'¡Ve a GitHub para actualizar!',updateCheckUnavailable:'No se pudo comprobar ahora. Inténtalo de nuevo.'});
 Object.assign(en,{sourceRetryWait:'YouTube did not respond. Retrying after a short pause…',autoRetryWait:'Looking for other older videos…'});
  Object.assign(es,{sourceRetryWait:'YouTube no respondió. Reintentando tras una pausa…',autoRetryWait:'Buscando otros vídeos antiguos…'});
+Object.assign(en,{loadingVideos:'Loading more videos',loadingJokeSlop:'Removing AI Slop...',loadingJokeSkynet:'Fighting Skynet...',loadingJokeModem:'Warming up the dial-up modem...',loadingJokeCats:'Looking for the original internet cats...',loadingJokeTimeMachine:'Refuelling the time machine...',loadingJokeRick:'Checking for accidental Rickrolls...'});
+ Object.assign(es,{loadingVideos:'Cargando más vídeos',loadingJokeSlop:'Quitando el relleno de IA...',loadingJokeSkynet:'Luchando contra Skynet...',loadingJokeModem:'Calentando el módem de los 90...',loadingJokeCats:'Buscando a los primeros gatos de internet...',loadingJokeTimeMachine:'Repostando la máquina del tiempo...',loadingJokeRick:'Comprobando si hay Rickrolls sorpresa...'});
+en.loadingJokeHumanity='Recovering faith in humanity...';es.loadingJokeHumanity='Recuperando la fe en la humanidad...';
+en.loadingJokeVhs="Rewinding the VHS tapes...";es.loadingJokeVhs="Rebobinando las cintas VHS...";
+en.loadingJokeBuffer="Buffering like it is 2009...";es.loadingJokeBuffer="Cargando como en 2009...";
+en.loadingJokeRobot="Asking the robots to leave...";es.loadingJokeRobot="Pidiendo a los robots que se marchen...";
+en.loadingJokePixels="Dusting off the pixels...";es.loadingJokePixels="Quitando el polvo a los píxeles...";
+en.loadingJokeTrends="Escaping the trending page...";es.loadingJokeTrends="Escapando de la página de tendencias...";
+en.loadingJokeInternet="Searching the internet before it got weird...";es.loadingJokeInternet="Buscando en internet antes de que se volviera raro...";
+en.loadingJokeNostalgia="Downloading a little nostalgia...";es.loadingJokeNostalgia="Descargando un poquito de nostalgia...";
 })();

@@ -2,6 +2,12 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.22
+
+- Simplify loading to one heading without trailing dots.
+- Add 14 rotating bilingual loading jokes and remove duplicate loading/progress text.
+- Keep the existing search and retry behavior.
+
 ## 4.8.21
 
 - Add horizontal watch-page recommendation cards, larger thumbnails and native-list hiding when replacement cards are ready.
