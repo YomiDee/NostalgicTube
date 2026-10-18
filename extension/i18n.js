@@ -33,4 +33,6 @@ Object.assign(en,{updateUnavailable:'Could not check GitHub. Your installed vers
 Object.assign(en,{downloadUpdate:'Update it!',updateHelp:'View the release on GitHub. For unpacked installations, replace the files in the same folder and reload the extension.'});
  Object.assign(es,{downloadUpdate:'¡Actualízala!',updateHelp:'Ver el release en GitHub. En instalaciones descomprimidas, sustituye los archivos en la misma carpeta y recarga la extensión.'});
 en.checkGithubUpdate='Check GitHub to update!';es.checkGithubUpdate='¡Busca actualizaciones en GitHub!';
+Object.assign(en,{checkUpdate:'Check for updates',downloadUpdate:'Check GitHub to update!',updateCheckUnavailable:'Could not check right now. Please try again.'});
+ Object.assign(es,{checkUpdate:'Buscar actualizaciones',downloadUpdate:'¡Ve a GitHub para actualizar!',updateCheckUnavailable:'No se pudo comprobar ahora. Inténtalo de nuevo.'});
 })();

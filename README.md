@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.11 · Beta · Manifest V3**
+**Current version: 4.8.12 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -33,7 +33,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.11 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.11/NostalgicTube-4.8.11-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.12 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.12/NostalgicTube-4.8.12-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -93,6 +93,6 @@ Code is distributed under the [MIT license](LICENSE); existing notices are prese
 
 [Donate with Ko-fi!](https://ko-fi.com/yomidee)
 
-## Update link
+## Update checks
 
-Click **Check GitHub to update!** in the popup footer to open the project releases page. No automatic version check or download occurs. To update an unpacked installation, replace files in the same folder and reload the extension.
+Press **Check for updates** beside the version. After optional GitHub access is granted, the popup compares the installed version with published releases, including betas. It shows **Up to date!** when current or **Check GitHub to update!** when older. The latter opens the GitHub release page. Checks run only on click; downloads and installation are manual. A failed check can be retried and does not report that you are current.
