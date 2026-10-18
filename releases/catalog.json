@@ -280,5 +280,14 @@
     "asset": "releases/NostalgicTube-4.8.32-Brave.zip",
     "sha256": "0ed35a3604ac22e9f3a5de10260200d795e651fdea22887f8762373e6ad0863b",
     "commit": "8f3da59e9834f88c3712415208db7c58effaa9dc"
+  },
+  {
+    "version": "4.8.33",
+    "summary": "Autosaved eight-language discovery search selector.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.33-Brave.zip",
+    "sha256": "a5b42a0932f292e2fc5959083c93eee15303bbcce7e336b51f28b99a914f2056",
+    "commit": "9f4449d86079701eeb32ef47aaad844e65e3c30b"
   }
 ]
