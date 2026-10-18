@@ -262,5 +262,14 @@
     "asset": "releases/NostalgicTube-4.8.22-Brave.zip",
     "sha256": "5e1db9d6fb5189a200bbb0100541f289672a4652b4ff6cd1df8a3320687d6c85",
     "commit": "86ad8b28deb5c1b6ef04526c27d1939472c72d89"
+  },
+  {
+    "version": "4.8.23",
+    "summary": "28 randomly selected bilingual loading phrases.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.23-Brave.zip",
+    "sha256": "3f1f2eabf7a3f5d336be7c811e1a7bc59bbfd642f9c529a75e2d3c1a8af7ecaa",
+    "commit": "56dc12e2541047d1a446644073c9cb2014c70e4e"
   }
 ]
