@@ -271,5 +271,14 @@
     "asset": "releases/NostalgicTube-4.8.23-Brave.zip",
     "sha256": "3f1f2eabf7a3f5d336be7c811e1a7bc59bbfd642f9c529a75e2d3c1a8af7ecaa",
     "commit": "56dc12e2541047d1a446644073c9cb2014c70e4e"
+  },
+  {
+    "version": "4.8.32",
+    "summary": "Calendar, multilingual interleaved discovery and early native feed hiding.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.32-Brave.zip",
+    "sha256": "0ed35a3604ac22e9f3a5de10260200d795e651fdea22887f8762373e6ad0863b",
+    "commit": "8f3da59e9834f88c3712415208db7c58effaa9dc"
   }
 ]
