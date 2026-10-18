@@ -1,4 +1,4 @@
-# YouTube Antes · Inicio nativo (3.0.0)
+# YouTube Antes · Inicio nativo (0.0.3)
 
 Genera una selección de vídeos antiguos relacionados y los presenta con los componentes de la página de inicio de YouTube: cuadrícula adaptable, tarjetas, miniaturas, avatares, duración, metadatos y menús originales.
 
