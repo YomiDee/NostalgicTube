@@ -18,7 +18,7 @@ Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.3 bet
 
 ## Instalar
 
-1. Descarga el [ZIP 4.8.3](../releases/NostalgicTube-4.8.3-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 4.8.3](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.3/NostalgicTube-4.8.3-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre `brave://extensions` y activa **Modo desarrollador**.
 3. Pulsa **Cargar descomprimida** y elige la carpeta **NostalgicTube** que contiene `manifest.json`.
 4. Recarga YouTube y desactiva copias anteriores para evitar interferencias.

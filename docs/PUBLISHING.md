@@ -1,13 +1,16 @@
-# Publishing plan
+# Publication and future releases
 
-This local repository is ready for a new GitHub repository named NostalgicTube. No remote is configured until an account is authorized and the destination is verified. Never put passwords or access tokens in this repository or the conversation.
+The public repository is https://github.com/yomidee/NostalgicTube.
 
-1. Confirm the GitHub account/repository destination through the authorized connection.
-2. Push main and the recovered version tags. The commits are archive imports, not fabricated original Git history.
-3. Create **draft** releases for the recovered snapshots in releases/catalog.json, attaching their actual ZIP and matching release notes/checksum.
-4. Mark historical snapshots as historical/prerelease, with 4.8.3 the current beta. Do not manufacture releases for documented-only milestones.
-5. Review rendered README/screenshots and publish the prepared release set in the authorized repository.
+Main and all 14 recovered version tags are published. Each recovered snapshot has a public prerelease with its matching ZIP and release notes. Version 4.8.3 is the current beta; six additional milestones are documented without invented source snapshots or tags. Import commits use their real import timestamps rather than fabricated development dates.
 
-GitHub integration authorization must be completed by the account owner. Do not upload browser profiles, scratch folders or the full development conversation. GitHub hosting is separate from Chrome Web Store distribution and does not enable automatic browser-extension updates.
+For future releases:
+
+1. Update the extension version, changelog and release notes.
+2. Run the tests and scripts/package.py, then verify the resulting ZIP.
+3. Commit the reviewed source and create its matching version tag.
+4. Push main and the tag, check GitHub Actions, and publish a release with the verified ZIP.
+
+Keep credentials, browser profiles, local interest data and the full development conversation out of the repository. GitHub hosting is separate from Chrome Web Store distribution and does not enable automatic browser-extension updates.
 
 Official GitHub reference: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository

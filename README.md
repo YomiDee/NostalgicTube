@@ -21,7 +21,7 @@ NostalgicTube generates a feed of videos uploaded before your chosen date, using
 
 ## Install in Brave
 
-1. Download [NostalgicTube 4.8.3 ZIP](releases/NostalgicTube-4.8.3-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.3 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.3/NostalgicTube-4.8.3-Brave.zip) and extract it into a permanent folder.
 2. Open `brave://extensions` and enable **Developer mode**.
 3. Choose **Load unpacked** and select the extracted **NostalgicTube** folder containing `manifest.json`.
 4. Reload YouTube tabs. Disable older copies of this extension to avoid interference.
