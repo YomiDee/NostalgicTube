@@ -1,4 +1,4 @@
-# NostalgicTube 4.2.1
+# NostalgicTube 0.2.1
 
 The **Donate with Ko-fi** icon at the bottom-right of the popup opens https://ko-fi.com/yomidee in a new tab. Its label follows the selected interface language.
 

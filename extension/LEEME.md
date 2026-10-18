@@ -1,4 +1,4 @@
-# NostalgicTube 4.2.1
+# NostalgicTube 0.2.1
 
 Al final de los ajustes, a la derecha, el icono **Donar con Ko-fi** abre https://ko-fi.com/yomidee en otra pestaña. En inglés aparece como **Donate with Ko-fi**.
 
