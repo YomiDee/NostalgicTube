@@ -1,13 +1,41 @@
-/* Topic-independent discovery. This samples YouTube search results, not its entire catalogue. */
+/* Discovery samples search candidates, not the full YouTube catalogue uniformly. */
 (() => {
- const seeds=('music|guitar|piano|drums|dance|concert|street|walking|rain|snow|summer|winter|beach|forest|mountain|river|train|bus|bicycle|motorcycle|skate|surf|football|basketball|chess|school|birthday|wedding|family|garden|cat|dog|bird|horse|fish|cooking|bread|cake|drawing|painting|animation|robot|computer|science|space|moon|game|arcade|festival|village|city|travel|camping|fishing|rehearsal|practice|test|demo|cover|reunion|ensayo|viaje|pueblo|fiesta|lluvia|verano|escuela|playa|comida|baile|carrera|tren|gato|perro|自転車|猫|散歩|空|guitare|voyage|pluie|festa|viaggio').split('|');
- function randomJobs(cutoff,random=Math.random){
-   const choose=a=>a[Math.floor(random()*a.length)],limit=new Date(cutoff+'T00:00:00Z'),first=Date.UTC(2005,0,1),span=Math.max(1,limit.getTime()-first),jobs=[];
-   for(let i=0;i<6;i++){
-     const start=new Date(first+Math.floor(random()*span));start.setUTCHours(0,0,0,0);
-     const end=new Date(Math.min(limit.getTime(),start.getTime()+(30+Math.floor(random()*150))*86400000));
-     const topic=i===5?choose(['IMG','DSC','MOV','MVI'])+' '+String(1000+Math.floor(random()*9000)):choose(seeds);
-     jobs.push({topic,kind:'random',after:start.toISOString().slice(0,10),cutoff:end.toISOString().slice(0,10)});
+ const groups=NostalgicDiscoveryTerms,history=new Set(),historyLimit=256;
+ const simple=groups.flatMap(g=>g.terms.map(topic=>({topic,language:g.language,category:g.category,source:'simple'})));
+ const phrases=groups.flatMap(g=>g.terms.flatMap(term=>g.modifiers.map(modifier=>({topic:term+' '+modifier,language:g.language,category:g.category,source:'phrase'}))));
+ const sample=random=>Math.max(0,Math.min(1-Number.EPSILON,Number(random())||0));
+ const choose=(list,random)=>list[Math.floor(sample(random)*list.length)];
+ const normalize=topic=>topic.normalize('NFKC').toLowerCase();
+ function remember(topic){const key=normalize(topic);if(history.has(key))return false;history.add(key);if(history.size>historyLimit)history.delete(history.values().next().value);return true;}
+ function fromPool(pool,random,categories=new Set(),languages=new Set()){
+   const start=Math.floor(sample(random)*pool.length);
+   for(let pass=0;pass<3;pass++)for(let i=0;i<pool.length;i++){
+     const entry=pool[(start+i)%pool.length];if(pass<2&&categories.has(entry.category))continue;if(pass===0&&languages.has(entry.language))continue;
+     if(remember(entry.topic))return entry;
+   }
+   return pool[start];
+ }
+ let cameraCursor=0;
+ function camera(random){
+   const prefixes=['IMG','DSC','MOV','MVI','VID','PICT'],joiners=[' ','_',''];
+   for(let attempt=0;attempt<258;attempt++){
+     const prefix=choose(prefixes,random),joiner=choose(joiners,random),number=attempt===0?Math.floor(sample(random)*10000):(cameraCursor++%10000);
+     const topic=prefix+joiner+String(number).padStart(4,'0');if(remember(topic))return {topic,language:null,category:'camera',source:'camera'};
+   }
+   return fromPool(simple,random);
+ }
+ function randomJobs(cutoff,random=Math.random,count=6){
+   const limit=new Date(cutoff+'T00:00:00Z'),first=Date.UTC(2005,0,1),span=limit.getTime()-first;
+   if(!Number.isFinite(span)||span<=0)throw new Error('Invalid discovery cutoff');
+   const strategies=['simple','phrase','simple','phrase','phrase','camera'];
+   for(let i=strategies.length-1;i>0;i--){const j=Math.floor(sample(random)*(i+1));[strategies[i],strategies[j]]=[strategies[j],strategies[i]];}
+   const jobs=[],categories=new Set(),languages=new Set();
+   for(let i=0;i<Math.min(6,Math.max(0,count));i++){
+     const strategy=strategies[i],entry=strategy==='camera'?camera(random):fromPool(strategy==='simple'?simple:phrases,random,categories,languages);
+     categories.add(entry.category);if(entry.language)languages.add(entry.language);
+     const start=new Date(first+Math.floor(sample(random)*span));start.setUTCHours(0,0,0,0);
+     const days=choose([30,90,180,365,1095],random),end=new Date(Math.min(limit.getTime(),start.getTime()+days*86400000));
+     jobs.push({...entry,kind:'random',after:start.toISOString().slice(0,10),cutoff:end.toISOString().slice(0,10)});
    }
    return jobs;
  }
@@ -18,5 +46,5 @@
    const start=new Date(Date.UTC(year,month,1)),end=new Date(Date.UTC(year+2+Math.floor(random()*4),month,1));
    return {topic,kind:'interest',after:start.toISOString().slice(0,10),cutoff:new Date(Math.min(limit.getTime(),end.getTime())).toISOString().slice(0,10)};
  }
- globalThis.NostalgicRandom={randomJobs,relatedJob};
+ globalThis.NostalgicRandom={randomJobs,relatedJob,stats:{languages:[...new Set(groups.map(g=>g.language))],baseTerms:simple.length,phraseCombinations:phrases.length,historyLimit}};
 })();

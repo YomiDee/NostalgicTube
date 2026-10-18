@@ -37,8 +37,10 @@ html[dark] #yar-panel button:hover,html[dark] #yar-panel summary:hover,html[dark
 html[dark] #yar-panel .nt-watch-channel,html[dark] #yar-panel .nt-watch-meta{color:#aaa}
 
 /* Hide only YouTube's original watch recommendations once our cards are available. */
-html[data-yar-watch="true"] ytd-watch-flexy #secondary #related,
-html[data-yar-watch="true"] ytd-watch-flexy #secondary-inner > ytd-watch-next-secondary-results-renderer{display:none!important}
+html[data-yar-watch="true"] #secondary-inner #related,
+html[data-yar-watch="true"] #secondary-inner ytd-watch-next-secondary-results-renderer,
+html[data-yar-watch="true"] #secondary-inner yt-related-chip-cloud-renderer,
+html[data-yar-watch="true"] #secondary-inner ytd-related-chip-cloud-renderer{display:none!important}
 
 #yar-panel #context{text-align:left;margin-right:auto}
 

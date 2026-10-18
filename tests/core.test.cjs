@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),context=vm.createContext({Date,Math,console});
-for(const file of ['dates.js','search.js','topics.js','random.js','i18n.js'])vm.runInContext(fs.readFileSync(path.join(root,'extension',file),'utf8'),context);
+for(const file of ['dates.js','search.js','topics.js','discovery-terms.js','random.js','i18n.js'])vm.runInContext(fs.readFileSync(path.join(root,'extension',file),'utf8'),context);
 test('exclusive cutoff and ambiguous relative ages',()=>{
  const c=context.YouTubeAntes.classify,now=new Date(2026,9,18);
  assert.equal(c('2021-12-31','2022-01-01',now),'old');
@@ -66,4 +66,9 @@ test('update check compares numeric versions and derives trusted release pages',
  assert.equal(u.select([{...release('9.0.0'),draft:true}]),null);
  assert.equal(u.select([{tag_name:'not-a-version',assets:[]}]),null);
  assert.throws(()=>u.select({}));
+});
+
+test('compact YouTube ages are parsed without weakening ambiguous cutoff exclusion',()=>{
+ const now=new Date(2026,9,18),c=context.YouTubeAntes.classify;
+ assert.equal(c('9y ago','2022-01-01',now),'old');assert.equal(c('4y ago','2022-01-01',now),'unknown');assert.equal(c('2mo ago','2022-01-01',now),'new');assert.equal(c('3d ago','2022-01-01',now),'new');assert.equal(c('hace 21 a','2022-01-01',now),'old');
 });

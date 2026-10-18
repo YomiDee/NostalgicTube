@@ -14,10 +14,10 @@ const rows=(prefix,n)=>Array.from({length:n},(_,i)=>({id:prefix+i,published:'old
 const ok=data=>({ok:true,text:async()=>JSON.stringify(data)});
 const slow=signal=>new Promise((resolve,reject)=>signal.addEventListener('abort',()=>{const e=new Error('aborted');e.name='AbortError';reject(e);},{once:true}));
 test('enough valid videos stop remaining requests, preserving date filtering',async()=>{
- const h=harness(async()=>ok([...rows('a',24),{id:'new',published:'new'}]));try{await h.api.run([{topic:'one',kind:'random'},{topic:'two',kind:'random'},{topic:'three',kind:'random'}]);assert.equal(h.api.state().count,24);assert.equal(h.requests.length,2);assert(h.delays.includes(8000));assert(h.delays.includes(18000));}finally{h.stop();}
+ const h=harness(async()=>ok([...rows('a',24),{id:'new',published:'new'}]));try{await h.api.run([{topic:'one',kind:'interest'},{topic:'two',kind:'interest'},{topic:'three',kind:'interest'}]);assert.equal(h.api.state().count,24);assert.equal(h.requests.length,2);assert(h.delays.includes(8000));assert(h.delays.includes(18000));}finally{h.stop();}
 });
 test('a stalled source times out and frees the worker for another search',async()=>{
- const h=harness(async(url,{signal})=>url.includes('slow')?slow(signal):ok(rows(url,24)));try{await h.api.run([{topic:'slow-one',kind:'random'},{topic:'slow-two',kind:'random'},{topic:'other',kind:'random'}]);assert.equal(h.api.state().count,24);assert(h.requests.some(u=>u.includes('other')));}finally{h.stop();}
+ const h=harness(async(url,{signal})=>url.includes('slow')?slow(signal):ok(rows(url,24)));try{await h.api.run([{topic:'slow-one',kind:'interest'},{topic:'slow-two',kind:'interest'},{topic:'other',kind:'interest'}]);assert.equal(h.api.state().count,24);assert(h.requests.some(u=>u.includes('other')));}finally{h.stop();}
 });
 test('empty results retry promptly; rate limiting keeps a long backoff',async()=>{
  const h=harness(async()=>ok([]));try{await h.api.run([{topic:'empty',kind:'random'}]);assert.equal(h.api.state().message,'autoRetryWait');assert(h.delays.includes(1500));}finally{h.stop();}
@@ -34,4 +34,9 @@ test('loading has one heading, rotates distinct jokes, and hides duplicate top s
    release();await pending;
    assert.equal(h.node('#status').hidden,true);assert.equal(h.node('.yar-more-message').textContent,'');assert.equal(h.node('.yar-more-label').textContent,'more');
  }finally{release();await new Promise(resolve=>setImmediate(resolve));h.stop();}
+});
+
+test('pure random keeps at most two videos from each query and waits for diverse sources',async()=>{
+ const h=harness(async url=>ok(rows(url,20)));
+ try{await h.api.run(['flute','dog','wood','train','party','rain'].map(topic=>({topic,kind:'random'})));assert.equal(h.requests.length,6);assert.equal(h.api.state().count,12);}finally{h.stop();}
 });

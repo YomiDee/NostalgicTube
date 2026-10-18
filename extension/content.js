@@ -55,7 +55,7 @@
  function recordSearch(){if(!ready || !settings.enabled || !settings.remember || location.pathname!=='/results' || lastRecorded===location.href)return;lastRecorded=location.href;const topic=clean(new URLSearchParams(location.search).get('search_query')).slice(0,80);if(topic)chrome.runtime.sendMessage({type:'nt-add',topic,automatic:true,epoch:settings.algorithmEpoch}).catch(()=>{});}
  function mount(){
    const home=location.pathname==='/',watch=location.pathname==='/watch';
-   if(!watch||!settings.enabled)document.documentElement.dataset.yarWatch='false';
+   document.documentElement.dataset.yarWatch=String(Boolean(watch&&settings.enabled));
    const anchor=home?document.querySelector('ytd-browse[page-subtype="home"]'):watch?document.querySelector('#secondary-inner'):null;
    document.documentElement.dataset.yarHome=String(Boolean(home && settings.enabled && settings.replaceHome && anchor));
    if(!settings.enabled || !anchor){host?.remove();return false;}
@@ -75,13 +75,13 @@
    const place=home?'home':'watch';if(host.dataset.place&&host.dataset.place!==place)host.querySelector('.yar-results').replaceChildren();host.dataset.place=place;
    translate();return true;
  }
- function render(batch=[],append=false){if(host.dataset.place==='watch'){NostalgicWatchCards.render(host.querySelector('.yar-results'),batch,append);document.documentElement.dataset.yarWatch=String(Boolean(settings.enabled&&host.querySelector('.yar-results').children.length));return;}host.dataset.renderMode=append?'append':'replace';host.querySelector('#yar-payload').textContent=JSON.stringify(batch.map(v=>v.renderer));document.dispatchEvent(new Event('yar-render-native'));}
+ function render(batch=[],append=false){if(host.dataset.place==='watch'){NostalgicWatchCards.render(host.querySelector('.yar-results'),batch,append);return;}host.dataset.renderMode=append?'append':'replace';host.querySelector('#yar-payload').textContent=JSON.stringify(batch.map(v=>v.renderer));document.dispatchEvent(new Event('yar-render-native'));}
  function maybeMore(){if(!busy && canLoadMore && !autoPaused && host?.isConnected && settings.enabled){const r=host.querySelector('.yar-more').getBoundingClientRect();if(r.top<innerHeight+600 && r.bottom>0)load(true);}}
  function loading(value){busy=value;const more=host.querySelector('.yar-more');more.dataset.loading=String(value);more.setAttribute('aria-busy',String(value));more.querySelector('button').disabled=value;translate();}
  function plan(batchPage=0){
    if(settings.discovery===100)return NostalgicRandom.randomJobs(settings.cutoff);
    const topics=shuffle(settings.interests||[]).slice(0,4);
-   const exploration=settings.discovery>0?NostalgicRandom.randomJobs(settings.cutoff).slice(0,topics.length?2:4).map(job=>({...job,kind:'discovery'})):[];
+   const exploration=settings.discovery>0?NostalgicRandom.randomJobs(settings.cutoff,Math.random,topics.length?2:4).map(job=>({...job,kind:'discovery'})):[];
    return [...topics.map(topic=>NostalgicRandom.relatedJob(topic,settings.cutoff)),...exploration];
  }
  async function fetchPool(job,signal){
@@ -121,7 +121,7 @@
            const list=await fetchPool(job,signal);if(run!==sequence)return;
            const collected=new Set([...pools.flat(),...explore].map(v=>v.id));
            const fresh=list.filter(v=>!seen.has(v.id)&&!collected.has(v.id)&&v.id!==new URLSearchParams(location.search).get('v'));
-           if(job.kind==='interest')pools.push(fresh);else explore.push(...fresh);
+           if(job.kind==='interest')pools.push(fresh);else{const cap=settings.discovery===100||!settings.interests.length?2:Math.max(2,Math.ceil(24*settings.discovery/100/Math.max(1,jobs.filter(j=>j.kind!=='interest').length)));explore.push(...fresh.slice(0,cap).map(v=>({...v,discoverySource:job.topic})));}
            if(enough()){cursor=jobs.length;controller.abort();}
          }catch(e){
            if(!signal.aborted){failed++;if(e.status===429||e.status===403){cursor=jobs.length;retryAttempts=Math.max(retryAttempts,4);}}

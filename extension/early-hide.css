@@ -1,0 +1,11 @@
+/* Injected before first paint; off restores native recommendations. */
+html:not([data-nt-early]) ytd-browse[page-subtype="home"] ytd-rich-grid-renderer:not([data-yar-native]),
+html[data-nt-early="home"] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer:not([data-yar-native]),
+html:not([data-nt-early]) #secondary-inner #related,
+html:not([data-nt-early]) #secondary-inner ytd-watch-next-secondary-results-renderer,
+html:not([data-nt-early]) #secondary-inner yt-related-chip-cloud-renderer,
+html:not([data-nt-early]) #secondary-inner ytd-related-chip-cloud-renderer,
+html[data-nt-early="watch"] #secondary-inner #related,
+html[data-nt-early="watch"] #secondary-inner ytd-watch-next-secondary-results-renderer,
+html[data-nt-early="watch"] #secondary-inner yt-related-chip-cloud-renderer,
+html[data-nt-early="watch"] #secondary-inner ytd-related-chip-cloud-renderer{display:none!important}

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NostalgicTube",
-  "version": "4.8.23",
+  "version": "4.8.32",
   "description": "Your saved interests and discoveries from another era, in YouTube's native home feed.",
   "permissions": [
     "storage"
@@ -29,6 +29,18 @@
         "https://www.youtube.com/*"
       ],
       "js": [
+        "early-hide.js"
+      ],
+      "css": [
+        "early-hide.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
         "native.js"
       ],
       "world": "MAIN",
@@ -50,6 +62,7 @@
       "js": [
         "dates.js",
         "search.js",
+        "discovery-terms.js",
         "random.js",
         "i18n.js",
         "watch-cards.js",

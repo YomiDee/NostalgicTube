@@ -4,3 +4,20 @@
 .extension-version{color:#909090;font-size:10px;white-space:nowrap}
 
 .update-controls{display:flex;align-items:center;gap:6px;min-width:0}.update-button{font-size:10px;color:#aaa;border:0;background:transparent;padding:0;cursor:pointer;max-width:180px;text-align:left;white-space:nowrap;white-space:nowrap}.update-button:hover{color:#fff;text-decoration:underline}.update-button:disabled{cursor:wait}
+
+body{position:relative}
+.date-picker{position:relative;margin:5px 0 12px}body:has(#date-calendar:not([hidden])){min-height:550px}
+#cutoff-display{display:flex;align-items:center;justify-content:space-between;width:100%;height:38px;background:#1d1d1f;border:1px solid #39393d;border-radius:10px;padding:0 12px;color:#f4f4f4;cursor:pointer;text-align:left;font:500 13px Arial,sans-serif}
+#cutoff-display:hover,#cutoff-display[aria-expanded=true]{border-color:#e52a35;background:#242426}
+#cutoff-display svg{color:#b9b9bd}
+#date-calendar{position:absolute;z-index:10;top:calc(100% + 6px);left:0;right:0;padding:12px;background:#1b1b1e;border:1px solid #3b3b40;border-radius:14px;box-shadow:0 14px 40px #000b;color:#eee}
+.calendar-header{display:flex;gap:6px;align-items:center;margin-bottom:12px}
+.calendar-header button{width:28px;height:30px;flex-shrink:0;border:0;border-radius:8px;background:#2b2b30;color:#ddd;font-size:23px;cursor:pointer}
+.calendar-header button:disabled{opacity:.3;cursor:default}
+.calendar-header select{min-width:0;border:0;border-radius:7px;background:#27272c;color:#eee;padding:7px 5px;font:600 12px Arial,sans-serif}
+.calendar-header select:first-of-type{flex:1}
+.calendar-weekdays,.calendar-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.calendar-weekdays{color:#8d8d98;font-size:10px;margin-bottom:6px;text-transform:uppercase;line-height:20px}
+.calendar-day{height:30px;padding:0;border:0;border-radius:8px;background:transparent;color:#eee;font:400 12px Arial,sans-serif;cursor:pointer}
+.calendar-day:hover{background:#35353d}
+.calendar-day[aria-pressed=true]{background:#e32330;color:white;font-weight:700}

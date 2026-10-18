@@ -37,10 +37,19 @@
  function viewCount(s){s=(s||'').toLowerCase().replace(/\u00a0/g,' ');if(/hace|ago/.test(s))return 0;const m=s.match(/([\d.,]+)\s*(mil millones|millones|million|billion|mil|m|k|b)\b/);if(m)return Number(m[1].replace(',','.'))*(/billion|mil millones|^b$/.test(m[2])?1e9:/million|^m$/.test(m[2])?1e6:1e3);return /visualiz|views|vistas/.test(s)?Number(s.replace(/[^\d]/g,''))||0:0;}
  function shuffle(list,random=Math.random){const a=[...list];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
  function mix(pools,discovery,percent=25,limit=24,random=Math.random){
-   const lanes=shuffle(pools.map(p=>shuffle(p,random)),random),explore=shuffle(discovery,random),seen=new Set(),out=[];let cursor=0,discoveries=0;
-   function take(lane,kind){while(lane.length){const v=lane.shift();if(!seen.has(v.id)){seen.add(v.id);out.push({...v,origin:kind});return true;}}return false;}
-   while(out.length<limit){const target=Math.round((out.length+1)*percent/100);if(discoveries<target && take(explore,'discovery')){discoveries++;continue;}let picked=false;for(let n=0;n<lanes.length;n++){const lane=lanes[cursor++%lanes.length];if(take(lane,'interest')){picked=true;break;}}if(!picked && !take(explore,'discovery'))break;}
+   const lanes=shuffle(pools.map(p=>shuffle(p,random)),random),groups=new Map(),seen=new Set(),out=[];let cursor=0,exploreCursor=0,discoveries=0;
+   for(const video of discovery){const key=video.discoverySource||video.id;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(video);}
+   const explore=shuffle([...groups.values()].map(group=>shuffle(group,random)),random);
+   function take(lane,kind){while(lane.length){const video=lane.shift();if(!seen.has(video.id)){seen.add(video.id);out.push({...video,origin:kind});return true;}}return false;}
+   function takeDiscovery(){for(let i=0;i<explore.length;i++){if(take(explore[exploreCursor++%explore.length],'discovery'))return true;}return false;}
+   while(out.length<limit){
+     const target=Math.round((out.length+1)*percent/100);
+     if(discoveries<target&&takeDiscovery()){discoveries++;continue;}
+     let picked=false;for(let i=0;i<lanes.length;i++){if(take(lanes[cursor++%lanes.length],'interest')){picked=true;break;}}
+     if(!picked){if(!takeDiscovery())break;discoveries++;}
+   }
    return out;
  }
+
  globalThis.RelatedBefore={defaults,clean,extract,videos,query,viewCount,shuffle,mix};
 })();

@@ -4,7 +4,7 @@ let language='en',statusKey='';
 const t=(key,values)=>NostalgicI18n.t(language,key,values);
 function notify(key){statusKey=key;status.textContent=t(key);}
 function showRandomHint(){const value=document.getElementById('discovery').value;document.getElementById('random-hint').hidden=value!=='100';document.getElementById('discovery-value').textContent=value+'%';document.getElementById('discovery').setAttribute('aria-valuetext',value+'%');}
-function translate(){document.documentElement.lang=language;document.getElementById('language').setAttribute('aria-checked',String(language==='es'));document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));if(statusKey)notify(statusKey);renderUpdate();}
+function translate(){document.documentElement.lang=language;document.getElementById('language').setAttribute('aria-checked',String(language==='es'));document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));if(statusKey)notify(statusKey);renderUpdate();globalThis.NostalgicCalendar?.refresh(language);}
 const popupDefaults=Object.fromEntries([...fields,'language'].map(key=>[key,RelatedBefore.defaults[key]]));
 chrome.storage.local.get(popupDefaults).then(s=>{language=s.language==='es'?'es':'en';for(const name of fields){const e=document.getElementById(name);if(e.type==='checkbox')e.checked=s[name];else e.value=s[name];}translate();showRandomHint();});
 document.getElementById('discovery').oninput=showRandomHint;
