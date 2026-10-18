@@ -8,16 +8,22 @@
    const anchor=home?document.querySelector('ytd-browse[page-subtype="home"]'):watch?document.querySelector('#secondary-inner'):null;
    document.documentElement.dataset.yarHome=String(Boolean(home && settings.enabled && settings.replaceHome && anchor));
    if(!settings.enabled || !anchor){host?.remove();return false;}
-   if(!host){host=node('section','',{id:'yar-panel'});root=host.attachShadow({mode:'open'});root.innerHTML=`<style>
-   :host{font:14px system-ui;color:var(--yt-spec-text-primary,#eee)}*{box-sizing:border-box}section{background:var(--yt-spec-base-background,#171717);border:1px solid #6666;border-radius:14px;padding:18px}h2{font-size:21px;margin:0 0 8px}p{line-height:1.5;opacity:.8}form{display:flex;flex-wrap:wrap;gap:8px}input{flex:1;min-width:140px;background:transparent;color:inherit;border:1px solid #888;border-radius:8px;padding:10px;font:inherit}button,.search{background:#84dabb;color:#10251e;border:0;border-radius:8px;padding:10px;cursor:pointer;font:inherit}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:16px}.card{display:block}.card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:9px}.card strong{display:block;margin:7px 0;line-height:1.4}.card small{display:block;opacity:.7}.search{display:inline-block;margin-top:12px}#status{min-height:22px}button:disabled{opacity:.5;cursor:wait}</style>
-   <section><h2>Antiguos relacionados</h2><p id="context"></p><form><input aria-label="Tema relacionado" maxlength="160" placeholder="Abre un vídeo o escribe un tema" required><button>Buscar</button><button type="button" id="shuffle">Mezclar</button></form><p id="status" role="status" aria-live="polite"></p><div class="grid"></div><a class="search" target="_blank" rel="noopener">Ver búsqueda completa en YouTube ↗</a><p>Basado en el título del vídeo y búsquedas anteriores a la fecha elegida. Las fechas relativas son aproximadas.</p></section>`;
+   if(!host){host=node('section','',{id:'yar-panel','aria-label':'Vídeos antiguos relacionados'});root=host;
+     const toolbar=node('div','',{class:'yar-toolbar'}),details=node('details'),form=node('form');
+     form.append(node('input','',{'aria-label':'Tema relacionado',maxlength:'160',placeholder:'Abre un vídeo o escribe un tema',required:''}),node('button','Buscar',{type:'submit'}));
+     details.append(node('summary','Cambiar tema'),form);
+     toolbar.append(node('span','Relacionados',{class:'yar-chip'}),node('span','',{class:'yar-chip',id:'cutoff-label'}),node('button','Mezclar',{type:'button',id:'shuffle'}),details,node('a','Ver más ↗',{class:'search',target:'_blank',rel:'noopener','aria-label':'Abrir búsqueda completa en YouTube'}),node('span','',{id:'context'}));
+     root.append(toolbar,node('p','',{id:'status',role:'status','aria-live':'polite'}),node('div','',{class:'yar-results'}),node('div','',{id:'yar-payload',hidden:''}));
      root.querySelector('form').onsubmit=e=>{e.preventDefault();topic=clean(root.querySelector('input').value);if(topic){key='';load(true);}};
      root.querySelector('#shuffle').onclick=()=>{items.sort(()=>Math.random()-.5);render();};
+     host.addEventListener('yar-native-ready',()=>{if(host.dataset.nativeState==='error')root.querySelector('#status').textContent='No se han podido cargar las tarjetas de YouTube. Usa «Ver más» para abrir los resultados.';});
    }
    if(host.parentNode!==anchor)anchor.prepend(host);
+   host.dataset.place=home?'home':'watch';
+   const label='Antes de '+settings.cutoff;if(root.querySelector('#cutoff-label').textContent!==label)root.querySelector('#cutoff-label').textContent=label;
    return true;
  }
- function render(){const grid=root.querySelector('.grid');grid.replaceChildren();for(const v of items.slice(0,24)){const a=node('a','',{class:'card',href:'/watch?v='+v.id});const img=node('img','',{src:'https://i.ytimg.com/vi/'+v.id+'/mqdefault.jpg',alt:'',loading:'lazy'});a.append(img,node('strong',v.title),node('small',[v.channel,v.published].filter(Boolean).join(' · ')));grid.append(a);}}
+ function render(){root.querySelector('#yar-payload').textContent=JSON.stringify(items.slice(0,24).map(v=>v.renderer));document.dispatchEvent(new Event('yar-render-native'));}
  async function load(force=false) {
    if(!topic || !root)return;
    const next=topic+'|'+settings.cutoff+'|'+(new URLSearchParams(location.search).get('v')||'');if(!force && next===key)return;key=next;

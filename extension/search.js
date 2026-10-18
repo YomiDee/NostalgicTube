@@ -17,12 +17,12 @@
    function walk(node) {
      if(!node || typeof node!=='object')return;
      const v=node.videoRenderer;
-     if(v && /^[\w-]{11}$/.test(v.videoId||'')) found.set(v.videoId,{id:v.videoId,title:text(v.title),channel:text(v.ownerText||v.longBylineText),published:text(v.publishedTimeText)});
+     if(v && /^[\w-]{11}$/.test(v.videoId||'')) found.set(v.videoId,{id:v.videoId,title:text(v.title),channel:text(v.ownerText||v.longBylineText),published:text(v.publishedTimeText),renderer:{videoRenderer:v}});
      const l=node.lockupViewModel;
      if(l && /^[\w-]{11}$/.test(l.contentId||'') && (!l.contentType || l.contentType==='LOCKUP_CONTENT_TYPE_VIDEO')) {
        const meta=l.metadata?.lockupMetadataViewModel;
        const parts=(meta?.metadata?.contentMetadataViewModel?.metadataRows||[]).flatMap(r=>(r.metadataParts||[]).map(p=>text(p.text)));
-       found.set(l.contentId,{id:l.contentId,title:text(meta?.title),channel:parts[0]||'',published:parts.find(p=>YouTubeAntes.parse(p))||''});
+       found.set(l.contentId,{id:l.contentId,title:text(meta?.title),channel:parts[0]||'',published:parts.find(p=>YouTubeAntes.parse(p))||'',renderer:{lockupViewModel:l}});
      }
      // No incorporar publicidad ni carruseles de Shorts ni recomendaciones ajenas a la búsqueda.
      for(const [key,value] of Object.entries(node)) if(!/adSlot|promoted|reelShelf|shorts/i.test(key)) {if(Array.isArray(value))value.forEach(walk);else walk(value);}
