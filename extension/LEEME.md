@@ -1,4 +1,4 @@
-# NostalgicTube 4.3.3
+# NostalgicTube 0.3.3
 
 Incluye un icono cuadrado rojo con esquinas ampliamente redondeadas y curvas suaves, con una **N blanca**, en tamaños 16, 32, 48 y 128 píxeles para la barra y el administrador de extensiones de Brave.
 
