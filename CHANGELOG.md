@@ -2,6 +2,12 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 0.8.50
+
+- Remove the More videos button and duplicate idle heading; retain automatic scroll loading.
+- Center the home no-topic notice and its automatic-mix label.
+- Keep the 0.8.37 generation method and other features unchanged.
+
 ## 0.8.37
 
 - Set the optional autoplay countdown to 10 seconds.

@@ -32,7 +32,7 @@ test('loading has one heading, rotates distinct jokes, and hides duplicate top s
    assert.equal(h.node('.yar-more-label').textContent,'loadingVideos');assert.equal(h.node('#status').hidden,true);
    const first=h.api.joke(),second=h.api.joke();assert.notEqual(first,second);assert.match(second,/^loadingJoke/);
    release();await pending;
-   assert.equal(h.node('#status').hidden,true);assert.equal(h.node('.yar-more-message').textContent,'');assert.equal(h.node('.yar-more-label').textContent,'more');
+   assert.equal(h.node('#status').hidden,true);assert.equal(h.node('.yar-more-message').textContent,'');assert.equal(h.node('.yar-more-label').textContent,'');assert.equal(h.node('.yar-more-label').hidden,true);
  }finally{release();await new Promise(resolve=>setImmediate(resolve));h.stop();}
 });
 
