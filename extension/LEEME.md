@@ -1,74 +1,55 @@
-# NostalgicTube 4.3.3
+# NostalgicTube 4.4
 
-Incluye un icono cuadrado rojo con esquinas ampliamente redondeadas y curvas suaves, con una **N blanca**, en tamaños 16, 32, 48 y 128 píxeles para la barra y el administrador de extensiones de Brave.
+Un inicio nostálgico con tarjetas nativas de YouTube, aprendizaje automático de intereses, descubrimientos de la época y carga progresiva al bajar.
 
-## Aprender de los vídeos que ves
+## Instalación y actualización
 
-La opción **Aprender temas de los vídeos que veo** está activada por defecto, además del aprendizaje por búsquedas. Al abrir un vídeo, espera **12 segundos de reproducción efectiva con la pestaña visible**. Pausas, saltos grandes de reproducción y anuncios detectados no cuentan. Un clic rápido seguido de salir del vídeo no añade un tema.
+En Brave, extrae el ZIP en una carpeta permanente. En `brave://extensions`, activa **Modo desarrollador**, pulsa **Cargar descomprimida** y selecciona la carpeta **NostalgicTube** que contiene `manifest.json`. Desactiva versiones anteriores para evitar interferencias.
 
-Un algoritmo local resume el título en una palabra o etiqueta corta: reconoce nombres y categorías conocidas (Minecraft, Fortnite, Python, Astronomía, Cocina…), elimina artículos y expresiones genéricas en español e inglés y puntúa las palabras restantes por presencia, posición y coincidencia con intereses ya guardados. Por ejemplo, «Sobreviví 100 días en Minecraft» añade **Minecraft**, y un documental sobre galaxias puede añadir **Astronomía**.
+Si ya la tienes instalada y quieres conservar el aprendizaje, sustituye los archivos de su carpeta actual, pulsa **Recargar** en su ficha y recarga las pestañas de YouTube. No desinstales la extensión antes de actualizar, porque eso elimina sus datos.
 
-No utiliza un modelo de IA ni envía el título a un servicio de análisis. Es una heurística: puede elegir una palabra poco útil y no garantiza entender todos los títulos. Si no encuentra una candidata, no añade nada. Puedes borrar las etiquetas desde **Mis intereses** o desactivar el aprendizaje por vídeos sin desactivar el de búsquedas.
+## Aprendizaje sin edición manual
 
-Los temas aprendidos tienen el mismo peso que los demás. Se mantiene la variedad y el porcentaje de descubrimientos. El mismo vídeo no se procesa repetidamente en una pestaña (se recuerdan hasta 200 identificadores solo en memoria), y los temas repetidos se deduplican al guardar. No se guarda una lista persistente de vídeos vistos ni los títulos completos: solo los intereses extraídos.
+Los intereses ya no se muestran ni se pueden añadir, editar o eliminar individualmente desde los ajustes o el panel de YouTube. Se gestionan automáticamente a partir de las búsquedas y los vídeos vistos. El botón **Clear all interests / Borrar todos mis intereses** sigue disponible para reiniciar el algoritmo. Conserva tus ajustes, idioma y fecha, pero vacía los temas y reinicia el aprendizaje en las pestañas abiertas; una operación anterior pendiente no puede restaurar los temas borrados.
 
-Las pruebas de 4.3 verificaron la extracción de temas en títulos españoles e ingleses, el descarte de un título genérico y, con la extensión instalada y reproducción simulada, que no se aprende en los primeros 5 segundos, que se aprende tras superar el umbral, que no se vuelve a añadir el mismo tema continuamente y que desactivar el aprendizaje impide nuevas altas. La reproducción de esas pruebas fue simulada, no una reproducción real de YouTube.
+El límite es **10.000 temas distintos**, no 40. Si se alcanza, se descartan los más antiguos al añadir nuevos. El aprendizaje previo se conserva al actualizar en la misma carpeta. No es almacenamiento infinito: utiliza el almacenamiento local de Brave, sin añadir permisos.
 
-Al final de los ajustes, a la derecha, el icono **Donar con Ko-fi** abre https://ko-fi.com/yomidee en otra pestaña. En inglés aparece como **Donate with Ko-fi**.
+**Aprender de mis búsquedas en YouTube** incorpora las consultas nuevas, sin los operadores de fecha. **Aprender temas de los vídeos que veo** extrae una palabra o etiqueta tras 12 segundos de reproducción efectiva con la pestaña visible. Pausas, anuncios detectados y grandes saltos de reproducción no cuentan. Son opciones independientes y se pueden desactivar.
 
-La interfaz se inicia en **inglés**. En el icono de la extensión hay un **interruptor deslizante English / Español**: un clic cambia entre ambos idiomas. También funciona con la barra espaciadora o Intro cuando tiene el foco. La elección se guarda automáticamente y se aplica a las pestañas abiertas, sin regenerar los vídeos. Traduce los controles, mensajes y etiquetas de accesibilidad de NostalgicTube; los títulos de vídeos y la interfaz original de YouTube siguen su idioma propio.
+El análisis del título se calcula localmente, con palabras vacías en español e inglés, nombres conocidos y puntuación de palabras. «Sobreviví 100 días en Minecraft» puede añadir Minecraft y un documental sobre galaxias, Astronomía. Es una heurística, no un modelo de IA: puede interpretar mal un título. No procesa repetidamente el mismo vídeo en una pestaña; recuerda hasta 200 identificadores en memoria temporal. No guarda títulos completos ni una lista persistente de reproducciones.
 
-Un inicio de YouTube con vídeos antiguos que mezcla tus intereses acumulados con descubrimientos de aquella época. Mantiene las tarjetas, avatares, miniaturas, duraciones y menús nativos de YouTube y sus temas claro/oscuro.
+## Búsquedas con fecha automática
 
-## Instalar en Brave
+Con NostalgicTube activado, las búsquedas en `https://www.youtube.com/results` incorporan automáticamente `before:AAAA-MM-DD`, usando la fecha elegida en los ajustes. Predeterminada: **before:2022-01-01**, para vídeos anteriores a 2022.
 
-1. Desactiva las extensiones anteriores de YouTube Antes en `brave://extensions`.
-2. Extrae el ZIP completo en una carpeta permanente.
-3. Abre `brave://extensions`, activa **Modo desarrollador** y pulsa **Cargar descomprimida**.
-4. Selecciona la carpeta **NostalgicTube** que contiene `manifest.json`.
-5. Recarga las pestañas de YouTube. Haz varias búsquedas de tus temas favoritos y vuelve al inicio.
+Funciona al pulsar Enter en el buscador de YouTube, en la navegación interna y al llegar a una búsqueda de YouTube desde una URL escrita en la barra de direcciones, un marcador o un buscador personalizado del navegador. Sustituye operadores `before:` anteriores para usar el límite actual, sin duplicarlos. Si cambias la fecha mientras estás en resultados, actualiza esa búsqueda. Al desactivar NostalgicTube deja de añadir el operador.
 
-También puedes añadir intereses desde el icono de NostalgicTube o desde **Añadir interés** en el inicio, sin tener que buscarlos primero. No se importan automáticamente las preferencias de las extensiones anteriores.
+No modifica Google, Brave Search ni buscadores externos: el destino debe ser YouTube. Una URL llegada desde fuera puede cargarse brevemente antes de la redirección con fecha. El operador pide a YouTube el filtro; no certifica sus fechas ni bloquea la apertura directa de un vídeo nuevo. Otros filtros incompatibles de la búsqueda pueden dejar pocos resultados.
 
-## Cómo compone tu inicio
+Las búsquedas internas que generan la mezcla conservan sus intervalos más precisos; el guardián de búsquedas no intercepta `fetch()`.
 
-- Guarda hasta **40 intereses distintos** procedentes de tus búsquedas, temas extraídos de vídeos vistos y temas añadidos manualmente a partir de la instalación. No lee el historial previo de tu cuenta ni del navegador. Las búsquedas hechas antes de instalarla puedes añadirlas manualmente.
-- Los intereses tienen **el mismo peso**: buscar repetidamente un tema no lo hace dominar y la última búsqueda no sustituye las anteriores. Deduplica mayúsculas y acentos. Al superar 40 temas elimina el que se añadió primero.
-- Para cada mezcla elige al azar hasta **cuatro intereses** y reparte sus resultados por turnos. **Otra mezcla** cambia la selección y el orden; con pocos intereses puede haber vídeos repetidos entre mezclas. Dentro de una mezcla elimina duplicados.
-- Por defecto intenta mostrar **75 % de tus intereses y 25 % de descubrimientos** en tandas de hasta 24 vídeos. Puedes elegir 0 %, 25 % o 50 % de descubrimientos desde el icono. Si una fuente tiene pocos resultados, la otra puede completar la tanda y la proporción final variar; el estado indica el número real de descubrimientos.
-- **Carga al hacer scroll:** al acercarte a unos 600 píxeles del final se solicita otra tanda. Aparece un círculo animado con **Más vídeos** debajo, o **More videos** en inglés. Los nuevos vídeos se añaden al final, conservando las tarjetas anteriores y excluyendo duplicados de todo el listado.
-- Las tandas siguientes rotan temas, años y búsquedas; no dependen de una API de continuación privada de YouTube. Si no llegan resultados nuevos o hay errores, la carga automática se pausa para no repetir consultas sin fin. El botón permite volver a intentarlo con otras búsquedas. No se garantiza una cantidad ilimitada de resultados.
-- Los descubrimientos proceden de categorías generales independientes de tus consultas: música, humor, virales, baile, videojuegos y animales, con años de la época elegida. Pueden coincidir casualmente con alguno de tus intereses.
-- Para descubrir clásicos se usan los cinco años anteriores al año del límite, hasta la fecha elegida. Por defecto, con límite 01/01/2022, el intervalo explorado es 2017–2021. Prioriza resultados con más visitas y exige al menos **100.000 visitas actuales**. Es una aproximación a vídeos conocidos de aquella época, no un ranking certificado de lo que era popular entonces: YouTube devuelve las visitas acumuladas hoy.
-- Con intereses vacíos y descubrimientos activados empieza mostrando clásicos. Si seleccionas 0 % y no tienes intereses, tendrás que añadir alguno.
-- La fecha límite es exclusiva: 01/01/2022 busca vídeos anteriores a 2022. Puedes cambiarla desde el icono. Las edades relativas de los resultados son aproximadas y se descartan las que no permiten situar el vídeo antes del límite con suficiente confianza.
+## Mezcla, descubrimientos y scroll
 
-## Control de tus intereses
+Cada tanda selecciona hasta cuatro intereses con el mismo peso y mezcla sus resultados por turnos, añadiendo por defecto un 25 % de descubrimientos de categorías generales. Puedes elegir 0 %, 25 % o 50 %. No sustituye todo el perfil por el último tema ni aumenta el peso de un interés por repetirlo. Si faltan resultados, la proporción final puede variar.
 
-En el icono de la extensión, **Mis intereses** permite añadir temas, eliminar uno o **Borrar todos mis intereses**. Desmarcar **Aprender de mis búsquedas en YouTube** detiene nuevas incorporaciones automáticas y conserva los temas ya guardados. Puedes seguir añadiendo temas manualmente. Desactivar NostalgicTube detiene el aprendizaje y restaura el inicio original; no borra los intereses. Desinstalar la extensión elimina sus datos locales.
+Los descubrimientos exploran los años próximos al límite y priorizan vídeos con al menos 100.000 visitas actuales. Aproximan clásicos conocidos, no un ranking de popularidad histórico certificado. No garantiza ausencia de contenido de IA.
 
-Abrir un vídeo no sustituye todos tus intereses: si lo ves el tiempo suficiente puede añadir un tema y actualizar la mezcla acumulada. En el lateral de un vídeo también puede mostrar la mezcla. **Sustituir el listado del inicio** permite mostrar solo el inicio nostálgico o acompañarlo del listado original. No altera la reproducción ni el buscador normal.
+**Otra mezcla** reinicia el listado con otros temas y resultados. Al acercarte al final, añade hasta 24 vídeos más, sin duplicados de todo el listado y conservando las tarjetas anteriores. Aparece un círculo animado con **Más vídeos / More videos** debajo. Si no hay resultados nuevos o falla la búsqueda, la carga automática se pausa y deja un botón para volver a intentarlo. No garantiza resultados ilimitados.
 
-## Privacidad y funcionamiento
+Usa los componentes visuales de YouTube para las tarjetas, miniaturas, duración y menús. Su disposición depende de la variante de YouTube y del ancho de ventana. Un cambio de YouTube puede requerir actualizar la extensión. También puede mostrar una mezcla en el lateral de un vídeo.
 
-Solo utiliza el permiso `storage` y scripts limitados a `https://www.youtube.com/*`. No solicita acceso al historial del navegador ni a otras webs. Los intereses y ajustes se guardan localmente en este perfil de Brave; no se sincronizan por la extensión ni se envían a un servidor propio.
+## Idioma, donación y privacidad
 
-Para obtener resultados envía consultas a YouTube con las credenciales de esa sesión. Las miniaturas, los componentes y sus interacciones proceden de YouTube. Mantiene una caché de resultados en la memoria de la pestaña durante diez minutos, que se limpia al modificar los intereses o recargar. Un proceso de fondo serializa los cambios para evitar perder temas cuando buscas desde varias pestañas.
+El idioma predeterminado es **inglés**. El interruptor **English / Español** cambia el idioma con un clic o con el teclado, guarda la elección y actualiza las pestañas abiertas sin regenerar sus vídeos. No traduce los títulos ni cambia el idioma de YouTube.
 
-Se realizan hasta seis búsquedas por tanda, con un máximo de dos simultáneas. La caché puede evitar repetir peticiones. Un fallo parcial no impide mostrar resultados de las demás fuentes. No hace consultas periódicas en segundo plano: solo al mostrar o regenerar el listado, al acercarse al final o al pulsar el botón de más vídeos.
+El icono **Donar con Ko-fi / Donate with Ko-fi** aparece abajo a la derecha en los ajustes y abre https://ko-fi.com/yomidee en otra pestaña.
 
-## Límites
+Solo requiere el permiso `storage` y scripts en `https://www.youtube.com/*`. No lee el historial previo del navegador ni de tu cuenta. Los temas se guardan localmente. Para conseguir vídeos envía consultas a YouTube con esa sesión y carga sus miniaturas y componentes; no hay servidor propio ni telemetría. Los temas están ocultos en la interfaz, pero no cifrados contra las herramientas de desarrollo del propio navegador.
 
-La selección depende de las respuestas y del formato interno de YouTube, que puede cambiar. Consentimiento pendiente, bloqueos o limitaciones de consultas pueden impedir algunas fuentes. El panel comunica los fallos y permite **Explorar época** en el buscador. No inventa vídeos ni resultados.
+Hace hasta seis búsquedas por tanda y como máximo dos simultáneas, con caché temporal en la pestaña. Las fechas relativas ambiguas se descartan. Consentimiento pendiente, límites de consultas o cambios en el formato de YouTube pueden reducir los resultados.
 
-Las tarjetas y la cuadrícula son componentes reales de YouTube; la distribución exacta depende de su variante de interfaz, del ancho y de la cuenta. Se conserva una barra propia pequeña para los controles. La carga progresiva depende de que las búsquedas aporten vídeos nuevos. No garantiza que los vídeos antiguos estén libres de contenido de IA.
+## Verificación de 4.4
 
-## Verificación
-
-Versión 4.2 instalada en un perfil de prueba de Brave con YouTube real: al bajar se pasó de 24 a 48 tarjetas nativas sin duplicados, conservando el mismo primer elemento del listado. Se verificó el indicador de carga, un máximo de dos peticiones simultáneas, el interruptor EN/ES con clic y teclado, la persistencia del idioma y la desactivación del panel.
-
-Pruebas de la mezcla: reparto entre cuatro intereses, objetivo 18 resultados de intereses y 6 de descubrimientos con suficiente material, exclusión de duplicados, modo 0 % y lectura de visitas.
-
-Instalada como Manifest V3 en un perfil de prueba de Brave, con YouTube real: registro automático de una búsqueda, acumulación y deduplicación de intereses con escrituras simultáneas, generación de una mezcla de 24 vídeos con 6 descubrimientos, tarjetas nativas, edición del popup, eliminación de un interés, pausa del aprendizaje, límite de 40 temas y borrado completo. No utiliza tu cuenta personal para esas pruebas.
+Extensión instalada en un perfil de prueba de Brave con páginas simuladas: ausencia de lista y edición manual, conservación de más de 1.000 temas, búsqueda por URL directa, Enter y navegación interna con `before:` sin duplicados, actualización del límite, desactivación y reinicio sin reaprender inmediatamente la consulta actual. Las funciones de tarjetas nativas, scroll e idiomas se habían probado contra YouTube real en versiones anteriores; esta versión no comprueba todas las variantes de su interfaz.
 
 Proyecto independiente bajo licencia MIT, sin afiliación con YouTube ni Brave.

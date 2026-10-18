@@ -1,43 +1,37 @@
-# NostalgicTube 4.3.3
+# NostalgicTube 4.4
 
-Includes a red square icon with generously rounded, smoothly curved corners and a **white N**, in 16, 32, 48 and 128 pixel sizes for Brave's toolbar and extension manager.
+Native YouTube cards, automatic interest learning, discoveries from an earlier era, and progressive loading while scrolling.
 
-## Learning from watched videos
+## Install or update
 
-**Learn topics from videos I watch** is enabled by default, independently of search learning. After 12 seconds of actual playback in a visible tab, a local title-keyword algorithm adds one topic. Pauses, large seeks and detected ads do not count. Brief accidental clicks do not immediately add interests.
+Extract the ZIP into a permanent folder. Open `brave://extensions`, enable **Developer mode**, click **Load unpacked**, and select **NostalgicTube**, the folder containing `manifest.json`. Disable earlier versions.
 
-It recognizes names such as Minecraft and Python, groups some known categories, removes common English/Spanish words and scores the remaining title words. No AI model or external title-analysis service is used. Results are heuristic and can be imperfect; generic titles may produce no topic. Delete unwanted topics in **My interests**, or disable video learning while leaving search learning enabled.
+To preserve learning, replace the files in the existing installation folder, click **Reload** on its extension card, and reload YouTube tabs. Uninstalling first deletes its data.
 
-Learned topics have equal weight, preserving the accumulated mix and discovery ratio. Topic writes are deduplicated. Up to 200 processed video IDs are held only in the tab's memory to avoid repeatedly learning the same video; no persistent viewing-history list or full video titles are stored. Version 4.3 was tested with real MV3 installation and simulated playback, including the timing threshold, duplicate prevention and disabling learning.
+## Automatic interests
 
-The **Donate with Ko-fi** icon at the bottom-right of the popup opens https://ko-fi.com/yomidee in a new tab. Its label follows the selected interface language.
+No interest list or manual add/edit controls are exposed in the popup or feed. The algorithm manages topics from searches and watched-video titles. **Clear all interests** resets learning while preserving settings, language, and cutoff. Pending learning messages from before the reset cannot restore cleared topics.
 
-A native YouTube home feed mixing your saved interests with discoveries from an earlier era. English is the default interface language. Click the **English / Español slider switch** in the popup to toggle languages; Space and Enter also work when focused. The selection is saved automatically and updates open YouTube tabs without changing the current video mix.
+Stores up to **10,000 distinct topics** locally. Oldest entries are replaced only at that limit. Existing learning is retained when updating the same installation. Search learning and video learning are independent options. Video titles teach a keyword after 12 seconds of actual playback in a visible tab; pauses, large seeks, and detected ads do not count. Title extraction uses local heuristics, not a remote AI model, and can be imperfect. No persistent viewing-history list or full titles are stored.
 
-## Install in Brave
+## Automatic before: searches
 
-1. Disable earlier YouTube Antes or NostalgicTube versions at `brave://extensions`.
-2. Extract the ZIP into a permanent folder.
-3. Enable **Developer mode**, choose **Load unpacked**, and select the **NostalgicTube** folder containing `manifest.json`.
-4. Reload your YouTube tabs. Search for a few interests, then return to the home page. You can also add interests manually in the popup.
+When enabled, NostalgicTube adds the configured `before:YYYY-MM-DD` cutoff to YouTube result-page searches, including Enter in YouTube's search field and result URLs opened from the browser address bar, bookmarks, or custom search engines. Defaults to **before:2022-01-01**. Replaces earlier before: operators without duplicating them. Changing the cutoff updates the current search; disabling the extension stops enforcement.
 
-To update an existing installation while preserving its interests, replace the files in its original folder with these files, click **Reload** on its extension card, and reload YouTube. Keep the folder in place.
+The destination must be `https://www.youtube.com/results`. It does not alter Google, Brave Search, or other external engines. Incoming URLs can briefly load before being redirected. YouTube controls the actual results and date interpretation; this does not block direct access to newer videos. Internal feed-fetch queries keep their narrower date windows.
 
-## Controls
+## Feed and settings
 
-- Saves up to 40 distinct interests from searches, watched-video titles and manual additions in local extension storage; no access to previous browser or account history.
-- Samples up to four interests per mix, with equal weight rather than favoring the most recent one.
-- Defaults to approximately 75% interest-based videos and 25% discoveries. Choose 0%, 25%, or 50% discoveries in the popup. Availability may change the final proportion.
-- **Another mix** rotates topics and results. Each batch adds up to 24 videos, excluding duplicates across the entire feed.
-- Approaching the bottom automatically loads another batch. A spinning circle appears above **More videos** while loading. Previous cards remain in place.
-- Later batches vary interests, years and searches. If no new videos are found or requests fail, automatic loading pauses; the button lets you retry. Availability is finite and depends on YouTube results.
-- **My interests** lets you add, delete, or clear topics and pause automatic learning.
-- Defaults to videos before January 1, 2022. Discovery searches cover the preceding five calendar years and favor videos with at least 100,000 current views. This approximates well-known videos from that era; current views cannot establish their exact historical popularity.
+Each batch samples up to four equally weighted interests and aims for 25% discoveries by default; choose 0%, 25%, or 50%. Availability can change the final ratio. Discoveries favor videos from the era with at least 100,000 current views, not a certified historical ranking.
 
-## Privacy and limitations
+**Another mix** starts a fresh feed. Near the bottom, a spinning circle and **More videos** appear while up to 24 new cards are appended, without duplicates across the feed. Empty or failed searches pause automatic loading and leave a retry button. Results are not unlimited.
 
-Uses only `storage` permission and content scripts on `https://www.youtube.com/*`. Sends search queries to YouTube using that session, with no developer server or telemetry. At most six searches per generation, two concurrently, with a temporary in-tab cache. Native YouTube cards retain YouTube's own interactions and requests.
+English is the default. The **English / Español** slider switches languages with one click or the keyboard and saves automatically. It does not translate video titles or YouTube's own interface. The **Donate with Ko-fi** footer links to https://ko-fi.com/yomidee.
 
-Depends on YouTube's internal markup and components, which may change. Dates shown as relative ages are approximate. Unknown or ambiguous dates are excluded. Consent screens, throttling, or failed searches may limit results. Does not guarantee that older videos contain no AI content. UI language does not translate video titles or change YouTube's own language settings.
+## Privacy and checks
 
-Version 4.2 was tested installed in a separate Brave profile against real YouTube: scrolling grew the feed from 24 to 48 cards, without duplicates or replacing the first DOM card. The loading indicator, a maximum of two concurrent requests, the language slider with click/keyboard, persistence, and disabling the panel were verified. Independent MIT-licensed project, not affiliated with YouTube or Brave.
+Uses only `storage` and scripts on `www.youtube.com`. No access to previous browser/account history. Topics are local; search queries are sent to YouTube using that session. No developer server or telemetry. Topics are hidden from the UI, not encrypted from browser developer tools. At most two concurrent searches; temporary in-tab caching. YouTube format changes, consent screens, throttling, and approximate dates can limit results.
+
+Version 4.4 was tested installed in a separate Brave profile with simulated pages: hidden/manual-free UI, retention beyond 1,000 topics, direct URL/Enter/SPA before: enforcement, cutoff updates, clean reset, and disabling. Native cards, scrolling, and languages were tested against real YouTube in previous versions.
+
+Independent MIT-licensed project, not affiliated with YouTube or Brave.
