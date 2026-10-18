@@ -6,6 +6,18 @@ Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.3 bet
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
+## Una nota del creador
+
+¡Hola! Soy el creador de NostalgicTube.
+
+Me cansé de las tendencias virales, la música generada por IA y el flujo interminable de contenido nuevo, así que decidí darle a la IA una cucharada de su propia medicina. ¡La utilicé para crear una extensión que recupera los buenos tiempos de YouTube!
+
+Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados antes de ella. También hay un deslizador que mezcla tus intereses con descubrimientos aleatorios. Al 100%, Random ignora tus intereses aprendidos. La extensión no exige un mínimo de visitas ni ordena los vídeos por popularidad, así que pueden aparecer tanto vídeos poco conocidos como grandes clásicos. Los resultados de YouTube aún pueden favorecer ciertos vídeos o idiomas: no es una muestra completamente imparcial de todo su catálogo.
+
+¡Espero que la disfrutes! Un consejo: prueba con enero de 2022 o antes como punto de partida si buscas una experiencia de YouTube más antigua. Es la fecha predeterminada que elegí para NostalgicTube, no una frontera comprobada para el contenido generado por IA. La fecha por sí sola no garantiza que un vídeo esté libre de IA.
+
+¡Disfruta de los vídeos!
+
 ## Funciones
 
 - Variedad de 0 a 100 %: tus temas en 0 %, Random independiente en 100 %.

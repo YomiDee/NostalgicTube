@@ -8,6 +8,18 @@
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
+## A note from the creator
+
+Hey! I'm the creator of NostalgicTube.
+
+I got tired of all the viral trends, AI-generated music, and endless streams of new content, so I decided to give AI a taste of its own medicine. I used it to build an extension that brings back the good old days of YouTube!
+
+With NostalgicTube, you can choose a cutoff date and explore videos uploaded before it. There's also a slider that mixes your interests with random discoveries. At 100%, Random ignores your learned interests. The extension doesn't impose a minimum view count or rank videos by popularity, so both overlooked uploads and big classics can turn up. YouTube's search results can still favor particular videos or languages, so this isn't a completely unbiased sample of its entire catalogue.
+
+Hope you enjoy it! Pro tip: try January 2022 or earlier as a starting point if you're looking for an older YouTube experience. That's the default cutoff I chose for NostalgicTube, not a verified dividing line for AI-generated content. A date alone can't guarantee that a video is free of AI.
+
+Happy watching!
+
 ## Features
 
 - Continuous **0–100% Variety**: your topics at 0%, independent Random at 100%.
