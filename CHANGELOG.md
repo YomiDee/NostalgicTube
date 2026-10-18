@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.4
+
+- Display the installed version at the bottom left of the popup, read directly from the manifest.
+
 ## 4.8.3
 Autosave settings; remove Save button and reject invalid cutoff values.
 Recovered source and installable ZIP available.
