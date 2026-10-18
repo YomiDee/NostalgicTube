@@ -4,6 +4,25 @@
  const cache=new Map();
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
  const seen=new Set();
+ const learnedVideos=new Set();
+ let watchId='',watchTitle='',watchedSeconds=0,lastVideoTime=0,lastWatchTick=0,learningPending=false;
+ function learnFromPlayback(){
+   const now=performance.now(),id=location.pathname==='/watch'?new URLSearchParams(location.search).get('v'):null;
+   const video=document.querySelector('#movie_player video.html5-main-video,video.html5-main-video');
+   const title=(document.querySelector('ytd-watch-metadata h1 yt-formatted-string,ytd-watch-metadata h1')?.textContent||'').trim();
+   const docTitle=document.title.replace(/^\(\d+\)\s*/,'').replace(/ - YouTube$/,'').trim();
+   const owner=document.querySelector('ytd-watch-flexy')?.getAttribute('video-id');
+   if(id!==watchId || title!==watchTitle){watchId=id;watchTitle=title;watchedSeconds=0;lastVideoTime=video?.currentTime||0;lastWatchTick=now;return;}
+   const elapsed=Math.min(1.5,(now-lastWatchTick)/1000),delta=(video?.currentTime||0)-lastVideoTime;
+   lastWatchTick=now;lastVideoTime=video?.currentTime||0;
+   if(!ready || !settings.enabled || !settings.learnVideos || !id || learnedVideos.has(id) || !video || video.paused || video.ended || document.hidden || document.querySelector('#movie_player.ad-showing') || (owner && owner!==id) || !title || title!==docTitle)return;
+   // Only actual, visible playback counts. Seeks and large jumps do not count.
+   if(delta>0 && delta<=elapsed+0.6)watchedSeconds+=Math.min(delta,elapsed);
+   if(watchedSeconds<12 || learningPending)return;
+   learningPending=true;
+   chrome.runtime.sendMessage({type:'nt-learn',title:title.slice(0,500)}).then(result=>{if(result?.ok){learnedVideos.add(id);if(learnedVideos.size>200)learnedVideos.delete(learnedVideos.values().next().value);}}).catch(()=>{}).finally(()=>{learningPending=false;});
+ }
+ setInterval(learnFromPlayback,1000);
  let statusKey='',statusValues={};
  const t=(name,values)=>NostalgicI18n.t(settings.language,name,values);
  function status(name,values={}){statusKey=name;statusValues=values;setText('#status',t(name,values));}

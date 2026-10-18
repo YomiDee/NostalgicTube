@@ -8,6 +8,10 @@
  Object.assign(en,{more:'More videos',loadingMore:'Loading…',retryMore:'Try more videos',emptyMore:'No new videos in these searches. Try again to explore other years.',moreFailed:'Could not load more videos. Try again.',added:'{n} videos loaded · {d} discoveries. Scroll down for more.'});
  Object.assign(es,{more:'Más vídeos',loadingMore:'Cargando…',retryMore:'Buscar más vídeos',emptyMore:'No hay vídeos nuevos en estas búsquedas. Vuelve a intentarlo para explorar otros años.',moreFailed:'No se pudieron cargar más vídeos. Inténtalo de nuevo.',added:'{n} vídeos cargados · {d} descubrimientos. Baja para ver más.'});
  en.donate='Donate with Ko-fi';es.donate='Donar con Ko-fi';
+ en.learnVideos='Learn topics from videos I watch';es.learnVideos='Aprender temas de los vídeos que veo';
+ en.learnHint='After 12 seconds of visible playback, one keyword from the title is added locally.';es.learnHint='Tras 12 segundos de reproducción visible, se añade localmente una palabra del título.';
+ en.privacy='Stores up to 40 interests from searches, watched-video titles and topics you add, only in this browser. It does not import previous history or keep a viewing-history list. Topics have equal weight. Classics use current views, not a verified historical ranking.';
+ es.privacy='Guarda hasta 40 intereses de búsquedas, títulos de vídeos vistos y temas que añadas, solo en este navegador. No importa el historial anterior ni guarda una lista de reproducciones. Los temas tienen el mismo peso. Los clásicos usan visitas actuales, no un ranking histórico certificado.';
  function t(language,key,values={}){return ((language==='es'?es:en)[key]||en[key]||key).replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??''));}
  globalThis.NostalgicI18n={t};
 })();

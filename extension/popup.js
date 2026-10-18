@@ -1,4 +1,4 @@
-const fields=['enabled','cutoff','replaceHome','remember','discovery'],status=document.getElementById('status');
+const fields=['enabled','cutoff','replaceHome','remember','learnVideos','discovery'],status=document.getElementById('status');
 let language='en',interests=[],statusKey='';
 const t=(key,values)=>NostalgicI18n.t(language,key,values);
 function notify(key){statusKey=key;status.textContent=t(key);}

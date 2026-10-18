@@ -1,4 +1,12 @@
-# NostalgicTube 4.2.1
+# NostalgicTube 4.3
+
+## Learning from watched videos
+
+**Learn topics from videos I watch** is enabled by default, independently of search learning. After 12 seconds of actual playback in a visible tab, a local title-keyword algorithm adds one topic. Pauses, large seeks and detected ads do not count. Brief accidental clicks do not immediately add interests.
+
+It recognizes names such as Minecraft and Python, groups some known categories, removes common English/Spanish words and scores the remaining title words. No AI model or external title-analysis service is used. Results are heuristic and can be imperfect; generic titles may produce no topic. Delete unwanted topics in **My interests**, or disable video learning while leaving search learning enabled.
+
+Learned topics have equal weight, preserving the accumulated mix and discovery ratio. Topic writes are deduplicated. Up to 200 processed video IDs are held only in the tab's memory to avoid repeatedly learning the same video; no persistent viewing-history list or full video titles are stored. Version 4.3 was tested with real MV3 installation and simulated playback, including the timing threshold, duplicate prevention and disabling learning.
 
 The **Donate with Ko-fi** icon at the bottom-right of the popup opens https://ko-fi.com/yomidee in a new tab. Its label follows the selected interface language.
 
@@ -15,7 +23,7 @@ To update an existing installation while preserving its interests, replace the f
 
 ## Controls
 
-- Saves up to 40 distinct YouTube searches from installation in local extension storage; no access to previous browser or account history.
+- Saves up to 40 distinct interests from searches, watched-video titles and manual additions in local extension storage; no access to previous browser or account history.
 - Samples up to four interests per mix, with equal weight rather than favoring the most recent one.
 - Defaults to approximately 75% interest-based videos and 25% discoveries. Choose 0%, 25%, or 50% discoveries in the popup. Availability may change the final proportion.
 - **Another mix** rotates topics and results. Each batch adds up to 24 videos, excluding duplicates across the entire feed.

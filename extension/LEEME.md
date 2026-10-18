@@ -1,4 +1,16 @@
-# NostalgicTube 4.2.1
+# NostalgicTube 4.3
+
+## Aprender de los vídeos que ves
+
+La opción **Aprender temas de los vídeos que veo** está activada por defecto, además del aprendizaje por búsquedas. Al abrir un vídeo, espera **12 segundos de reproducción efectiva con la pestaña visible**. Pausas, saltos grandes de reproducción y anuncios detectados no cuentan. Un clic rápido seguido de salir del vídeo no añade un tema.
+
+Un algoritmo local resume el título en una palabra o etiqueta corta: reconoce nombres y categorías conocidas (Minecraft, Fortnite, Python, Astronomía, Cocina…), elimina artículos y expresiones genéricas en español e inglés y puntúa las palabras restantes por presencia, posición y coincidencia con intereses ya guardados. Por ejemplo, «Sobreviví 100 días en Minecraft» añade **Minecraft**, y un documental sobre galaxias puede añadir **Astronomía**.
+
+No utiliza un modelo de IA ni envía el título a un servicio de análisis. Es una heurística: puede elegir una palabra poco útil y no garantiza entender todos los títulos. Si no encuentra una candidata, no añade nada. Puedes borrar las etiquetas desde **Mis intereses** o desactivar el aprendizaje por vídeos sin desactivar el de búsquedas.
+
+Los temas aprendidos tienen el mismo peso que los demás. Se mantiene la variedad y el porcentaje de descubrimientos. El mismo vídeo no se procesa repetidamente en una pestaña (se recuerdan hasta 200 identificadores solo en memoria), y los temas repetidos se deduplican al guardar. No se guarda una lista persistente de vídeos vistos ni los títulos completos: solo los intereses extraídos.
+
+Las pruebas de 4.3 verificaron la extracción de temas en títulos españoles e ingleses, el descarte de un título genérico y, con la extensión instalada y reproducción simulada, que no se aprende en los primeros 5 segundos, que se aprende tras superar el umbral, que no se vuelve a añadir el mismo tema continuamente y que desactivar el aprendizaje impide nuevas altas. La reproducción de esas pruebas fue simulada, no una reproducción real de YouTube.
 
 Al final de los ajustes, a la derecha, el icono **Donar con Ko-fi** abre https://ko-fi.com/yomidee en otra pestaña. En inglés aparece como **Donate with Ko-fi**.
 
@@ -18,7 +30,7 @@ También puedes añadir intereses desde el icono de NostalgicTube o desde **Aña
 
 ## Cómo compone tu inicio
 
-- Guarda hasta **40 consultas distintas** que realices en el buscador de YouTube a partir de la instalación. No lee el historial previo de tu cuenta ni del navegador. Guarda la consulta, no una lista de vídeos vistos ni marcas horarias. Las búsquedas hechas antes de instalarla puedes añadirlas manualmente.
+- Guarda hasta **40 intereses distintos** procedentes de tus búsquedas, temas extraídos de vídeos vistos y temas añadidos manualmente a partir de la instalación. No lee el historial previo de tu cuenta ni del navegador. Las búsquedas hechas antes de instalarla puedes añadirlas manualmente.
 - Los intereses tienen **el mismo peso**: buscar repetidamente un tema no lo hace dominar y la última búsqueda no sustituye las anteriores. Deduplica mayúsculas y acentos. Al superar 40 temas elimina el que se añadió primero.
 - Para cada mezcla elige al azar hasta **cuatro intereses** y reparte sus resultados por turnos. **Otra mezcla** cambia la selección y el orden; con pocos intereses puede haber vídeos repetidos entre mezclas. Dentro de una mezcla elimina duplicados.
 - Por defecto intenta mostrar **75 % de tus intereses y 25 % de descubrimientos** en tandas de hasta 24 vídeos. Puedes elegir 0 %, 25 % o 50 % de descubrimientos desde el icono. Si una fuente tiene pocos resultados, la otra puede completar la tanda y la proporción final variar; el estado indica el número real de descubrimientos.
@@ -33,7 +45,7 @@ También puedes añadir intereses desde el icono de NostalgicTube o desde **Aña
 
 En el icono de la extensión, **Mis intereses** permite añadir temas, eliminar uno o **Borrar todos mis intereses**. Desmarcar **Aprender de mis búsquedas en YouTube** detiene nuevas incorporaciones automáticas y conserva los temas ya guardados. Puedes seguir añadiendo temas manualmente. Desactivar NostalgicTube detiene el aprendizaje y restaura el inicio original; no borra los intereses. Desinstalar la extensión elimina sus datos locales.
 
-El inicio ya no cambia de tema por abrir un vídeo: conserva la mezcla acumulada. En el lateral de un vídeo también puede mostrar la mezcla. **Sustituir el listado del inicio** permite mostrar solo el inicio nostálgico o acompañarlo del listado original. No altera la reproducción ni el buscador normal.
+Abrir un vídeo no sustituye todos tus intereses: si lo ves el tiempo suficiente puede añadir un tema y actualizar la mezcla acumulada. En el lateral de un vídeo también puede mostrar la mezcla. **Sustituir el listado del inicio** permite mostrar solo el inicio nostálgico o acompañarlo del listado original. No altera la reproducción ni el buscador normal.
 
 ## Privacidad y funcionamiento
 
