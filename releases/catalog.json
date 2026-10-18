@@ -172,5 +172,86 @@
     "asset": "releases/NostalgicTube-4.8.5-Brave.zip",
     "sha256": "79b23b31ceae42fafbb30559eb24d9f08243c3d38b07306664c681712c0c3109",
     "commit": "a5b0b66c30476a33dfda427dca88e3fb1c91bc48"
+  },
+  {
+    "version": "4.8.10",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.10-Brave.zip",
+    "sha256": "021f583e30595bb789d4747bd9bb6418fae86dca8f6c9e9ce2cffca7b5a2156f",
+    "commit": "383bd1624b486ce8e485c333ffabb9b14dcc16a4"
+  },
+  {
+    "version": "4.8.11",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.11-Brave.zip",
+    "sha256": "f06f53c2cc4f4764f33ad315ac7df619a371e031d5c6b7e02ac81326e07d8654",
+    "commit": "77bd9c96cf3935aa4fbc68ecfff2e0d031430a53"
+  },
+  {
+    "version": "4.8.12",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.12-Brave.zip",
+    "sha256": "bb2aab08150f37f8b544c4548b9510377d1c1dbe6fc446c5362c78e3119de961",
+    "commit": "ccb80bca9dacc4c416ad99e44e2d5dacde36e7bd"
+  },
+  {
+    "version": "4.8.13",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.13-Brave.zip",
+    "sha256": "365cd9df4aa61cc157eda10987d8b36187fc2de4e830156b34429252676252f1",
+    "commit": "f916ebd72c909044984cccd44cb816993f076b0e"
+  },
+  {
+    "version": "4.8.21",
+    "summary": "Horizontal watch recommendations and home mix label refinements.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.21-Brave.zip",
+    "sha256": "1d4acb0bc1259db229607814c22fa1078fb9f4ab9095a132032f8f06401e40ea",
+    "commit": "2bf82bbf9f62347b835f70edd5468e134c765e0f"
+  },
+  {
+    "version": "4.8.6",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.6-Brave.zip",
+    "sha256": "89801aaea14c741f1f0324f5120a44b085f01e572d256ebaf981419146efb5e8",
+    "commit": "939627763cdeab70caaf9db01ad270161f56af36"
+  },
+  {
+    "version": "4.8.7",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.7-Brave.zip",
+    "sha256": "12e28b8af1bc8919e3c76b5069c991c6534d847bf780b327ec35e84a138704f5",
+    "commit": "88d6f34090e0960ec5be42af4798b911cca57c61"
+  },
+  {
+    "version": "4.8.8",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.8-Brave.zip",
+    "sha256": "3445dd512912269eaa7bb8e6d126a2f401758c1f396f806d824c3e4d021bb13f",
+    "commit": "d1f9f5fa2e642ead725f13ef9382f24e0412b97a"
+  },
+  {
+    "version": "4.8.9",
+    "summary": "Continued development; see matching release notes.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-4.8.9-Brave.zip",
+    "sha256": "77faf163c8b3afee55a52ac841afdab8f91ae09513fd0a74098b1cf3d4f471a7",
+    "commit": "fcc720ef9551f27ef9057b2d992b94f159f41489"
   }
 ]
