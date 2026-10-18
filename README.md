@@ -4,7 +4,7 @@
 <p align="center">A nostalgic YouTube feed for Brave and desktop Chromium browsers.</p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 4.8.22 · Beta · Manifest V3**
+**Current version: 4.8.23 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards on home and compact horizontal cards on watch pages. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -33,7 +33,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 4.8.22 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.22/NostalgicTube-4.8.22-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 4.8.23 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.23/NostalgicTube-4.8.23-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |
@@ -107,4 +107,4 @@ Recommendations use horizontal cards with 16:9 thumbnails. Once replacement card
 
 ## Loading messages
 
-A single Loading more videos heading is accompanied by one of 14 playful phrases, rotated every five seconds during loading and retry waits. The phrases are translated into English and Spanish and disappear when loading finishes. Jokes about AI are decorative, not a claim that the extension detects AI-generated videos.
+A single Loading more videos heading is accompanied by one of 28 playful phrases, rotated every five seconds during loading and retry waits. The phrases are translated into English and Spanish and disappear when loading finishes. Jokes about AI are decorative, not a claim that the extension detects AI-generated videos.

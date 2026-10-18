@@ -2,6 +2,10 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.23
+
+- Expand the loading messages to 28 bilingual phrases, randomly selected every five seconds without consecutive repetition.
+
 ## 4.8.22
 
 - Simplify loading to one heading without trailing dots.

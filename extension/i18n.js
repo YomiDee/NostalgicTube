@@ -47,4 +47,18 @@ en.loadingJokePixels="Dusting off the pixels...";es.loadingJokePixels="Quitando 
 en.loadingJokeTrends="Escaping the trending page...";es.loadingJokeTrends="Escapando de la página de tendencias...";
 en.loadingJokeInternet="Searching the internet before it got weird...";es.loadingJokeInternet="Buscando en internet antes de que se volviera raro...";
 en.loadingJokeNostalgia="Downloading a little nostalgia...";es.loadingJokeNostalgia="Descargando un poquito de nostalgia...";
+en.loadingJokeFlash="Rescuing videos from the Flash era...";es.loadingJokeFlash="Rescatando vídeos de la era Flash...";
+en.loadingJokeDinosaur="Feeding the internet dinosaurs...";es.loadingJokeDinosaur="Dando de comer a los dinosaurios de internet...";
+en.loadingJokeUsb="Finding the right side of the USB...";es.loadingJokeUsb="Buscando el lado correcto del USB...";
+en.loadingJokeComments="Digging up ancient comment sections...";es.loadingJokeComments="Desenterrando comentarios antiguos...";
+en.loadingJokePixelsMore="Negotiating with the last 144 pixels...";es.loadingJokePixelsMore="Negociando con los últimos 144 píxeles...";
+en.loadingJokeKeyboard="Waiting for the keyboard cat...";es.loadingJokeKeyboard="Esperando al gato del teclado...";
+en.loadingJokeAlgorithm="Giving the algorithm a day off...";es.loadingJokeAlgorithm="Dándole el día libre al algoritmo...";
+en.loadingJokeDeLorean="Parking the DeLorean...";es.loadingJokeDeLorean="Aparcando el DeLorean...";
+en.loadingJokeBookmarks="Opening forgotten bookmarks...";es.loadingJokeBookmarks="Abriendo marcadores olvidados...";
+en.loadingJokeDisk="Inserting the nostalgia floppy disk...";es.loadingJokeDisk="Insertando el disquete de la nostalgia...";
+en.loadingJokeClickbait="Taking a detour around clickbait...";es.loadingJokeClickbait="Dando un rodeo para evitar el clickbait...";
+en.loadingJokeDoubleRainbow="Looking for a double rainbow...";es.loadingJokeDoubleRainbow="Buscando un arcoíris doble...";
+en.loadingJokeScreensaver="Waking up the flying toasters...";es.loadingJokeScreensaver="Despertando a las tostadoras voladoras...";
+en.loadingJokeInternetExplorer="Waiting for Internet Explorer to catch up...";es.loadingJokeInternetExplorer="Esperando a que Internet Explorer se ponga al día...";
 })();

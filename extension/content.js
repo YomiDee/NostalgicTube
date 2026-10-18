@@ -4,7 +4,7 @@
  const cache=new Map();
  let busy=false,page=0,canLoadMore=false,autoPaused=false,moreMessage='',bottomObserver;
  let retryTimer=0,retryAttempts=0,jokeKey='',lastJokeAt=0;
- const loadingJokes=['loadingJokeSlop','loadingJokeSkynet','loadingJokeModem','loadingJokeCats','loadingJokeTimeMachine','loadingJokeRick','loadingJokeHumanity','loadingJokeVhs','loadingJokeBuffer','loadingJokeRobot','loadingJokePixels','loadingJokeTrends','loadingJokeInternet','loadingJokeNostalgia'];
+ const loadingJokes=['loadingJokeSlop','loadingJokeSkynet','loadingJokeModem','loadingJokeCats','loadingJokeTimeMachine','loadingJokeRick','loadingJokeHumanity','loadingJokeVhs','loadingJokeBuffer','loadingJokeRobot','loadingJokePixels','loadingJokeTrends','loadingJokeInternet','loadingJokeNostalgia','loadingJokeFlash','loadingJokeDinosaur','loadingJokeUsb','loadingJokeComments','loadingJokePixelsMore','loadingJokeKeyboard','loadingJokeAlgorithm','loadingJokeDeLorean','loadingJokeBookmarks','loadingJokeDisk','loadingJokeClickbait','loadingJokeDoubleRainbow','loadingJokeScreensaver','loadingJokeInternetExplorer'];
  function rotateLoadingJoke(){
    if(!host?.isConnected||!settings.enabled||document.hidden||(!busy&&!retryTimer))return;
    if(jokeKey&&Date.now()-lastJokeAt<5000)return;
