@@ -1,0 +1,34 @@
+# Recovered history and provenance
+
+This archive was assembled on 2026-10-18 from preserved project files and the development conversation. Commit timestamps describe the import, **not original development timestamps**. The import identity is a synthetic archive label, not an assertion about the GitHub owner.
+
+Only versions with actual source are tagged. Milestones without surviving files are documented but have no invented tag or downloadable binary. The earlier “v4.8.3” tag points at the imported extension snapshot; project documentation is added in a subsequent main-branch commit.
+
+| Version | Source status | Change |
+| --- | --- | --- |
+| 1.0.0 | Recovered source | Initial local date filter: hide, dim, fade and unknown-date handling. |
+| 2.0.0 | Recovered source | Generate related old-video recommendations instead of only filtering cards. |
+| 3.0.0 | Recovered source | Render results with native YouTube grid and video cards. |
+| 4.0.0 | **Documented only** | Rename to NostalgicTube; accumulate interests and mix in discoveries. |
+| 4.1.0 | Recovered source | English default and Spanish interface selection. |
+| 4.2.0 | Recovered source | Progressive scrolling, loading spinner and one-click language switch. |
+| 4.2.1 | Recovered source | Ko-fi donation link in the popup. |
+| 4.3.0 | Recovered source | Learn a topic from a video title after visible playback. |
+| 4.3.1 | Recovered source | First red white-N extension icon. |
+| 4.3.2 | Recovered source | Square badge with chamfered corners. |
+| 4.3.3 | Recovered source | Smooth rounded-square icon. |
+| 4.4.0 | Recovered source | Automatic-only interests, reset, 10,000-topic capacity and before: search enforcement. |
+| 4.4.1 | **Documented only** | Wordmark/header layout, bilingual tagline and donation placement refinements. |
+| 4.5.0 | **Documented only** | 100% Random, independent of learned interests and without view-count filtering. |
+| 4.6.0 | Recovered source | Remove view-count preferences from every recommendation mode. |
+| 4.7.0 | **Documented only** | Automatic empty-batch recovery and continuous 0–100% Variety slider. |
+| 4.8.0 | Recovered source | Official transparent logo and compact dark popup without internal scrolling. |
+| 4.8.1 | **Documented only** | Official rounded triangular red N toolbar icon. |
+| 4.8.2 | **Documented only** | Ko-fi footer with exclamation mark and punctuated bilingual taglines. |
+| 4.8.3 | Recovered source | Autosave settings; remove Save button and reject invalid cutoff values. |
+
+## Preserved download checksums
+
+Original ZIPs were copied unchanged when available. Versions 1.0.0 and 4.8.3 were packaged from preserved source folders; they are not labelled original ZIPs. Checksums and corresponding commit IDs are in [catalog.json](../releases/catalog.json).
+
+No browser profiles, private browsing data, chat transcript, credentials, operating-system temporary files or machine-specific test scripts are included.

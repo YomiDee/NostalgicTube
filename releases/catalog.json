@@ -1,0 +1,158 @@
+[
+  {
+    "version": "1.0.0",
+    "summary": "Initial local date filter: hide, dim, fade and unknown-date handling.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved source folder",
+    "asset": "releases/NostalgicTube-1.0.0-Brave.zip",
+    "sha256": "1c689361fc95f41162b7e717849986c2ed57b6971f9e81e05071564051f02160",
+    "commit": "0d27ee5fcbbce0d1336c31f8278e2ba4db74b296"
+  },
+  {
+    "version": "2.0.0",
+    "summary": "Generate related old-video recommendations instead of only filtering cards.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-2.0.0-Brave.zip",
+    "sha256": "89fe8e288f23208fd34ad13d17874c4da043c0bda91cddb938138a391ffdcb79",
+    "commit": "7529390d7af9d42de0073fe8b46d26ad50e0c630"
+  },
+  {
+    "version": "3.0.0",
+    "summary": "Render results with native YouTube grid and video cards.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-3.0.0-Brave.zip",
+    "sha256": "0eb50caf46a88b7321abfc61e6ad4a0e47baf47a1912329715835d5bcfb50681",
+    "commit": "92897ec599703b6083dafe9bf19fd58a36802a18"
+  },
+  {
+    "version": "4.0.0",
+    "summary": "Rename to NostalgicTube; accumulate interests and mix in discoveries.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.1.0",
+    "summary": "English default and Spanish interface selection.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.1.0-Brave.zip",
+    "sha256": "b46ef9f7482e8fdc77951be575dd91c60bab29ccf8588d99f35efbffbcd8d2cf",
+    "commit": "2b09a00321306a22df0c49cd33649e331b591806"
+  },
+  {
+    "version": "4.2.0",
+    "summary": "Progressive scrolling, loading spinner and one-click language switch.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.2.0-Brave.zip",
+    "sha256": "b218250723d2b0b7c2fa044ce2364eb7490bc58404fdffb21818ef5ced002803",
+    "commit": "4d553eabb02b5012b582fec1425e1cd0172c8ed7"
+  },
+  {
+    "version": "4.2.1",
+    "summary": "Ko-fi donation link in the popup.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.2.1-Brave.zip",
+    "sha256": "4da9f36fdf3347a9f3b4dcc8a1e2b7f7947ae5a2a5bf9603acf24b6b8a3d90f7",
+    "commit": "b578ff06f37134f1055b5edfdd83b789f5e78a71"
+  },
+  {
+    "version": "4.3.0",
+    "summary": "Learn a topic from a video title after visible playback.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.3.0-Brave.zip",
+    "sha256": "c9cd268f9656b64b0f7e5a53cc7bdb3c8523ca201f463238b2e9a17265172c0f",
+    "commit": "918951586718bdcbcf285100a16e807e14c4444c"
+  },
+  {
+    "version": "4.3.1",
+    "summary": "First red white-N extension icon.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.3.1-Brave.zip",
+    "sha256": "0976292a496abb2f274608fe6fb8734b1ba622904a3d6d628ef90601779c2c18",
+    "commit": "3007208029bc22a1ffab1603684214e6c6ae23ec"
+  },
+  {
+    "version": "4.3.2",
+    "summary": "Square badge with chamfered corners.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.3.2-Brave.zip",
+    "sha256": "812e93f296ac3e2f1aea9f1584bcf8278543b7179b298d686378625ed2e8058e",
+    "commit": "480a70f595be00a16f0f228c41a1d12bed8d06ca"
+  },
+  {
+    "version": "4.3.3",
+    "summary": "Smooth rounded-square icon.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.3.3-Brave.zip",
+    "sha256": "aeb74420a1362b456cb87b09018f20a9d2918186c6702cdebdd2dfd998070f1a",
+    "commit": "c062d525f6cb9e4d3aa12f8d4056d36909d93971"
+  },
+  {
+    "version": "4.4.0",
+    "summary": "Automatic-only interests, reset, 10,000-topic capacity and before: search enforcement.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.4.0-Brave.zip",
+    "sha256": "789691adf316b9a14c0dc30da4998238e4e7c4840e54aeb47ef26eb419cba125",
+    "commit": "d2932ce16df29a9eee923ae74e2a823250279b73"
+  },
+  {
+    "version": "4.4.1",
+    "summary": "Wordmark/header layout, bilingual tagline and donation placement refinements.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.5.0",
+    "summary": "100% Random, independent of learned interests and without view-count filtering.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.6.0",
+    "summary": "Remove view-count preferences from every recommendation mode.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.6.0-Brave.zip",
+    "sha256": "f1e856b67dbf78373641626f791ba109ab1f57ef8a47abefad6d0ca562da5e80",
+    "commit": "9a8121f1243f79162986f6ed1b0adb69210524ed"
+  },
+  {
+    "version": "4.7.0",
+    "summary": "Automatic empty-batch recovery and continuous 0–100% Variety slider.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.8.0",
+    "summary": "Official transparent logo and compact dark popup without internal scrolling.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved original ZIP",
+    "asset": "releases/NostalgicTube-4.8.0-Brave.zip",
+    "sha256": "d3e7058ddb10f0616d08a1525618e52457a7bbd0ab5ffd4bcdb4c90c37168f7b",
+    "commit": "462a943796f9a1a191afaf949be6c9f6cc5ee0c4"
+  },
+  {
+    "version": "4.8.1",
+    "summary": "Official rounded triangular red N toolbar icon.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.8.2",
+    "summary": "Ko-fi footer with exclamation mark and punctuated bilingual taglines.",
+    "status": "documented-only"
+  },
+  {
+    "version": "4.8.3",
+    "summary": "Autosave settings; remove Save button and reject invalid cutoff values.",
+    "status": "recovered-snapshot",
+    "provenance": "preserved source folder",
+    "asset": "releases/NostalgicTube-4.8.3-Brave.zip",
+    "sha256": "56f1a33f6eaf9e16e12235262f7b2940e50334006f94ad423c43f01092dc0e8b",
+    "commit": "6a162a6125bb0fbfd5601e608d5172485c1e5031"
+  }
+]
