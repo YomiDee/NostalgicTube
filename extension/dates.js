@@ -2,7 +2,8 @@
 (() => {
   const defaults = {enabled:true, cutoff:'2022-01-01', mode:'hide', unknown:'hide', homeOnly:true};
   function parse(text, now = new Date()) {
-    const s = (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const abbreviations={a:'anos',d:'dias',h:'horas',min:'minutos',s:'segundos',sem:'semanas'};
+    const s = (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/(hace\s+\d+)\s+(a|d|h|min|s|sem)\b/g,(_,prefix,unit)=>prefix+' '+abbreviations[unit]);
     let m = s.match(/\b(20\d{2}|19\d{2})-(\d{2})-(\d{2})\b/);
     if (m) { const d = new Date(+m[1],+m[2]-1,+m[3]); if(d.getFullYear()===+m[1] && d.getMonth()===+m[2]-1 && d.getDate()===+m[3]) return [d,d]; }
     const months = {enero:0,febrero:1,marzo:2,abril:3,mayo:4,junio:5,julio:6,agosto:7,septiembre:8,octubre:9,noviembre:10,diciembre:11,january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};

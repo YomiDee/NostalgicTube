@@ -1,0 +1,38 @@
+(() => {
+ const defaults={enabled:true,cutoff:'2022-01-01',replaceHome:true,lastTopic:''};
+ const clean=s=>(s||'').replace(/(?:before|after):\S+/gi,'').replace(/["<>]/g,' ').replace(/\s+/g,' ').trim().slice(0,160);
+ const text=x=>typeof x==='string'?x:x?.simpleText || x?.content || x?.runs?.map(r=>r.text).join('') || '';
+ function extract(html) {
+   const marker=/(?:var\s+ytInitialData\s*=|window\["ytInitialData"\]\s*=|\bytInitialData\s*=)\s*/g;
+   let m;
+   while((m=marker.exec(html))) {
+     const start=html.indexOf('{',marker.lastIndex); if(start<0) continue;
+     let depth=0,quoted=false,escape=false;
+     for(let i=start;i<html.length;i++) {const c=html[i]; if(quoted){if(escape) escape=false;else if(c==='\\') escape=true;else if(c==='"') quoted=false;}else if(c==='"')quoted=true;else if(c==='{')depth++;else if(c==='}' && --depth===0){try{return JSON.parse(html.slice(start,i+1));}catch{break;}}}
+   }
+   throw Error('YouTube no ha devuelto resultados legibles. Puede requerir consentimiento o haber cambiado su formato.');
+ }
+ function videos(data) {
+   const found=new Map();
+   function walk(node) {
+     if(!node || typeof node!=='object')return;
+     const v=node.videoRenderer;
+     if(v && /^[\w-]{11}$/.test(v.videoId||'')) found.set(v.videoId,{id:v.videoId,title:text(v.title),channel:text(v.ownerText||v.longBylineText),published:text(v.publishedTimeText)});
+     const l=node.lockupViewModel;
+     if(l && /^[\w-]{11}$/.test(l.contentId||'') && (!l.contentType || l.contentType==='LOCKUP_CONTENT_TYPE_VIDEO')) {
+       const meta=l.metadata?.lockupMetadataViewModel;
+       const parts=(meta?.metadata?.contentMetadataViewModel?.metadataRows||[]).flatMap(r=>(r.metadataParts||[]).map(p=>text(p.text)));
+       found.set(l.contentId,{id:l.contentId,title:text(meta?.title),channel:parts[0]||'',published:parts.find(p=>YouTubeAntes.parse(p))||''});
+     }
+     // No incorporar publicidad ni carruseles de Shorts ni recomendaciones ajenas a la búsqueda.
+     for(const [key,value] of Object.entries(node)) if(!/adSlot|promoted|reelShelf|shorts/i.test(key)) {if(Array.isArray(value))value.forEach(walk);else walk(value);}
+   }
+   walk(data);return [...found.values()].filter(v=>v.title);
+ }
+ function query(topic,cutoff,broad=false) {
+   let words=clean(topic).replace(/[|•]/g,' ').split(/\s+/).filter(Boolean);
+   if(broad) words=words.filter(w=>! /^(el|la|los|las|un|una|de|del|en|y|a|con|the|a|an|of|and|in|to)$/i.test(w)).slice(0,5);
+   return words.slice(0,14).join(' ')+' before:'+cutoff;
+ }
+ globalThis.RelatedBefore={defaults,clean,extract,videos,query};
+})();

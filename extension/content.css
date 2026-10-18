@@ -1,3 +1,2 @@
-[data-yta-effect="hide"] { display: none !important; }
-[data-yta-effect="dim"] { filter: grayscale(1) brightness(.45) !important; }
-[data-yta-effect="fade"] { opacity: .18 !important; }
+html[data-yar-home="true"] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {display:none!important}
+#yar-panel{display:block;margin:16px 24px;min-width:0}

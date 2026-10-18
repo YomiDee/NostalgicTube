@@ -1,15 +1,8 @@
-<!doctype html>
-<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>YouTube Antes</title><link rel="stylesheet" href="popup.css">
-<body><h1>YouTube Antes</h1><p>Tu inicio, en otra época.</p>
-<form id="settings">
-<label class="check"><input id="enabled" type="checkbox"> Activar filtro</label>
-<label>Mostrar vídeos anteriores al<input id="cutoff" type="date" min="2005-01-01" max="2099-12-31" required></label>
-<small>Fecha excluida. Para ver solo vídeos anteriores a 2022, elige 01/01/2022.</small>
-<label>Vídeos posteriores<select id="mode"><option value="hide">Ocultar</option><option value="dim">Oscurecer</option><option value="fade">Desvanecer</option></select></label>
-<label>Fecha desconocida o imprecisa<select id="unknown"><option value="hide">Aplicar el mismo filtro (estricto)</option><option value="show">Mostrar</option></select></label>
-<label class="check"><input id="homeOnly" type="checkbox"> Solo en la página principal</label>
-<button type="submit">Guardar cambios</button><button id="reset" type="button">Restablecer: antes de 2022</button>
-<p id="status" role="status" aria-live="polite"></p></form>
-<small>Las fechas «hace X años» son aproximadas. Si el intervalo cruza tu fecha límite se considera desconocido. El filtro no detecta IA ni genera recomendaciones nuevas.</small>
-<script src="dates.js"></script><script src="popup.js"></script></body></html>
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Antiguos relacionados</title><link rel="stylesheet" href="popup.css"><body>
+<h1>Antiguos relacionados</h1><p>Recomendaciones propias a partir del vídeo que estás viendo.</p><form>
+<label><input id="enabled" type="checkbox"> Activar recomendaciones</label>
+<label>Vídeos anteriores al<input id="cutoff" type="date" min="2005-01-01" max="2099-12-31" required></label>
+<label><input id="replaceHome" type="checkbox"> Sustituir el listado del inicio</label>
+<button>Guardar</button><p id="status" role="status"></p></form>
+<small>Abre un vídeo: verás el panel en el lateral. Al volver al inicio conservará ese tema. Puedes editarlo y mezclar los resultados. No requiere clave de API.</small>
+<script src="search.js"></script><script src="popup.js"></script></body></html>
