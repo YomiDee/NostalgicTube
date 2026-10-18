@@ -2,7 +2,7 @@
 
 **Disfruta de lo que solía ser.**
 
-Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.32 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
+Extensión para Brave y navegadores Chromium de escritorio. Versión **4.8.33 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
@@ -30,7 +30,7 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 
 ## Instalar en Brave, Chrome o Edge
 
-1. Descarga el [ZIP 4.8.32](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.32/NostalgicTube-4.8.32-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 4.8.33](https://github.com/yomidee/NostalgicTube/releases/download/v4.8.33/NostalgicTube-4.8.33-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
 
    | Navegador | Dirección que debes escribir en la barra |
@@ -77,3 +77,5 @@ Tarjetas horizontales con miniaturas 16:9 y texto a la derecha. Cuando hay tarje
 ## Mensajes de carga
 
 Un único título Cargando más vídeos acompañado de 28 frases divertidas en español e inglés, que cambian cada cinco segundos durante la carga y las esperas de reintento. Desaparecen al terminar. Las bromas sobre IA son decorativas: la extensión no detecta vídeos generados por IA.
+
+Idiomas de búsqueda: abre el selector debajo de Variety para activar o desactivar los ocho idiomas. Todos vienen activados y los cambios se guardan automáticamente. Controla las palabras de búsqueda, no el idioma hablado del vídeo.

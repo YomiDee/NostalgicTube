@@ -16,22 +16,26 @@
    return pool[start];
  }
  let cameraCursor=0;
- function camera(random){
+ function camera(random,fallbackPool=simple){
    const prefixes=['IMG','DSC','MOV','MVI','VID','PICT'],joiners=[' ','_',''];
    for(let attempt=0;attempt<258;attempt++){
      const prefix=choose(prefixes,random),joiner=choose(joiners,random),number=attempt===0?Math.floor(sample(random)*10000):(cameraCursor++%10000);
      const topic=prefix+joiner+String(number).padStart(4,'0');if(remember(topic))return {topic,language:null,category:'camera',source:'camera'};
    }
-   return fromPool(simple,random);
+   return fromPool(fallbackPool,random);
  }
- function randomJobs(cutoff,random=Math.random,count=6){
+ function randomJobs(cutoff,random=Math.random,count=6,selectedLanguages){
+   const valid=new Set(groups.map(g=>g.language));
+   const selected=Array.isArray(selectedLanguages)?selectedLanguages.filter(code=>valid.has(code)):[];
+   const allowed=new Set(selected.length?selected:valid);
+   const simplePool=simple.filter(entry=>allowed.has(entry.language)),phrasePool=phrases.filter(entry=>allowed.has(entry.language));
    const limit=new Date(cutoff+'T00:00:00Z'),first=Date.UTC(2005,0,1),span=limit.getTime()-first;
    if(!Number.isFinite(span)||span<=0)throw new Error('Invalid discovery cutoff');
    const strategies=['simple','phrase','simple','phrase','phrase','camera'];
    for(let i=strategies.length-1;i>0;i--){const j=Math.floor(sample(random)*(i+1));[strategies[i],strategies[j]]=[strategies[j],strategies[i]];}
    const jobs=[],categories=new Set(),languages=new Set();
    for(let i=0;i<Math.min(6,Math.max(0,count));i++){
-     const strategy=strategies[i],entry=strategy==='camera'?camera(random):fromPool(strategy==='simple'?simple:phrases,random,categories,languages);
+     const strategy=strategies[i],entry=strategy==='camera'?camera(random,simplePool):fromPool(strategy==='simple'?simplePool:phrasePool,random,categories,languages);
      categories.add(entry.category);if(entry.language)languages.add(entry.language);
      const start=new Date(first+Math.floor(sample(random)*span));start.setUTCHours(0,0,0,0);
      const days=choose([30,90,180,365,1095],random),end=new Date(Math.min(limit.getTime(),start.getTime()+days*86400000));

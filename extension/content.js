@@ -79,9 +79,9 @@
  function maybeMore(){if(!busy && canLoadMore && !autoPaused && host?.isConnected && settings.enabled){const r=host.querySelector('.yar-more').getBoundingClientRect();if(r.top<innerHeight+600 && r.bottom>0)load(true);}}
  function loading(value){busy=value;const more=host.querySelector('.yar-more');more.dataset.loading=String(value);more.setAttribute('aria-busy',String(value));more.querySelector('button').disabled=value;translate();}
  function plan(batchPage=0){
-   if(settings.discovery===100)return NostalgicRandom.randomJobs(settings.cutoff);
+   if(settings.discovery===100)return NostalgicRandom.randomJobs(settings.cutoff,Math.random,6,settings.discoveryLanguages);
    const topics=shuffle(settings.interests||[]).slice(0,4);
-   const exploration=settings.discovery>0?NostalgicRandom.randomJobs(settings.cutoff,Math.random,topics.length?2:4).map(job=>({...job,kind:'discovery'})):[];
+   const exploration=settings.discovery>0?NostalgicRandom.randomJobs(settings.cutoff,Math.random,topics.length?2:4,settings.discoveryLanguages).map(job=>({...job,kind:'discovery'})):[];
    return [...topics.map(topic=>NostalgicRandom.relatedJob(topic,settings.cutoff)),...exploration];
  }
  async function fetchPool(job,signal){
@@ -101,7 +101,7 @@
  }
  async function load(append=false){
    if(!ready || !host || (append && busy))return;
-   const next=JSON.stringify([settings.cutoff,settings.discovery===100?null:settings.interests,settings.discovery,generation]);if(!append && next===key)return;key=next;
+   const next=JSON.stringify([settings.cutoff,settings.discovery===100?null:settings.interests,settings.discovery,settings.discoveryLanguages,generation]);if(!append && next===key)return;key=next;
    cancelRetry();
    controller?.abort();controller=new AbortController();const signal=controller.signal,run=++sequence;
    if(!append){page=0;items=[];seen.clear();canLoadMore=false;autoPaused=false;retryAttempts=0;render();}else page++;

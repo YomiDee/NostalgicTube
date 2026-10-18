@@ -5,8 +5,8 @@ const t=(key,values)=>NostalgicI18n.t(language,key,values);
 function notify(key){statusKey=key;status.textContent=t(key);}
 function showRandomHint(){const value=document.getElementById('discovery').value;document.getElementById('random-hint').hidden=value!=='100';document.getElementById('discovery-value').textContent=value+'%';document.getElementById('discovery').setAttribute('aria-valuetext',value+'%');}
 function translate(){document.documentElement.lang=language;document.getElementById('language').setAttribute('aria-checked',String(language==='es'));document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));if(statusKey)notify(statusKey);renderUpdate();globalThis.NostalgicCalendar?.refresh(language);}
-const popupDefaults=Object.fromEntries([...fields,'language'].map(key=>[key,RelatedBefore.defaults[key]]));
-chrome.storage.local.get(popupDefaults).then(s=>{language=s.language==='es'?'es':'en';for(const name of fields){const e=document.getElementById(name);if(e.type==='checkbox')e.checked=s[name];else e.value=s[name];}translate();showRandomHint();});
+const popupDefaults=Object.fromEntries([...fields,'language','discoveryLanguages'].map(key=>[key,RelatedBefore.defaults[key]]));
+chrome.storage.local.get(popupDefaults).then(s=>{language=s.language==='es'?'es':'en';for(const name of fields){const e=document.getElementById(name);if(e.type==='checkbox')e.checked=s[name];else e.value=s[name];}renderDiscoveryLanguages(s.discoveryLanguages);translate();showRandomHint();});
 document.getElementById('discovery').oninput=showRandomHint;
 chrome.storage.onChanged.addListener((changes,area)=>{if(area==='local' && changes.language){language=changes.language.newValue==='es'?'es':'en';translate();}});
 document.getElementById('language').onclick=async()=>{const previous=language;language=language==='en'?'es':'en';translate();try{await chrome.storage.local.set({language});notify('saved');}catch{language=previous;translate();notify('saveError');}};
@@ -37,3 +37,17 @@ async function checkUpdates(requestPermission){
 }
 updateButton.onclick=()=>checkUpdates(true);
 renderUpdate();
+
+const discoveryBoxes=[...document.querySelectorAll('[data-discovery-language]')];
+function renderDiscoveryLanguages(selected){
+ const valid=discoveryBoxes.map(box=>box.dataset.discoveryLanguage);
+ const active=Array.isArray(selected)?selected.filter(code=>valid.includes(code)):[];
+ const values=active.length?active:valid;
+ for(const box of discoveryBoxes)box.checked=values.includes(box.dataset.discoveryLanguage);
+ for(const box of discoveryBoxes)box.disabled=box.checked&&values.length===1;
+}
+for(const box of discoveryBoxes)box.addEventListener('change',async()=>{
+ const selected=discoveryBoxes.filter(box=>box.checked).map(box=>box.dataset.discoveryLanguage);
+ renderDiscoveryLanguages(selected);
+ try{await chrome.storage.local.set({discoveryLanguages:selected});notify('saved');}catch{notify('saveError');}
+});

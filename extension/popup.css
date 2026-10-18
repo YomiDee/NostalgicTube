@@ -21,3 +21,5 @@ body{position:relative}
 .calendar-day{height:30px;padding:0;border:0;border-radius:8px;background:transparent;color:#eee;font:400 12px Arial,sans-serif;cursor:pointer}
 .calendar-day:hover{background:#35353d}
 .calendar-day[aria-pressed=true]{background:#e32330;color:white;font-weight:700}
+
+.discovery-languages{margin:0 0 10px;font-size:12px}.discovery-languages summary{cursor:pointer;color:#ddd}.discovery-language-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:9px 0}.discovery-languages small{display:block;color:#999;font-size:10px;line-height:14px}

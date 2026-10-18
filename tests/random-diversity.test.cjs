@@ -32,3 +32,14 @@ test('discovery mixing interleaves queries rather than displaying topic blocks',
  for(let i=1;i<result.length;i++)assert.notEqual(result[i].discoverySource,result[i-1].discoverySource);
  assert.equal(new Set(result.map(v=>v.id)).size,12);
 });
+
+test('discovery respects selected languages and retains neutral camera searches',()=>{
+ const e=engine(),random=seeded(51);
+ for(const selected of [['es'],['ja','ru'],['en','fr','de']])for(let i=0;i<60;i++){
+  const jobs=e.randomJobs('2022-01-01',random,6,selected);
+  assert.equal(jobs.length,6);
+  for(const job of jobs)assert(job.language===null||selected.includes(job.language));
+ }
+ assert.equal(e.randomJobs('2022-01-01',random,6,[]).length,6);
+ assert.equal(e.randomJobs('2022-01-01',random,6,['invalid']).length,6);
+});

@@ -2,6 +2,11 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 4.8.33
+
+- Add an autosaved eight-language discovery search selector below Variety, localized in English and Spanish.
+- Default to all languages, require at least one, and retain neutral camera searches.
+
 ## 4.8.32
 
 - Prevent the initial native recommendation flash and hide watch chips during loading.
