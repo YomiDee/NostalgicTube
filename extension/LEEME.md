@@ -1,4 +1,4 @@
-# NostalgicTube 4.8.3
+# NostalgicTube 0.8.3
 
 Todos los ajustes se guardan automáticamente al cambiarlos. El deslizador guarda al soltarlo o ajustarlo con el teclado. Se ha eliminado el botón Guardar/Save. Las fechas vacías o inválidas no sustituyen la fecha guardada.
 

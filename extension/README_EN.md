@@ -1,4 +1,4 @@
-# NostalgicTube 4.8.3
+# NostalgicTube 0.8.3
 
 All settings save automatically when changed. The variety slider saves when released or adjusted with the keyboard. The Save button has been removed. Empty or invalid dates do not overwrite the stored cutoff.
 
