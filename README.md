@@ -6,7 +6,7 @@
 <p align="center">
   <a href="https://github.com/yomidee/NostalgicTube/actions/workflows/check.yml"><img src="https://img.shields.io/github/actions/workflow/status/yomidee/NostalgicTube/check.yml?branch=main&amp;label=CI&amp;logo=github" alt="CI" title="Automated checks on main"></a>
   <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.52-blue" alt="Release" title="Newest published release, including betas"></a>
-  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/downloads-GitHub_Releases-2ea44f" alt="Downloads" title="Download published ZIP files from GitHub Releases"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/github/downloads/YomiDee/NostalgicTube/total?label=downloads" alt="Downloads" title="Total downloads of release assets on GitHub; not installations"></a>
   <a href="https://github.com/yomidee/NostalgicTube/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yomidee/NostalgicTube?label=license" alt="MIT license" title="MIT license"></a>
   <br>
   <a href="https://github.com/yomidee/NostalgicTube#install-in-brave-chrome-or-edge"><img src="https://img.shields.io/badge/platform-desktop_Chromium-0078D4" alt="Platform" title="Desktop Chromium browsers"></a>
