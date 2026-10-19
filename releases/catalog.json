@@ -345,5 +345,14 @@
     "asset": "releases/NostalgicTube-0.8.52-Brave.zip",
     "sha256": "b68d9ebe8419fa1cd327cf2b62feb8271a42417c0e917d556bc1c91467cbdcbd",
     "commit": "7e9f01e73d88078fe5b4d5aa18b84f91d3e15f5f"
+  },
+  {
+    "version": "0.8.53",
+    "summary": "Exit original playlists when Nostalgic Autoplay is enabled, preserving video and playback position.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-0.8.53-Brave.zip",
+    "sha256": "bc7a9d69f6a7268e9b1ffcc628afb2dec5039fe8d7bb33c4d9d46b2602e60810",
+    "commit": "41acc504c7cf68d8c4619f4ca93168034657ce1b"
   }
 ]
