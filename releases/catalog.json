@@ -354,5 +354,14 @@
     "asset": "releases/NostalgicTube-0.8.53-Brave.zip",
     "sha256": "bc7a9d69f6a7268e9b1ffcc628afb2dec5039fe8d7bb33c4d9d46b2602e60810",
     "commit": "41acc504c7cf68d8c4619f4ca93168034657ce1b"
+  },
+  {
+    "version": "0.8.56",
+    "summary": "Progressive Random results with bounded prefetch and calendar dates applied only with the checkmark.",
+    "status": "recovered-snapshot",
+    "provenance": "development source commit",
+    "asset": "releases/NostalgicTube-0.8.56-Brave.zip",
+    "sha256": "0875e4fe84c975d5cba6e8c2c145d7b9beae0fc6902d2a3c107f67a82299a6fe",
+    "commit": "42b53317f2d7b1a58fbd20d87cf14551df121b95"
   }
 ]
