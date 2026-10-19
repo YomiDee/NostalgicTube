@@ -8,11 +8,11 @@
  if(typeof document==='undefined')return;
  const input=document.getElementById('cutoff'),trigger=document.getElementById('cutoff-display'),panel=document.getElementById('date-calendar');
  if(!input||!trigger||!panel)return;
- let language='en',year=2022,month=0;
+ let language='en',year=2022,month=0,pendingDate='';
  const locale=()=>language==='es'?'es-ES':'en-US';
- const labels=()=>language==='es'?{previous:'Mes anterior',next:'Mes siguiente',month:'Mes',year:'Año',calendar:'Elegir fecha',close:'Cerrar calendario'}:{previous:'Previous month',next:'Next month',month:'Month',year:'Year',calendar:'Choose date',close:'Close calendar'};
+ const labels=()=>language==='es'?{previous:'Mes anterior',next:'Mes siguiente',month:'Mes',year:'Año',calendar:'Elegir fecha',close:'Aplicar fecha'}:{previous:'Previous month',next:'Next month',month:'Month',year:'Year',calendar:'Choose date',close:'Apply date'};
  function button(text,name){const b=document.createElement('button');b.type='button';b.textContent=text;b.setAttribute('aria-label',name);return b;}
- function close(focus=false){panel.hidden=true;trigger.setAttribute('aria-expanded','false');if(focus)trigger.focus();}
+ function close(focus=false){pendingDate='';panel.hidden=true;trigger.setAttribute('aria-expanded','false');if(focus)trigger.focus();}
  function draw(){
    input.max=maxDate();if(year>maxYear()){year=maxYear();month=11;}
    const l=labels();panel.setAttribute('aria-label',l.calendar);panel.replaceChildren();
@@ -26,19 +26,22 @@
    for(let y=2006;y<=maxYear();y++){const option=document.createElement('option');option.value=y;option.textContent=y;yearSelect.append(option);}
    monthSelect.value=month;yearSelect.value=year;
    monthSelect.onchange=()=>{month=Number(monthSelect.value);draw();panel.querySelector('select').focus();};yearSelect.onchange=()=>{year=Number(yearSelect.value);draw();panel.querySelectorAll('select')[1].focus();};
-   const dismiss=button('×',l.close);dismiss.className='calendar-close';dismiss.onclick=()=>close(true);header.append(previous,monthSelect,yearSelect,next,dismiss);panel.append(header);
+   const dismiss=button('',l.close);dismiss.className='calendar-close';dismiss.title=l.close;
+   const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('width','16');icon.setAttribute('height','16');icon.setAttribute('aria-hidden','true');
+   const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M5 12l4 4L19 6');path.setAttribute('fill','none');path.setAttribute('stroke','currentColor');path.setAttribute('stroke-width','2');path.setAttribute('stroke-linecap','round');path.setAttribute('stroke-linejoin','round');icon.append(path);dismiss.append(icon);
+   dismiss.onclick=()=>{const value=pendingDate;close(true);if(value&&value!==input.value){input.value=value;input.dispatchEvent(new Event('change',{bubbles:true}));}};header.append(previous,monthSelect,yearSelect,next,dismiss);panel.append(header);
    const weekdays=document.createElement('div');weekdays.className='calendar-weekdays';
    const sunday=language==='es'?2:1;
    for(let i=0;i<7;i++){const label=document.createElement('span');label.textContent=new Intl.DateTimeFormat(locale(),{weekday:'short'}).format(new Date(2023,0,sunday+i));weekdays.append(label);}panel.append(weekdays);
    const grid=document.createElement('div');grid.className='calendar-days';
    for(const value of monthDays(year,month,language)){
      if(!value){grid.append(document.createElement('span'));continue;}
-     const date=new Date(year,month,Number(value.slice(-2))),day=button(Number(value.slice(-2)),new Intl.DateTimeFormat(locale(),{dateStyle:'full'}).format(date));day.className='calendar-day';day.dataset.date=value;day.setAttribute('aria-pressed',String(value===input.value));
-     day.onclick=()=>{input.value=value;input.dispatchEvent(new Event('change',{bubbles:true}));(panel.querySelector('.calendar-day[aria-pressed="true"]')||panel.querySelector('.calendar-day'))?.focus();};grid.append(day);
+     const date=new Date(year,month,Number(value.slice(-2))),day=button(Number(value.slice(-2)),new Intl.DateTimeFormat(locale(),{dateStyle:'full'}).format(date));day.className='calendar-day';day.dataset.date=value;day.setAttribute('aria-pressed',String(value===pendingDate));
+     day.onclick=()=>{pendingDate=value;draw();(panel.querySelector('.calendar-day[aria-pressed="true"]')||panel.querySelector('.calendar-day'))?.focus();};grid.append(day);
    }panel.append(grid);
  }
  refresh=lang=>{language=lang==='es'?'es':'en';input.max=maxDate();const value=input.value||'2022-01-01';const [y,m,d]=value.split('-').map(Number);trigger.querySelector('.date-value').textContent=new Intl.DateTimeFormat(locale(),{year:'numeric',month:'short',day:'numeric'}).format(new Date(y,m-1,d));trigger.setAttribute('aria-label',labels().calendar);if(!panel.hidden)draw();};
- trigger.onclick=()=>{if(!panel.hidden){close();return;}[year,month]=(input.value&&input.value<=maxDate()?input.value:maxDate()).split('-').map(Number);month--;draw();panel.hidden=false;trigger.setAttribute('aria-expanded','true');(panel.querySelector('.calendar-day[aria-pressed="true"]')||panel.querySelector('.calendar-day'))?.focus();};
+ trigger.onclick=()=>{if(!panel.hidden){close();return;}pendingDate=input.value&&input.value<=maxDate()?input.value:maxDate();[year,month]=pendingDate.split('-').map(Number);month--;draw();panel.hidden=false;trigger.setAttribute('aria-expanded','true');(panel.querySelector('.calendar-day[aria-pressed="true"]')||panel.querySelector('.calendar-day'))?.focus();};
  input.addEventListener('change',()=>refresh(language));
  document.addEventListener('click',event=>{if(!panel.hidden&&!event.composedPath().includes(panel)&&!event.composedPath().includes(trigger))close();});
  document.addEventListener('keydown',event=>{

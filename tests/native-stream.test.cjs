@@ -1,0 +1,8 @@
+const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+function harness(){let listener,release,grid;const payload={textContent:''},ready=new Promise(r=>release=r);const host={dataset:{place:'home'},isConnected:true,dispatchEvent(){},querySelector:s=>s==='#yar-payload'?payload:s==='.yar-results'?{append:g=>grid=g}:grid};
+ const context={document:{getElementById:()=>host,addEventListener:(name,fn)=>listener=fn,createElement:()=>({setAttribute(){},push(key,...values){this.data.contents.push(...values);}})},customElements:{whenDefined:()=>ready},Event:class{},setTimeout:()=>1,clearTimeout(){}};
+ vm.runInNewContext(fs.readFileSync(__dirname+'/../extension/native.js','utf8'),context);
+ return {send:(ids,append)=>{payload.textContent=JSON.stringify(ids.map(videoId=>({videoRenderer:{videoId}})));host.dataset.renderMode=append?'append':'replace';listener();},ready:async()=>{release();await new Promise(r=>setImmediate(r));},ids:()=>Array.from(grid.data.contents,c=>c.richItemRenderer.content.videoRenderer.videoId)};
+}
+test('native grid keeps incremental batches received before the component is ready',async()=>{const h=harness();h.send([],false);h.send(['aaaaaaaaaaa','bbbbbbbbbbb'],true);h.send(['ccccccccccc'],true);await h.ready();assert.deepEqual(h.ids(),['aaaaaaaaaaa','bbbbbbbbbbb','ccccccccccc']);});
+test('a replacement drops obsolete queued batches before native rendering',async()=>{const h=harness();h.send(['aaaaaaaaaaa'],false);h.send(['bbbbbbbbbbb'],true);h.send([],false);h.send(['ccccccccccc'],true);await h.ready();assert.deepEqual(h.ids(),['ccccccccccc']);});

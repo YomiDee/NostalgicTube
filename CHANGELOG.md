@@ -2,6 +2,18 @@
 
 All milestones below are recorded from the development conversation. Versions without preserved source are marked **documented only**. This is an imported project history, not a claim that every milestone had an original Git commit.
 
+## 0.8.56
+
+- Apply calendar dates only on the red checkmark button; closing without confirmation keeps the previous date.
+- Stream Random results as searches complete, using up to four videos from each of six sources.
+- Preload one next batch and reveal partial results when needed.
+- Preserve queued video cards while YouTube initializes its native grid.
+
+## 0.8.55 (local milestone, included in 0.8.56)
+
+- Increase 100% Random batches to up to 24 videos and prefetch one next batch while the user watches or scrolls.
+- Keep the next batch hidden until needed and discard stale buffered results when context changes.
+
 ## 0.8.53
 
 - Exit original playlists when Nostalgic Autoplay is enabled, retaining the video and playback position so the extension can manage the next video.
