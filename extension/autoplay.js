@@ -1,7 +1,7 @@
 /* Optional player-overlay autoplay. No player internals, network requests or autoplay API bypass. */
 (() => {
- function create({getState,getItems,classify,translate,navigate=url=>location.assign(url)}){
-  let video=null,pending=null,timer=0,handled='',banner=null,savedNative=null,lastClick=-Infinity,suspended=false;
+ function create({getState,getItems,classify,translate,navigate=url=>location.assign(url),leavePlaylist=url=>location.replace(url)}){
+  let video=null,pending=null,timer=0,handled='',banner=null,savedNative=null,lastClick=-Infinity,suspended=false,leavingPlaylist='';
   const key='nostalgictube.nativeAutoplayRestore';
   try{if(sessionStorage.getItem(key)==='true')savedNative=true;}catch{}
   const currentId=()=>new URLSearchParams(location.search).get('v');
@@ -57,6 +57,21 @@
   function detach(){if(video){video.removeEventListener('ended',ended);video.removeEventListener('play',onPlay);}video=null;}
   function refresh(){
    if(suspended){cancel();return;}
+   // Playlist advance is separate from YouTube's ordinary autoplay switch.
+   // Leave the playlist before arming our own countdown; retain the video/time.
+   const state=getState(),params=new URLSearchParams(location.search);
+   if(state.enabled&&state.autoplayEnabled&&location.pathname==='/watch'&&params.has('list')){
+    cancel();detach();
+    if(leavingPlaylist!==location.search){
+     leavingPlaylist=location.search;
+     for(const name of ['list','index','start_radio','rv','playnext'])params.delete(name);
+     const position=document.querySelector('#movie_player video.html5-main-video')?.currentTime;
+     if(Number.isFinite(position)&&position>0&&!document.querySelector('#movie_player.ad-showing'))params.set('t',Math.floor(position)+'s');
+     leavePlaylist('/watch?'+params.toString());
+    }
+    return;
+   }
+   leavingPlaylist='';
    if(!active()){cancel();detach();restoreNative();return;}
    disableNative();
    const current=document.querySelector('#movie_player video.html5-main-video');

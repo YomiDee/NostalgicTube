@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://github.com/yomidee/NostalgicTube/actions/workflows/check.yml"><img src="https://img.shields.io/github/actions/workflow/status/yomidee/NostalgicTube/check.yml?branch=main&amp;label=CI&amp;logo=github" alt="CI" title="Automated checks on main"></a>
-  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.52-blue" alt="Release" title="Newest published release, including betas"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.53-blue" alt="Release" title="Newest published release, including betas"></a>
   <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/github/downloads/YomiDee/NostalgicTube/total?label=downloads" alt="Downloads" title="Total downloads of release assets on GitHub; not installations"></a>
   <a href="https://github.com/yomidee/NostalgicTube/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yomidee/NostalgicTube?label=license" alt="MIT license" title="MIT license"></a>
   <br>
@@ -15,7 +15,7 @@
 </p>
 <p align="center"><a href="docs/README.es.md">Español</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="docs/HISTORY.md">Project history</a> · <a href="PRIVACY.md">Privacy</a> · <a href="https://ko-fi.com/yomidee">Donate with Ko-fi!</a></p>
 
-**Current version: 0.8.52 · Beta · Manifest V3**
+**Current version: 0.8.53 · Beta · Manifest V3**
 
 NostalgicTube generates a feed of videos uploaded before your chosen date, using native YouTube cards on home and compact horizontal cards on watch pages. It learns interests locally and mixes related videos with unrelated discoveries. By default the cutoff is January 1, 2022.
 
@@ -47,7 +47,7 @@ Happy watching!
 
 ## Install in Brave, Chrome or Edge
 
-1. Download [NostalgicTube 0.8.52 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v0.8.52/NostalgicTube-0.8.52-Brave.zip) and extract it into a permanent folder.
+1. Download [NostalgicTube 0.8.53 ZIP](https://github.com/yomidee/NostalgicTube/releases/download/v0.8.53/NostalgicTube-0.8.53-Brave.zip) and extract it into a permanent folder.
 2. Open the extensions page for your desktop browser and enable **Developer mode**:
 
    | Browser | Address to enter in the address bar |

@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/yomidee/NostalgicTube/actions/workflows/check.yml"><img src="https://img.shields.io/github/actions/workflow/status/yomidee/NostalgicTube/check.yml?branch=main&amp;label=CI&amp;logo=github" alt="CI" title="Automated checks on main"></a>
-  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.52-blue" alt="Release" title="Newest published release, including betas"></a>
+  <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/badge/release-v0.8.53-blue" alt="Release" title="Newest published release, including betas"></a>
   <a href="https://github.com/yomidee/NostalgicTube/releases"><img src="https://img.shields.io/github/downloads/YomiDee/NostalgicTube/total?label=downloads" alt="Downloads" title="Total downloads of release assets on GitHub; not installations"></a>
   <a href="https://github.com/yomidee/NostalgicTube/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yomidee/NostalgicTube?label=license" alt="MIT license" title="MIT license"></a>
   <br>
@@ -13,7 +13,7 @@
   <a href="https://github.com/yomidee/NostalgicTube/blob/main/extension/manifest.json"><img src="https://img.shields.io/badge/Manifest-V3-4285F4" alt="Manifest V3" title="Chromium Manifest V3 extension"></a>
 </p>
 
-Extensión para Brave y navegadores Chromium de escritorio. Versión **0.8.52 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
+Extensión para Brave y navegadores Chromium de escritorio. Versión **0.8.53 beta**, Manifest V3. Crea un inicio de YouTube con vídeos anteriores a una fecha, aprende intereses localmente y mezcla vídeos relacionados con descubrimientos independientes.
 
 [English](../README.md) · [Historial](../CHANGELOG.md) · [Privacidad](../PRIVACY.md) · [Donar con Ko-fi!](https://ko-fi.com/yomidee)
 
@@ -44,7 +44,7 @@ Con NostalgicTube puedes elegir una fecha límite y explorar vídeos publicados 
 
 ## Instalar en Brave, Chrome o Edge
 
-1. Descarga el [ZIP 0.8.52](https://github.com/yomidee/NostalgicTube/releases/download/v0.8.52/NostalgicTube-0.8.52-Brave.zip) y extrae todo en una carpeta permanente.
+1. Descarga el [ZIP 0.8.53](https://github.com/yomidee/NostalgicTube/releases/download/v0.8.53/NostalgicTube-0.8.53-Brave.zip) y extrae todo en una carpeta permanente.
 2. Abre la página de extensiones de tu navegador de escritorio y activa **Modo desarrollador**:
 
    | Navegador | Dirección que debes escribir en la barra |
